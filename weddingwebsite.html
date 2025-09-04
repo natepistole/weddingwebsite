@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nate & Rebecca — Hammond Castle Wedding</title>
+  <meta name="description" content="Wedding details for Nate & Rebecca at Hammond Castle Museum in Gloucester, MA — schedule, venue, travel, hotels, FAQs, and RSVP." />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#F7FAF9;             /* soft off-white */
+      --surface:#ffffff;         /* cards */
+      --ink:#0a2a2a;             /* deep green-black */
+      --muted:#5b6d6d;           /* slate teal */
+      --brand:#14C9AE;           /* seafoam */
+      --brand-ink:#064e47;       /* darker seafoam */
+      --gold:#C6A15B;            /* accent */
+      --line:rgba(10,42,42,.08);
+      --radius:18px;
+      --shadow:0 10px 30px rgba(3, 18, 18, .10);
+      --hero:url(''); /* TODO: drop a Hammond Castle image URL here */
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{
+      font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.6;
+    }
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* --- Layout --- */
+    .wrap{max-width:1100px;margin-inline:auto;padding:28px}
+    .section{padding:56px 0;border-top:1px solid var(--line)}
+    .section:first-of-type{border-top:0}
+    .grid{display:grid;gap:28px}
+    @media(min-width:900px){.grid.cols-2{grid-template-columns:1.1fr .9fr}}
+    @media(min-width:900px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}}
+
+    /* --- Topbar --- */
+    .topbar{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.2) blur(6px);background:rgba(255,255,255,.7);border-bottom:1px solid var(--line)}
+    .topbar-inner{max-width:1100px;margin:auto;display:flex;gap:18px;align-items:center;justify-content:space-between;padding:10px 20px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+    .brand .heart{font-family:'Playfair Display',serif;font-weight:700;letter-spacing:.5px}
+    .nav{display:flex;gap:16px;flex-wrap:wrap}
+    .nav a{font-weight:600;color:var(--ink);opacity:.9}
+    .nav a:hover{opacity:1;color:var(--brand-ink)}
+    .cta{display:inline-flex;align-items:center;gap:10px;background:var(--brand);color:#002522;font-weight:800;border-radius:999px;padding:10px 16px;box-shadow:var(--shadow)}
+    .cta:hover{filter:saturate(1.05) brightness(1.01)}
+
+    /* --- Hero --- */
+    .hero{position:relative;isolation:isolate;background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.25)), var(--hero), center/cover no-repeat;min-height:68vh;display:grid;place-items:center;color:#fff}
+    .hero-inner{max-width:1100px;margin:auto;padding:64px 28px;text-align:center}
+    .hero h1{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(36px,6vw,64px);letter-spacing:.5px;margin:0 0 10px}
+    .hero .sub{opacity:.95;font-size:clamp(16px,2.2vw,20px)}
+    .pill{display:inline-flex;gap:8px;align-items:center;border-radius:999px;background:rgba(255,255,255,.18);backdrop-filter:blur(6px);padding:8px 14px;border:1px solid rgba(255,255,255,.25);font-weight:600}
+    .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:22px}
+    .hero-ctas a{background:#fff;color:#0a2a2a}
+
+    /* --- Cards --- */
+    .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+    .card .pad{padding:22px}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:rgba(20,201,174,.12);color:var(--brand-ink);font-weight:700;font-size:13px;border:1px solid rgba(20,201,174,.35)}
+    h2{font-family:'Playfair Display',serif;font-size:clamp(28px,3.2vw,36px);margin:0 0 14px}
+    h3{font-size:18px;margin:0 0 8px}
+    .muted{color:var(--muted)}
+    .lead{font-size:18px}
+
+    /* --- Lists & timeline --- */
+    .timeline{display:grid;gap:12px}
+    .tl-item{display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:start}
+    .time{font-weight:800;color:var(--brand-ink)}
+
+    /* --- Venue block --- */
+    .map{aspect-ratio:16/9;width:100%;border:0;border-top:1px solid var(--line)}
+    .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:#fff;font-weight:700}
+
+    /* --- Hotel cards --- */
+    .hotels{display:grid;gap:18px}
+    @media(min-width:800px){.hotels{grid-template-columns:repeat(2,1fr)}}
+    .hotel h4{margin:0 0 4px;font-size:17px}
+    .hotel .meta{font-size:14px;color:var(--muted)}
+
+    /* --- FAQ --- */
+    details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+    summary{cursor:pointer;font-weight:700}
+
+    /* --- Footer --- */
+    footer{padding:28px;text-align:center;color:var(--muted)}
+
+    /* --- Utilities --- */
+    .right{justify-self:end}
+    .center{text-align:center}
+    .mb-s{margin-bottom:8px}
+    .mb-m{margin-bottom:16px}
+    .mb-l{margin-bottom:24px}
+    .mb-xl{margin-bottom:36px}
+    .sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px)}
+  </style>
+</head>
+<body>
+  <a class="sr-only" href="#content">Skip to content</a>
+
+  <!-- Sticky topbar -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="heart">Nate &amp; Rebecca</span>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <a href="#schedule">Schedule</a>
+        <a href="#venue">Venue</a>
+        <a href="#travel">Travel</a>
+        <a href="#stay">Hotels</a>
+        <a href="#faq">FAQs</a>
+      </nav>
+      <a href="#rsvp" class="cta">RSVP</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" role="banner" aria-label="Nate & Rebecca wedding hero">
+    <div class="hero-inner">
+      <div class="pill mb-m">We're getting married!</div>
+      <h1>Nate &amp; Rebecca</h1>
+      <p class="sub">Hammond Castle Museum • Gloucester, Massachusetts</p>
+      <p class="sub"><strong><!-- TODO: Set dates -->Saturday, Month 00, YYYY</strong></p>
+      <div class="hero-ctas">
+        <a class="cta" href="#rsvp">RSVP</a>
+        <a class="cta" href="#travel">Travel Info</a>
+      </div>
+    </div>
+  </section>
+
+  <main id="content">
+    <!-- Schedule -->
+    <section id="schedule" class="section">
+      <div class="wrap grid cols-2">
+        <div>
+          <span class="chip">Weekend Schedule</span>
+          <h2>Celebrate with us</h2>
+          <p class="lead muted">We can't wait to share an unforgettable weekend on Cape Ann with our favorite people. Times below are placeholders—update to match your final timeline.</p>
+          <div class="timeline mb-l">
+            <div class="tl-item">
+              <div class="time">4:00 PM</div>
+              <div>
+                <h3>Ceremony</h3>
+                <p class="muted">Ocean lawn at Hammond Castle Museum. Guests seated by 3:45 PM.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="time">5:00 PM</div>
+              <div>
+                <h3>Cocktail Hour</h3>
+                <p class="muted">Courtyard &amp; Great Hall.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="time">6:30 PM</div>
+              <div>
+                <h3>Reception</h3>
+                <p class="muted">Dinner, toasts, and dancing. <em>Black tie optional</em> (edit as desired).</p>
+              </div>
+            </div>
+          </div>
+          <a class="btn" href="#rsvp">RSVP</a>
+        </div>
+        <div class="card">
+          <div class="pad">
+            <h3 class="mb-s">Key Details</h3>
+            <ul class="muted" style="margin:0;padding-left:18px">
+              <li><strong>Date:</strong> <span><!-- TODO: Set date -->Saturday, Month 00, YYYY</span></li>
+              <li><strong>Venue:</strong> Hammond Castle Museum</li>
+              <li><strong>Address:</strong> 80 Hesperus Ave, Gloucester, MA 01930</li>
+              <li><strong>Nearest Airport:</strong> Boston Logan International (BOS)</li>
+              <li><strong>Distance BOS → Venue:</strong> ~27 miles (~45–50 minutes by car)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Venue -->
+    <section id="venue" class="section">
+      <div class="wrap grid cols-2">
+        <div>
+          <span class="chip">The Venue</span>
+          <h2>Hammond Castle Museum</h2>
+          <p class="muted">A stunning 1920s seaside castle and museum with sweeping Atlantic views, stone archways, and the dramatic Great Hall—perfect for a fairytale “I do.”</p>
+          <div class="btn-row">
+            <button class="btn" id="copy-address" aria-label="Copy address">Copy Address</button>
+            <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Hammond+Castle+Museum%2C+80+Hesperus+Ave%2C+Gloucester%2C+MA+01930" target="_blank" rel="noopener">Open in Google Maps</a>
+            <a class="btn" href="https://maps.apple.com/?q=Hammond+Castle+Museum+Gloucester" target="_blank" rel="noopener">Open in Apple Maps</a>
+          </div>
+          <p class="muted mb-s"><strong>Parking:</strong> On‑site and free but limited. Please arrive early; rideshare is encouraged.<!-- NOTE: keep language short for guests --></p>
+          <p class="muted"><strong>Accessibility:</strong> Historic property with many stairs; unfortunately not wheelchair accessible.</p>
+        </div>
+        <div class="card">
+          <iframe class="map" loading="lazy" allowfullscreen
+            src="https://www.google.com/maps?q=Hammond+Castle+Museum,80+Hesperus+Ave,Gloucester,+MA+01930&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Travel -->
+    <section id="travel" class="section">
+      <div class="wrap grid cols-2">
+        <div>
+          <span class="chip">Travel</span>
+          <h2>Getting There</h2>
+          <p class="muted">Fly into <strong>Boston Logan International Airport (BOS)</strong>. The castle is roughly <strong>27 miles</strong> north on MA‑128 along Cape Ann (about <strong>45–50 minutes</strong> by car depending on traffic). Consider rideshare or rental cars for easiest access.</p>
+          <ul class="muted" style="padding-left:18px">
+            <li><strong>Driving:</strong> I‑95 N → MA‑128 N to Gloucester; follow signs for Route 127 and Hesperus Ave.</li>
+            <li><strong>Rail:</strong> MBTA Commuter Rail Rockport Line to <em>Gloucester</em>, then a short taxi/rideshare to the venue.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="pad">
+            <h3 class="mb-m">Local Tips</h3>
+            <ul class="muted" style="padding-left:18px;margin:0">
+              <li>Weekend coastal traffic can be heavy—pad your schedule.</li>
+              <li>There are stairs from the parking lot down to the castle entrance.</li>
+              <li>Plan your return trip if using rideshare later in the evening.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hotels -->
+    <section id="stay" class="section">
+      <div class="wrap">
+        <span class="chip">Stay Nearby</span>
+        <h2>Recommended Hotels</h2>
+        <p class="muted mb-l">A few guest‑friendly options in Gloucester & Rockport. Distances are approximate to Hammond Castle Museum.</p>
+        <div class="hotels">
+          <div class="card hotel">
+            <div class="pad">
+              <h4>Beauport Hotel Gloucester</h4>
+              <div class="meta">≈ 2.2 miles • Waterfront boutique • Rooftop deck</div>
+              <div class="btn-row">
+                <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Beauport+Hotel+Gloucester">Open in Maps</a>
+                <a class="btn" target="_blank" rel="noopener" href="https://www.beauporthotel.com/">Website</a>
+              </div>
+            </div>
+          </div>
+          <div class="card hotel">
+            <div class="pad">
+              <h4>Atlantis Oceanfront Inn</h4>
+              <div class="meta">≈ 3.4 miles • Ocean views • Seasonal pool</div>
+              <div class="btn-row">
+                <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Atlantis+Oceanfront+Inn+Gloucester">Open in Maps</a>
+                <a class="btn" target="_blank" rel="noopener" href="https://www.atlantisoceanfrontinn.com/">Website</a>
+              </div>
+            </div>
+          </div>
+          <div class="card hotel">
+            <div class="pad">
+              <h4>Ocean House Hotel at Bass Rocks</h4>
+              <div class="meta">≈ 5 miles • Classic oceanfront • Bikes & firepits</div>
+              <div class="btn-row">
+                <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Ocean+House+Hotel+at+Bass+Rocks">Open in Maps</a>
+                <a class="btn" target="_blank" rel="noopener" href="https://www.oceanhousegloucester.com/">Website</a>
+              </div>
+            </div>
+          </div>
+          <div class="card hotel">
+            <div class="pad">
+              <h4>Castle Manor Inn</h4>
+              <div class="meta">≈ 2 miles • Historic inn • On‑site restaurant</div>
+              <div class="btn-row">
+                <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Castle+Manor+Inn+Gloucester">Open in Maps</a>
+                <a class="btn" target="_blank" rel="noopener" href="https://castlemanorinn.com/">Website</a>
+              </div>
+            </div>
+          </div>
+          <div class="card hotel">
+            <div class="pad">
+              <h4>The Vista, Gloucester</h4>
+              <div class="meta">≈ 4.4 miles • Family‑friendly • Balconies with views</div>
+              <div class="btn-row">
+                <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=The+Vista+Gloucester">Open in Maps</a>
+                <a class="btn" target="_blank" rel="noopener" href="https://www.vistahotel.com/">Website</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="muted mb-s" style="margin-top:12px">Want more choices? Search “Gloucester MA hotels” or Rockport for charming B&Bs.</p>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <section id="faq" class="section">
+      <div class="wrap grid cols-2">
+        <div>
+          <span class="chip">Good to Know</span>
+          <h2>FAQs</h2>
+          <details class="mb-m">
+            <summary>What should I wear?</summary>
+            <div class="muted">Festive cocktail or black‑tie optional. Note the venue has stone floors and stairs—consider comfortable shoes. (Edit as desired.)</div>
+          </details>
+          <details class="mb-m">
+            <summary>Is there parking?</summary>
+            <div class="muted">Yes, on‑site and free but limited. Carpool or rideshare recommended. Arrive early to allow time for the walk down the stairs to the entrance.</div>
+          </details>
+          <details class="mb-m">
+            <summary>Are kids welcome?</summary>
+            <div class="muted">Your call! Replace this text with your policy (e.g., “Adults‑only reception” or “All family welcome”).</div>
+          </details>
+          <details>
+            <summary>Will there be transportation?</summary>
+            <div class="muted">If you plan to offer shuttles between preferred hotels and the venue, describe them here.</div>
+          </details>
+        </div>
+        <div class="card" id="rsvp">
+          <div class="pad">
+            <h3>RSVP & Registry</h3>
+            <p class="muted">Please RSVP by <!-- TODO: RSVP deadline --> <em>Month 00</em>. Add your dietary needs and a song you’ll dance to!</p>
+            <div class="btn-row">
+              <a class="btn" href="#" target="_blank" rel="noopener">RSVP Form</a>
+              <a class="btn" href="#" target="_blank" rel="noopener">View Registry</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© <span id="year"></span> Nate & Rebecca</div>
+    <div class="muted" style="margin-top:6px">Made with love • Gloucester, Massachusetts</div>
+  </footer>
+
+  <script>
+    // Replace hero image by setting --hero in :root (see top of CSS) to url('https://...')
+    // Copy address helper
+    const copyBtn = document.getElementById('copy-address');
+    if(copyBtn){
+      copyBtn.addEventListener('click', async () => {
+        try{
+          await navigator.clipboard.writeText('Hammond Castle Museum, 80 Hesperus Ave, Gloucester, MA 01930');
+          copyBtn.textContent = 'Copied!';
+          setTimeout(()=> copyBtn.textContent = 'Copy Address', 1400);
+        }catch(e){
+          alert('Address: Hammond Castle Museum, 80 Hesperus Ave, Gloucester, MA 01930');
+        }
+      });
+    }
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Smooth-scroll for same-page links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id=a.getAttribute('href');
+        if(id.length>1){ e.preventDefault(); document.querySelector(id).scrollIntoView({behavior:'smooth'}); }
+      })
+    });
+  </script>
+</body>
+</html>
