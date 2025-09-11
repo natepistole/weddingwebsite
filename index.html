@@ -21,7 +21,6 @@
       --line:rgba(10,42,42,.08);
       --radius:18px;
       --shadow:0 10px 30px rgba(3, 18, 18, .10);
-      --hero:url(''); /* TODO: drop a Hammond Castle image URL here */
     }
     *{box-sizing:border-box}
     html,body{margin:0}
@@ -53,14 +52,51 @@
     .cta{display:inline-flex;align-items:center;gap:10px;background:var(--brand);color:#002522;font-weight:800;border-radius:999px;padding:10px 16px;box-shadow:var(--shadow)}
     .cta:hover{filter:saturate(1.05) brightness(1.01)}
 
-    /* --- Hero --- */
-    .hero{position:relative;isolation:isolate;background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.25)), var(--hero), center/cover no-repeat;min-height:68vh;display:grid;place-items:center;color:#fff}
-    .hero-inner{max-width:1100px;margin:auto;padding:64px 28px;text-align:center}
+    /* --- Hero with looping video background --- */
+    .hero{
+      position:relative;
+      isolation:isolate;
+      min-height:68vh;
+      display:grid;
+      place-items:center;
+      color:#fff;
+      overflow:hidden; /* crop video edges */
+    }
+    .hero .hero-bg{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;               /* like background-size: cover */
+      z-index:0;                      /* behind overlay + text */
+      filter:saturate(1.05) contrast(1.05) brightness(.85);
+      /* Optional smoother playback hint on some browsers */
+      will-change:transform;
+    }
+    /* Gradient overlay for readability */
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:1;
+      background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.25));
+      pointer-events:none;
+    }
+    .hero .hero-inner{position:relative;z-index:2;text-align:center;padding:64px 28px;max-width:1100px;margin:auto}
     .hero h1{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(36px,6vw,64px);letter-spacing:.5px;margin:0 0 10px}
     .hero .sub{opacity:.95;font-size:clamp(16px,2.2vw,20px)}
     .pill{display:inline-flex;gap:8px;align-items:center;border-radius:999px;background:rgba(255,255,255,.18);backdrop-filter:blur(6px);padding:8px 14px;border:1px solid rgba(255,255,255,.25);font-weight:600}
     .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:22px}
     .hero-ctas a{background:#fff;color:#0a2a2a}
+
+    /* Respect reduced motion preferences */
+    @media (prefers-reduced-motion: reduce){
+      .hero .hero-bg{ display:none; }
+      .hero{
+        /* Use a still image if available */
+        background: url("poster.jpg") center/cover no-repeat, #0a2a2a;
+      }
+    }
 
     /* --- Cards --- */
     .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
@@ -124,13 +160,29 @@
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- Hero with looping background video -->
   <section class="hero" role="banner" aria-label="Nate & Rebecca wedding hero">
+    <!-- Background video: place hammondcastlehero.mp4 in the repo root (same folder as this HTML) -->
+    <video class="hero-bg"
+           autoplay
+           loop
+           muted
+           playsinline
+           preload="metadata"
+           poster="poster.jpg"  <!-- optional: export a nice still frame as poster.jpg -->
+           crossorigin="anonymous">
+      <!-- Prefer the relative path for GitHub Pages -->
+      <source src="hammondcastlehero.mp4" type="video/mp4">
+      <!-- Optional fallback to raw GitHub URL (kept last) -->
+      <source src="https://raw.githubusercontent.com/natepistole/weddingwebsite/main/hammondcastlehero.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
     <div class="hero-inner">
       <div class="pill mb-m">We're getting married!</div>
       <h1>Nate &amp; Rebecca</h1>
       <p class="sub">Hammond Castle Museum • Gloucester, Massachusetts</p>
-      <p class="sub"><strong><!-- TODO: Set dates -->Saturday, Month 00, YYYY</strong></p>
+      <p class="sub"><strong>Friday, October 9, 2026</strong></p>
       <div class="hero-ctas">
         <a class="cta" href="#rsvp">RSVP</a>
         <a class="cta" href="#travel">Travel Info</a>
@@ -175,7 +227,7 @@
           <div class="pad">
             <h3 class="mb-s">Key Details</h3>
             <ul class="muted" style="margin:0;padding-left:18px">
-              <li><strong>Date:</strong> <span><!-- TODO: Set date -->Saturday, Month 00, YYYY</span></li>
+              <li><strong>Date:</strong> <span>Friday, October 9, 2026</span></li>
               <li><strong>Venue:</strong> Hammond Castle Museum</li>
               <li><strong>Address:</strong> 80 Hesperus Ave, Gloucester, MA 01930</li>
               <li><strong>Nearest Airport:</strong> Boston Logan International (BOS)</li>
@@ -198,7 +250,7 @@
             <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Hammond+Castle+Museum%2C+80+Hesperus+Ave%2C+Gloucester%2C+MA+01930" target="_blank" rel="noopener">Open in Google Maps</a>
             <a class="btn" href="https://maps.apple.com/?q=Hammond+Castle+Museum+Gloucester" target="_blank" rel="noopener">Open in Apple Maps</a>
           </div>
-          <p class="muted mb-s"><strong>Parking:</strong> On‑site and free but limited. Please arrive early; rideshare is encouraged.<!-- NOTE: keep language short for guests --></p>
+          <p class="muted mb-s"><strong>Parking:</strong> On-site and free but limited. Please arrive early; rideshare is encouraged.</p>
           <p class="muted"><strong>Accessibility:</strong> Historic property with many stairs; unfortunately not wheelchair accessible.</p>
         </div>
         <div class="card">
@@ -214,9 +266,9 @@
         <div>
           <span class="chip">Travel</span>
           <h2>Getting There</h2>
-          <p class="muted">Fly into <strong>Boston Logan International Airport (BOS)</strong>. The castle is roughly <strong>27 miles</strong> north on MA‑128 along Cape Ann (about <strong>45–50 minutes</strong> by car depending on traffic). Consider rideshare or rental cars for easiest access.</p>
+          <p class="muted">Fly into <strong>Boston Logan International Airport (BOS)</strong>. The castle is roughly <strong>27 miles</strong> north on MA-128 along Cape Ann (about <strong>45–50 minutes</strong> by car depending on traffic). Consider rideshare or rental cars for easiest access.</p>
           <ul class="muted" style="padding-left:18px">
-            <li><strong>Driving:</strong> I‑95 N → MA‑128 N to Gloucester; follow signs for Route 127 and Hesperus Ave.</li>
+            <li><strong>Driving:</strong> I-95 N → MA-128 N to Gloucester; follow signs for Route 127 and Hesperus Ave.</li>
             <li><strong>Rail:</strong> MBTA Commuter Rail Rockport Line to <em>Gloucester</em>, then a short taxi/rideshare to the venue.</li>
           </ul>
         </div>
@@ -238,7 +290,7 @@
       <div class="wrap">
         <span class="chip">Stay Nearby</span>
         <h2>Recommended Hotels</h2>
-        <p class="muted mb-l">A few guest‑friendly options in Gloucester & Rockport. Distances are approximate to Hammond Castle Museum.</p>
+        <p class="muted mb-l">A few guest-friendly options in Gloucester & Rockport. Distances are approximate to Hammond Castle Museum.</p>
         <div class="hotels">
           <div class="card hotel">
             <div class="pad">
@@ -273,7 +325,7 @@
           <div class="card hotel">
             <div class="pad">
               <h4>Castle Manor Inn</h4>
-              <div class="meta">≈ 2 miles • Historic inn • On‑site restaurant</div>
+              <div class="meta">≈ 2 miles • Historic inn • On-site restaurant</div>
               <div class="btn-row">
                 <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Castle+Manor+Inn+Gloucester">Open in Maps</a>
                 <a class="btn" target="_blank" rel="noopener" href="https://castlemanorinn.com/">Website</a>
@@ -283,7 +335,7 @@
           <div class="card hotel">
             <div class="pad">
               <h4>The Vista, Gloucester</h4>
-              <div class="meta">≈ 4.4 miles • Family‑friendly • Balconies with views</div>
+              <div class="meta">≈ 4.4 miles • Family-friendly • Balconies with views</div>
               <div class="btn-row">
                 <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=The+Vista+Gloucester">Open in Maps</a>
                 <a class="btn" target="_blank" rel="noopener" href="https://www.vistahotel.com/">Website</a>
@@ -291,7 +343,7 @@
             </div>
           </div>
         </div>
-        <p class="muted mb-s" style="margin-top:12px">Want more choices? Search “Gloucester MA hotels” or Rockport for charming B&Bs.</p>
+        <p class="muted mb-s" style="margin-top:12px">Want more choices? Search “Gloucester MA hotels” or Rockport for charming B&amp;B's.</p>
       </div>
     </section>
 
@@ -303,15 +355,15 @@
           <h2>FAQs</h2>
           <details class="mb-m">
             <summary>What should I wear?</summary>
-            <div class="muted">Festive cocktail or black‑tie optional. Note the venue has stone floors and stairs—consider comfortable shoes. (Edit as desired.)</div>
+            <div class="muted">Festive cocktail or black-tie optional. Note the venue has stone floors and stairs—consider comfortable shoes. (Edit as desired.)</div>
           </details>
           <details class="mb-m">
             <summary>Is there parking?</summary>
-            <div class="muted">Yes, on‑site and free but limited. Carpool or rideshare recommended. Arrive early to allow time for the walk down the stairs to the entrance.</div>
+            <div class="muted">Yes, on-site and free but limited. Carpool or rideshare recommended. Arrive early to allow time for the walk down the stairs to the entrance.</div>
           </details>
           <details class="mb-m">
             <summary>Are kids welcome?</summary>
-            <div class="muted">Your call! Replace this text with your policy (e.g., “Adults‑only reception” or “All family welcome”).</div>
+            <div class="muted">Your call! Replace this text with your policy (e.g., “Adults-only reception” or “All family welcome”).</div>
           </details>
           <details>
             <summary>Will there be transportation?</summary>
@@ -320,7 +372,7 @@
         </div>
         <div class="card" id="rsvp">
           <div class="pad">
-            <h3>RSVP & Registry</h3>
+            <h3>RSVP &amp; Registry</h3>
             <p class="muted">Please RSVP by <!-- TODO: RSVP deadline --> <em>Month 00</em>. Add your dietary needs and a song you’ll dance to!</p>
             <div class="btn-row">
               <a class="btn" href="#" target="_blank" rel="noopener">RSVP Form</a>
@@ -338,7 +390,6 @@
   </footer>
 
   <script>
-    // Replace hero image by setting --hero in :root (see top of CSS) to url('https://...')
     // Copy address helper
     const copyBtn = document.getElementById('copy-address');
     if(copyBtn){
