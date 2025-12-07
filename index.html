@@ -783,41 +783,40 @@
     rsvpForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       
-      const formDataObj = new FormData(rsvpForm);
       const name = getUrlParameter('name') || 'Guest';
       
-      // Get all form values, ensuring we capture everything
-      // Use direct element access as fallback to ensure we get values even from hidden fields
-      const getFormValue = (name) => {
-        const formValue = formDataObj.get(name);
-        if (formValue !== null && formValue !== undefined) return formValue;
-        // Fallback: try to get from form element directly
-        const element = rsvpForm.querySelector(`[name="${name}"]`);
-        if (element) {
-          if (element.type === 'radio' || element.type === 'checkbox') {
-            const checked = rsvpForm.querySelector(`[name="${name}"]:checked`);
-            return checked ? checked.value : '';
-          }
-          return element.value || '';
+      // Get form values directly from form elements (not FormData) to ensure we capture hidden fields
+      const getFormValue = (fieldName) => {
+        // For radio buttons, get the checked one
+        const radioButtons = rsvpForm.querySelectorAll(`[name="${fieldName}"]`);
+        if (radioButtons.length > 0 && radioButtons[0].type === 'radio') {
+          const checked = rsvpForm.querySelector(`[name="${fieldName}"]:checked`);
+          return checked ? checked.value : '';
         }
-        return '';
+        // For other inputs, get the value directly
+        const element = rsvpForm.querySelector(`[name="${fieldName}"]`);
+        return element ? (element.value || '') : '';
       };
       
+      // Build data object with all fields, explicitly getting values from DOM
       const data = {
         name: decodeURIComponent(name),
-        attendantEmail: getFormValue('attendant-email') || '',
-        weddingRSVP: getFormValue('wedding-rsvp') || '',
-        plusOne: getFormValue('plus-one') || '',
-        plusOneName: getFormValue('plus-one-name') || '',
-        plusOneEmail: getFormValue('plus-one-email') || '',
-        dietary: getFormValue('dietary') || '',
-        lunchRSVP: getFormValue('lunch-rsvp') || '',
-        message: getFormValue('message') || '',
+        attendantEmail: getFormValue('attendant-email'),
+        weddingRSVP: getFormValue('wedding-rsvp'),
+        plusOne: getFormValue('plus-one'),
+        plusOneName: getFormValue('plus-one-name'),
+        plusOneEmail: getFormValue('plus-one-email'),
+        dietary: getFormValue('dietary'),
+        lunchRSVP: getFormValue('lunch-rsvp'),
+        message: getFormValue('message'),
         timestamp: new Date().toISOString()
       };
       
       // Debug: log what we're sending
-      console.log('FormData entries:', Array.from(formDataObj.entries()));
+      console.log('Form field values:');
+      console.log('  attendant-email element:', rsvpForm.querySelector('[name="attendant-email"]'));
+      console.log('  plus-one-name element:', rsvpForm.querySelector('[name="plus-one-name"]'));
+      console.log('  plus-one-email element:', rsvpForm.querySelector('[name="plus-one-email"]'));
       console.log('Sending data:', data);
 
       // Disable submit button
@@ -834,13 +833,14 @@
         const formData = new URLSearchParams();
         Object.keys(data).forEach(key => {
           const value = data[key];
-          // Ensure we send the value even if it's an empty string
-          // URLSearchParams will properly encode it
-          formData.append(key, value !== null && value !== undefined ? String(value) : '');
+          // Always send the value, converting to string and ensuring it's not null/undefined
+          const stringValue = (value !== null && value !== undefined) ? String(value) : '';
+          formData.append(key, stringValue);
         });
         
         // Debug: log what we're sending
         console.log('Form data string:', formData.toString());
+        console.log('Form data entries:', Array.from(formData.entries()));
         
         // Submit using fetch with form data
         const response = await fetch(scriptUrl, {
