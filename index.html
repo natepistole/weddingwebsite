@@ -787,20 +787,37 @@
       const name = getUrlParameter('name') || 'Guest';
       
       // Get all form values, ensuring we capture everything
+      // Use direct element access as fallback to ensure we get values even from hidden fields
+      const getFormValue = (name) => {
+        const formValue = formDataObj.get(name);
+        if (formValue !== null && formValue !== undefined) return formValue;
+        // Fallback: try to get from form element directly
+        const element = rsvpForm.querySelector(`[name="${name}"]`);
+        if (element) {
+          if (element.type === 'radio' || element.type === 'checkbox') {
+            const checked = rsvpForm.querySelector(`[name="${name}"]:checked`);
+            return checked ? checked.value : '';
+          }
+          return element.value || '';
+        }
+        return '';
+      };
+      
       const data = {
         name: decodeURIComponent(name),
-        attendantEmail: formDataObj.get('attendant-email') || '',
-        weddingRSVP: formDataObj.get('wedding-rsvp') || '',
-        plusOne: formDataObj.get('plus-one') || '',
-        plusOneName: formDataObj.get('plus-one-name') || '',
-        plusOneEmail: formDataObj.get('plus-one-email') || '',
-        dietary: formDataObj.get('dietary') || '',
-        lunchRSVP: formDataObj.get('lunch-rsvp') || '',
-        message: formDataObj.get('message') || '',
+        attendantEmail: getFormValue('attendant-email') || '',
+        weddingRSVP: getFormValue('wedding-rsvp') || '',
+        plusOne: getFormValue('plus-one') || '',
+        plusOneName: getFormValue('plus-one-name') || '',
+        plusOneEmail: getFormValue('plus-one-email') || '',
+        dietary: getFormValue('dietary') || '',
+        lunchRSVP: getFormValue('lunch-rsvp') || '',
+        message: getFormValue('message') || '',
         timestamp: new Date().toISOString()
       };
       
-      // Debug: log what we're sending (remove in production)
+      // Debug: log what we're sending
+      console.log('FormData entries:', Array.from(formDataObj.entries()));
       console.log('Sending data:', data);
 
       // Disable submit button
