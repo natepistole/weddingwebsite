@@ -537,30 +537,20 @@
           <h2>FAQs</h2>
           <details class="mb-m">
             <summary>What should I wear?</summary>
-            <div class="muted">Festive cocktail or black-tie optional. Note the venue has stone floors and stairs—consider comfortable shoes. (Edit as desired.)</div>
+            <div class="muted">Black-tie optional. The groom will for sure be wearing a suit, potentially a cape. Any non-bride individuals wearing white will be converted to non-attendant. Note the venue has stone floors, stairs, and a rich history of premise liability lawsuits.</div>
           </details>
           <details class="mb-m">
             <summary>Is there parking?</summary>
-            <div class="muted">Yes, on-site and free but limited. Carpool or rideshare recommended. Arrive early to allow time for the walk down the stairs to the entrance.</div>
+            <div class="muted">Yes, on-site and free but limited. Carpool or rideshare recommended. Shuttles may be provided for transport to and from the venue, check back here for updates.</div>
           </details>
           <details class="mb-m">
             <summary>Are kids welcome?</summary>
-            <div class="muted">Your call! Replace this text with your policy (e.g., “Adults-only reception” or “All family welcome”).</div>
+            <div class="muted">No.</div>
           </details>
           <details>
             <summary>Will there be transportation?</summary>
-            <div class="muted">If you plan to offer shuttles between preferred hotels and the venue, describe them here.</div>
+            <div class="muted">Transportation details are forthcoming, check back here for updates.</div>
           </details>
-        </div>
-        <div class="card" id="rsvp">
-          <div class="pad">
-            <h3>RSVP &amp; Registry</h3>
-            <p class="muted">Please RSVP by <!-- TODO: RSVP deadline --> <em>Month 00</em>. Add your dietary needs and a song you’ll dance to!</p>
-            <div class="btn-row">
-              <a class="btn" href="#" target="_blank" rel="noopener">RSVP Form</a>
-              <a class="btn" href="#" target="_blank" rel="noopener">View Registry</a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -604,15 +594,31 @@
             </div>
           </div>
 
-          <div class="form-group" id="guest-count-group" style="display:none">
-            <label for="guest-count">Number of guests (including yourself)</label>
-            <select id="guest-count" name="guest-count">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5+</option>
-            </select>
+          <div class="form-group" id="email-group" style="display:none">
+            <label for="attendant-email">Your email address <span style="color:#dc2626">*</span></label>
+            <input type="email" id="attendant-email" name="attendant-email" placeholder="your.email@example.com" required>
+            <p class="muted" style="font-size:13px;margin-top:4px">We'll use this to send you updates about the wedding</p>
+          </div>
+
+          <div class="form-group" id="plus-one-group" style="display:none">
+            <label>Are you bringing a plus one? <span style="color:#dc2626">*</span></label>
+            <div class="radio-group">
+              <div class="radio-option">
+                <input type="radio" id="plus-one-yes" name="plus-one" value="Yes">
+                <label for="plus-one-yes">Yes</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" id="plus-one-no" name="plus-one" value="No">
+                <label for="plus-one-no">No</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group" id="plus-one-details-group" style="display:none">
+            <label for="plus-one-name">Plus one's name <span style="color:#dc2626">*</span></label>
+            <input type="text" id="plus-one-name" name="plus-one-name" placeholder="Full name">
+            <label for="plus-one-email" style="margin-top:16px">Plus one's email address <span style="color:#dc2626">*</span></label>
+            <input type="email" id="plus-one-email" name="plus-one-email" placeholder="plusone.email@example.com">
           </div>
 
           <div class="form-group" id="dietary-group" style="display:none">
@@ -722,20 +728,53 @@
       }
     });
 
-    // Show/hide guest count and dietary fields based on wedding RSVP
+    // Show/hide fields based on wedding RSVP
     const weddingYes = document.getElementById('wedding-yes');
     const weddingNo = document.getElementById('wedding-no');
-    const guestCountGroup = document.getElementById('guest-count-group');
+    const emailGroup = document.getElementById('email-group');
+    const plusOneGroup = document.getElementById('plus-one-group');
+    const plusOneDetailsGroup = document.getElementById('plus-one-details-group');
     const dietaryGroup = document.getElementById('dietary-group');
+    const plusOneYes = document.getElementById('plus-one-yes');
+    const plusOneNo = document.getElementById('plus-one-no');
 
     [weddingYes, weddingNo].forEach(radio => {
       radio.addEventListener('change', () => {
         if(weddingYes.checked){
-          guestCountGroup.style.display = 'block';
+          emailGroup.style.display = 'block';
+          plusOneGroup.style.display = 'block';
           dietaryGroup.style.display = 'block';
+          document.getElementById('attendant-email').required = true;
+          // Only need required on one radio in the group
+          plusOneYes.required = true;
         } else {
-          guestCountGroup.style.display = 'none';
+          emailGroup.style.display = 'none';
+          plusOneGroup.style.display = 'none';
+          plusOneDetailsGroup.style.display = 'none';
           dietaryGroup.style.display = 'none';
+          document.getElementById('attendant-email').required = false;
+          document.getElementById('attendant-email').value = '';
+          plusOneYes.required = false;
+          // Reset plus one fields
+          plusOneYes.checked = false;
+          plusOneNo.checked = false;
+        }
+      });
+    });
+
+    // Show/hide plus one details based on plus one selection
+    [plusOneYes, plusOneNo].forEach(radio => {
+      radio.addEventListener('change', () => {
+        if(plusOneYes.checked){
+          plusOneDetailsGroup.style.display = 'block';
+          document.getElementById('plus-one-name').required = true;
+          document.getElementById('plus-one-email').required = true;
+        } else {
+          plusOneDetailsGroup.style.display = 'none';
+          document.getElementById('plus-one-name').required = false;
+          document.getElementById('plus-one-email').required = false;
+          document.getElementById('plus-one-name').value = '';
+          document.getElementById('plus-one-email').value = '';
         }
       });
     });
@@ -748,8 +787,11 @@
       const name = getUrlParameter('name') || 'Guest';
       const data = {
         name: decodeURIComponent(name),
+        attendantEmail: formData.get('attendant-email') || '',
         weddingRSVP: formData.get('wedding-rsvp'),
-        guestCount: formData.get('guest-count') || '',
+        plusOne: formData.get('plus-one') || '',
+        plusOneName: formData.get('plus-one-name') || '',
+        plusOneEmail: formData.get('plus-one-email') || '',
         dietary: formData.get('dietary') || '',
         lunchRSVP: formData.get('lunch-rsvp'),
         message: formData.get('message') || '',
@@ -794,7 +836,9 @@
         formMessage.className = 'form-message success';
         formMessage.textContent = 'Thank you! Your RSVP has been submitted successfully.';
         rsvpForm.reset();
-        guestCountGroup.style.display = 'none';
+        emailGroup.style.display = 'none';
+        plusOneGroup.style.display = 'none';
+        plusOneDetailsGroup.style.display = 'none';
         dietaryGroup.style.display = 'none';
         
         // Hide modal after 3 seconds
