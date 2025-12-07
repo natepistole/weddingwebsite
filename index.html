@@ -783,20 +783,25 @@
     rsvpForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       
-      const formData = new FormData(rsvpForm);
+      const formDataObj = new FormData(rsvpForm);
       const name = getUrlParameter('name') || 'Guest';
+      
+      // Get all form values, ensuring we capture everything
       const data = {
         name: decodeURIComponent(name),
-        attendantEmail: formData.get('attendant-email') || '',
-        weddingRSVP: formData.get('wedding-rsvp'),
-        plusOne: formData.get('plus-one') || '',
-        plusOneName: formData.get('plus-one-name') || '',
-        plusOneEmail: formData.get('plus-one-email') || '',
-        dietary: formData.get('dietary') || '',
-        lunchRSVP: formData.get('lunch-rsvp'),
-        message: formData.get('message') || '',
+        attendantEmail: formDataObj.get('attendant-email') || '',
+        weddingRSVP: formDataObj.get('wedding-rsvp') || '',
+        plusOne: formDataObj.get('plus-one') || '',
+        plusOneName: formDataObj.get('plus-one-name') || '',
+        plusOneEmail: formDataObj.get('plus-one-email') || '',
+        dietary: formDataObj.get('dietary') || '',
+        lunchRSVP: formDataObj.get('lunch-rsvp') || '',
+        message: formDataObj.get('message') || '',
         timestamp: new Date().toISOString()
       };
+      
+      // Debug: log what we're sending (remove in production)
+      console.log('Sending data:', data);
 
       // Disable submit button
       submitBtn.disabled = true;
@@ -811,8 +816,14 @@
         // Create form data for submission
         const formData = new URLSearchParams();
         Object.keys(data).forEach(key => {
-          formData.append(key, data[key]);
+          const value = data[key];
+          // Ensure we send the value even if it's an empty string
+          // URLSearchParams will properly encode it
+          formData.append(key, value !== null && value !== undefined ? String(value) : '');
         });
+        
+        // Debug: log what we're sending
+        console.log('Form data string:', formData.toString());
         
         // Submit using fetch with form data
         const response = await fetch(scriptUrl, {
