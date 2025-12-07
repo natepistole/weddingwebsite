@@ -854,8 +854,18 @@
         // Try to parse response (may not work due to CORS, but we'll try)
         let result;
         try {
-          result = await response.json();
+          const responseText = await response.text();
+          console.log('Response status:', response.status);
+          console.log('Response text:', responseText);
+          try {
+            result = JSON.parse(responseText);
+            console.log('Parsed response:', result);
+          } catch (parseError) {
+            console.log('Could not parse response as JSON, treating as success');
+            result = { success: true };
+          }
         } catch (e) {
+          console.error('Error reading response:', e);
           // If we can't parse JSON, assume success (Google Apps Script may not return CORS headers)
           result = { success: true };
         }
