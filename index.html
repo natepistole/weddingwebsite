@@ -600,16 +600,19 @@
             <p class="muted" style="font-size:13px;margin-top:4px">We'll use this to send you updates about the wedding</p>
           </div>
 
-          <div class="form-group" id="plus-one-display-group" style="display:none">
-            <label>Plus One</label>
-            <div style="padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#f7faf9;color:var(--ink);font-weight:500" id="plus-one-display-name"></div>
+          <div class="form-group" id="plus-one-group" style="display:none">
+            <label id="plus-one-question-label">Will <span id="plus-one-name-display"></span> be joining you? <span style="color:#dc2626">*</span></label>
+            <div class="radio-group">
+              <div class="radio-option">
+                <input type="radio" id="plus-one-yes" name="plus-one-rsvp" value="Yes" required>
+                <label for="plus-one-yes">Yes</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" id="plus-one-no" name="plus-one-rsvp" value="No" required>
+                <label for="plus-one-no">No</label>
+              </div>
+            </div>
             <input type="hidden" id="plus-one-name" name="plus-one-name">
-          </div>
-
-          <div class="form-group" id="plus-one-email-group" style="display:none">
-            <label for="plus-one-email">Plus one's email address <span style="color:#dc2626">*</span></label>
-            <input type="email" id="plus-one-email" name="plus-one-email" placeholder="plusone.email@example.com">
-            <p class="muted" style="font-size:13px;margin-top:4px">We'll use this to send updates to your plus one</p>
           </div>
 
           <div class="form-group">
@@ -699,16 +702,6 @@
       setTimeout(() => showModal(nameParam), 300);
     }
 
-    // Initialize plus one display if plus one name exists
-    if(plusOneName && plusOneDisplayGroup){
-      // If wedding RSVP is already "Yes", show plus one fields
-      if(weddingYes && weddingYes.checked){
-        plusOneDisplayGroup.style.display = 'block';
-        plusOneEmailGroup.style.display = 'block';
-        plusOneEmailInput.required = true;
-      }
-    }
-
     // Close modal handlers
     modalClose.addEventListener('click', hideModal);
     modal.addEventListener('click', (e) => {
@@ -727,16 +720,14 @@
     // Get plus one name from URL parameter
     const plusOneParam = getUrlParameter('plusone');
     const plusOneName = plusOneParam ? decodeURIComponent(plusOneParam) : '';
-    const plusOneDisplayName = document.getElementById('plus-one-display-name');
+    const plusOneNameDisplay = document.getElementById('plus-one-name-display');
     const plusOneNameInput = document.getElementById('plus-one-name');
-    const plusOneDisplayGroup = document.getElementById('plus-one-display-group');
-    const plusOneEmailGroup = document.getElementById('plus-one-email-group');
-    const plusOneEmailInput = document.getElementById('plus-one-email');
+    const plusOneGroup = document.getElementById('plus-one-group');
 
     // Set plus one name if present in URL
     if(plusOneName){
       plusOneNameInput.value = plusOneName;
-      plusOneDisplayName.textContent = plusOneName;
+      plusOneNameDisplay.textContent = plusOneName;
     }
 
     // Show/hide fields based on wedding RSVP
@@ -750,20 +741,20 @@
           emailGroup.style.display = 'block';
           document.getElementById('attendant-email').required = true;
           
-          // Show plus one fields if plus one name exists
+          // Show plus one question if plus one name exists
           if(plusOneName){
-            plusOneDisplayGroup.style.display = 'block';
-            plusOneEmailGroup.style.display = 'block';
-            plusOneEmailInput.required = true;
+            plusOneGroup.style.display = 'block';
           }
         } else {
           emailGroup.style.display = 'none';
-          plusOneDisplayGroup.style.display = 'none';
-          plusOneEmailGroup.style.display = 'none';
+          plusOneGroup.style.display = 'none';
           document.getElementById('attendant-email').required = false;
           document.getElementById('attendant-email').value = '';
-          plusOneEmailInput.required = false;
-          plusOneEmailInput.value = '';
+          // Reset plus one RSVP
+          const plusOneYes = document.getElementById('plus-one-yes');
+          const plusOneNo = document.getElementById('plus-one-no');
+          if(plusOneYes) plusOneYes.checked = false;
+          if(plusOneNo) plusOneNo.checked = false;
         }
       });
     });
@@ -789,13 +780,16 @@
       
       // Build data object with all fields, explicitly getting values from DOM
       const plusOneNameValue = getFormValue('plus-one-name');
+      const plusOneRSVPValue = getFormValue('plus-one-rsvp');
+      // If there's a plus one name, use their RSVP answer; otherwise "No"
+      const plusOneValue = plusOneNameValue ? (plusOneRSVPValue || 'No') : 'No';
       const data = {
         name: decodeURIComponent(name),
         attendantEmail: getFormValue('attendant-email'),
         weddingRSVP: getFormValue('wedding-rsvp'),
-        plusOne: plusOneNameValue ? 'Yes' : 'No',
+        plusOne: plusOneValue,
         plusOneName: plusOneNameValue,
-        plusOneEmail: getFormValue('plus-one-email'),
+        plusOneEmail: '', // No longer collecting plus one email
         lunchRSVP: getFormValue('lunch-rsvp'),
         message: getFormValue('message'),
         timestamp: new Date().toISOString()
@@ -860,8 +854,7 @@
         formMessage.textContent = 'Thank you! Your RSVP has been submitted successfully.';
         rsvpForm.reset();
         emailGroup.style.display = 'none';
-        plusOneDisplayGroup.style.display = 'none';
-        plusOneEmailGroup.style.display = 'none';
+        plusOneGroup.style.display = 'none';
         // Restore plus one name if it was from URL
         if(plusOneName){
           plusOneNameInput.value = plusOneName;
