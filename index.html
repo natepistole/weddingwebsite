@@ -596,7 +596,7 @@
 
           <div class="form-group" id="email-group" style="display:none">
             <label for="attendant-email">Your email address <span style="color:#dc2626">*</span></label>
-            <input type="email" id="attendant-email" name="attendant-email" placeholder="your.email@example.com" required>
+            <input type="email" id="attendant-email" name="attendant-email" placeholder="your.email@example.com">
             <p class="muted" style="font-size:13px;margin-top:4px">We'll use this to send you updates about the wedding</p>
           </div>
 
@@ -695,46 +695,24 @@
       document.body.style.overflow = '';
     }
 
-    // Check for name parameter on load
-    const nameParam = getUrlParameter('name');
-    if(nameParam){
-      // Small delay to ensure page is loaded
-      setTimeout(() => showModal(nameParam), 300);
-    }
-
-    // Close modal handlers
-    modalClose.addEventListener('click', hideModal);
-    modal.addEventListener('click', (e) => {
-      if(e.target === modal){
-        hideModal();
-      }
-    });
-
-    // Escape key to close
-    document.addEventListener('keydown', (e) => {
-      if(e.key === 'Escape' && modal.classList.contains('active')){
-        hideModal();
-      }
-    });
+    // Get all elements first
+    const weddingYes = document.getElementById('wedding-yes');
+    const weddingNo = document.getElementById('wedding-no');
+    const emailGroup = document.getElementById('email-group');
+    const attendantEmailInput = document.getElementById('attendant-email');
+    const plusOneNameDisplay = document.getElementById('plus-one-name-display');
+    const plusOneNameInput = document.getElementById('plus-one-name');
+    const plusOneGroup = document.getElementById('plus-one-group');
 
     // Get plus one name from URL parameter
     const plusOneParam = getUrlParameter('plusone');
     const plusOneName = plusOneParam ? decodeURIComponent(plusOneParam) : '';
-    const plusOneNameDisplay = document.getElementById('plus-one-name-display');
-    const plusOneNameInput = document.getElementById('plus-one-name');
-    const plusOneGroup = document.getElementById('plus-one-group');
 
     // Set plus one name if present in URL
     if(plusOneName && plusOneNameInput && plusOneNameDisplay){
       plusOneNameInput.value = plusOneName;
       plusOneNameDisplay.textContent = plusOneName;
     }
-
-    // Show/hide fields based on wedding RSVP
-    const weddingYes = document.getElementById('wedding-yes');
-    const weddingNo = document.getElementById('wedding-no');
-    const emailGroup = document.getElementById('email-group');
-    const attendantEmailInput = document.getElementById('attendant-email');
 
     // Function to handle wedding RSVP change
     function handleWeddingRSVPChange() {
@@ -750,7 +728,7 @@
           console.log('Email group not found');
         }
         if(attendantEmailInput){
-          attendantEmailInput.required = true;
+          attendantEmailInput.setAttribute('required', 'required');
         }
         
         // Show plus one question if plus one name exists
@@ -772,6 +750,8 @@
         if(attendantEmailInput){
           attendantEmailInput.required = false;
           attendantEmailInput.value = '';
+          // Remove required attribute when hidden to prevent validation errors
+          attendantEmailInput.removeAttribute('required');
         }
         // Reset plus one RSVP
         const plusOneYes = document.getElementById('plus-one-yes');
@@ -780,6 +760,28 @@
         if(plusOneNo) plusOneNo.checked = false;
       }
     }
+
+    // Check for name parameter on load
+    const nameParam = getUrlParameter('name');
+    if(nameParam){
+      // Small delay to ensure page is loaded
+      setTimeout(() => showModal(nameParam), 300);
+    }
+
+    // Close modal handlers
+    modalClose.addEventListener('click', hideModal);
+    modal.addEventListener('click', (e) => {
+      if(e.target === modal){
+        hideModal();
+      }
+    });
+
+    // Escape key to close
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape' && modal.classList.contains('active')){
+        hideModal();
+      }
+    });
 
     // Add event listeners (both change and click for better compatibility)
     if(weddingYes){
