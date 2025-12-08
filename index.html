@@ -320,6 +320,108 @@
       border:1px solid rgba(220,38,38,.2);
       display:block;
     }
+
+    /* --- Hotel Booking Reminder Modal --- */
+    .hotel-reminder-modal{
+      position:fixed;
+      inset:0;
+      background:rgba(10,42,42,.75);
+      backdrop-filter:blur(4px);
+      z-index:1001;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      opacity:0;
+      visibility:hidden;
+      transition:opacity .3s ease, visibility .3s ease;
+    }
+    .hotel-reminder-modal.active{
+      opacity:1;
+      visibility:visible;
+    }
+    .hotel-reminder-modal .modal{
+      background:var(--surface);
+      border-radius:var(--radius);
+      box-shadow:0 20px 60px rgba(3,18,18,.25);
+      max-width:500px;
+      width:100%;
+      transform:scale(.95) translateY(20px);
+      transition:transform .3s ease;
+      position:relative;
+    }
+    .hotel-reminder-modal.active .modal{
+      transform:scale(1) translateY(0);
+    }
+    .hotel-reminder-content{
+      padding:32px;
+      text-align:center;
+    }
+    .hotel-reminder-content h2{
+      margin:0 0 16px;
+      font-size:24px;
+      color:var(--brand-ink);
+    }
+    .hotel-reminder-content p{
+      margin:0 0 24px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+    .hotel-reminder-content .urgent-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(220,38,38,.1);
+      color:#dc2626;
+      font-weight:700;
+      font-size:14px;
+      border:1px solid rgba(220,38,38,.2);
+      margin-bottom:20px;
+    }
+    .hotel-reminder-actions{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .hotel-reminder-actions .btn-primary{
+      background:var(--brand);
+      color:#002522;
+      border:none;
+      padding:12px 24px;
+      border-radius:12px;
+      font-weight:800;
+      font-size:15px;
+      cursor:pointer;
+      transition:filter .2s, transform .1s;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    .hotel-reminder-actions .btn-primary:hover{
+      filter:saturate(1.05) brightness(1.02);
+      transform:translateY(-1px);
+    }
+    .hotel-reminder-actions .btn-secondary{
+      background:#fff;
+      color:var(--ink);
+      border:1px solid var(--line);
+      padding:12px 24px;
+      border-radius:12px;
+      font-weight:700;
+      font-size:15px;
+      cursor:pointer;
+      transition:background .2s;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+    }
+    .hotel-reminder-actions .btn-secondary:hover{
+      background:var(--line);
+    }
   </style>
 </head>
 <body>
@@ -553,6 +655,22 @@
     <div class="muted" style="margin-top:6px">Made with love • Gloucester, Massachusetts</div>
   </footer>
 
+  <!-- Hotel Booking Reminder Modal -->
+  <div class="hotel-reminder-modal" id="hotel-reminder-modal" role="dialog" aria-labelledby="hotel-reminder-title" aria-modal="true">
+    <div class="modal">
+      <button class="modal-close" id="hotel-reminder-close" aria-label="Close modal">&times;</button>
+      <div class="hotel-reminder-content">
+        <div class="urgent-badge">⚠️ Urgent</div>
+        <h2 id="hotel-reminder-title">Book Your Hotel Soon!</h2>
+        <p>Hotels in Gloucester are filling up fast for our wedding weekend. We recommend booking your accommodations as soon as possible to secure your preferred location and rates.</p>
+        <div class="hotel-reminder-actions">
+          <a href="#stay" class="btn-primary" id="view-hotels-btn">View Recommended Hotels</a>
+          <button class="btn-secondary" id="hotel-reminder-dismiss">I'll Book Later</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- RSVP Modal -->
   <div class="modal-overlay" id="rsvp-modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
     <div class="modal">
@@ -663,6 +781,55 @@
     const formMessage = document.getElementById('form-message');
     const guestNameEl = document.getElementById('guest-name');
     const submitBtn = document.getElementById('submit-btn');
+
+    // Hotel Booking Reminder Modal functionality
+    const hotelReminderModal = document.getElementById('hotel-reminder-modal');
+    const hotelReminderClose = document.getElementById('hotel-reminder-close');
+    const hotelReminderDismiss = document.getElementById('hotel-reminder-dismiss');
+    const viewHotelsBtn = document.getElementById('view-hotels-btn');
+
+    // Show hotel reminder modal
+    function showHotelReminder() {
+      hotelReminderModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Hide hotel reminder modal
+    function hideHotelReminder() {
+      hotelReminderModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Close hotel reminder handlers
+    if(hotelReminderClose){
+      hotelReminderClose.addEventListener('click', hideHotelReminder);
+    }
+    if(hotelReminderDismiss){
+      hotelReminderDismiss.addEventListener('click', hideHotelReminder);
+    }
+    if(hotelReminderModal){
+      hotelReminderModal.addEventListener('click', (e) => {
+        if(e.target === hotelReminderModal){
+          hideHotelReminder();
+        }
+      });
+    }
+    // Escape key to close hotel reminder
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape' && hotelReminderModal.classList.contains('active')){
+        hideHotelReminder();
+      }
+    });
+    // View hotels button - close modal and scroll to hotels section
+    if(viewHotelsBtn){
+      viewHotelsBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        hideHotelReminder();
+        setTimeout(() => {
+          document.querySelector('#stay').scrollIntoView({behavior:'smooth'});
+        }, 300);
+      });
+    }
 
     // Get URL parameter
     function getUrlParameter(name) {
@@ -902,10 +1069,14 @@
           plusOneNameInput.value = plusOneName;
         }
         
-        // Hide modal after 3 seconds
+        // Hide RSVP modal after 3 seconds, then show hotel reminder
         setTimeout(() => {
           hideModal();
           formMessage.className = 'form-message';
+          // Show hotel booking reminder after a brief delay
+          setTimeout(() => {
+            showHotelReminder();
+          }, 500);
         }, 3000);
 
       } catch (error) {
