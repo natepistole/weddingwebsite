@@ -725,7 +725,7 @@
     const plusOneGroup = document.getElementById('plus-one-group');
 
     // Set plus one name if present in URL
-    if(plusOneName){
+    if(plusOneName && plusOneNameInput && plusOneNameDisplay){
       plusOneNameInput.value = plusOneName;
       plusOneNameDisplay.textContent = plusOneName;
     }
@@ -734,29 +734,77 @@
     const weddingYes = document.getElementById('wedding-yes');
     const weddingNo = document.getElementById('wedding-no');
     const emailGroup = document.getElementById('email-group');
+    const attendantEmailInput = document.getElementById('attendant-email');
 
-    [weddingYes, weddingNo].forEach(radio => {
-      radio.addEventListener('change', () => {
-        if(weddingYes.checked){
+    // Function to handle wedding RSVP change
+    function handleWeddingRSVPChange() {
+      console.log('Wedding RSVP changed, weddingYes.checked:', weddingYes ? weddingYes.checked : 'weddingYes not found');
+      
+      if(weddingYes && weddingYes.checked){
+        console.log('Showing email group and plus one if applicable');
+        // Always show email field when attending
+        if(emailGroup){
           emailGroup.style.display = 'block';
-          document.getElementById('attendant-email').required = true;
-          
-          // Show plus one question if plus one name exists
-          if(plusOneName){
-            plusOneGroup.style.display = 'block';
-          }
+          console.log('Email group displayed');
         } else {
-          emailGroup.style.display = 'none';
-          plusOneGroup.style.display = 'none';
-          document.getElementById('attendant-email').required = false;
-          document.getElementById('attendant-email').value = '';
-          // Reset plus one RSVP
-          const plusOneYes = document.getElementById('plus-one-yes');
-          const plusOneNo = document.getElementById('plus-one-no');
-          if(plusOneYes) plusOneYes.checked = false;
-          if(plusOneNo) plusOneNo.checked = false;
+          console.log('Email group not found');
         }
-      });
+        if(attendantEmailInput){
+          attendantEmailInput.required = true;
+        }
+        
+        // Show plus one question if plus one name exists
+        if(plusOneName && plusOneGroup){
+          plusOneGroup.style.display = 'block';
+          console.log('Plus one group displayed for:', plusOneName);
+        } else {
+          console.log('Plus one group not shown - plusOneName:', plusOneName, 'plusOneGroup exists:', !!plusOneGroup);
+        }
+      } else {
+        console.log('Hiding conditional fields');
+        // Hide all conditional fields when not attending
+        if(emailGroup){
+          emailGroup.style.display = 'none';
+        }
+        if(plusOneGroup){
+          plusOneGroup.style.display = 'none';
+        }
+        if(attendantEmailInput){
+          attendantEmailInput.required = false;
+          attendantEmailInput.value = '';
+        }
+        // Reset plus one RSVP
+        const plusOneYes = document.getElementById('plus-one-yes');
+        const plusOneNo = document.getElementById('plus-one-no');
+        if(plusOneYes) plusOneYes.checked = false;
+        if(plusOneNo) plusOneNo.checked = false;
+      }
+    }
+
+    // Add event listeners (both change and click for better compatibility)
+    if(weddingYes){
+      console.log('Adding event listener to wedding-yes');
+      weddingYes.addEventListener('change', handleWeddingRSVPChange);
+      weddingYes.addEventListener('click', handleWeddingRSVPChange);
+    } else {
+      console.log('wedding-yes element not found');
+    }
+    if(weddingNo){
+      console.log('Adding event listener to wedding-no');
+      weddingNo.addEventListener('change', handleWeddingRSVPChange);
+      weddingNo.addEventListener('click', handleWeddingRSVPChange);
+    } else {
+      console.log('wedding-no element not found');
+    }
+    
+    // Debug: log element existence
+    console.log('Elements check:', {
+      weddingYes: !!weddingYes,
+      weddingNo: !!weddingNo,
+      emailGroup: !!emailGroup,
+      attendantEmailInput: !!attendantEmailInput,
+      plusOneGroup: !!plusOneGroup,
+      plusOneName: plusOneName
     });
 
     // Form submission
