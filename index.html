@@ -600,30 +600,16 @@
             <p class="muted" style="font-size:13px;margin-top:4px">We'll use this to send you updates about the wedding</p>
           </div>
 
-          <div class="form-group" id="plus-one-group" style="display:none">
-            <label>Are you bringing a plus one? <span style="color:#dc2626">*</span></label>
-            <div class="radio-group">
-              <div class="radio-option">
-                <input type="radio" id="plus-one-yes" name="plus-one" value="Yes">
-                <label for="plus-one-yes">Yes</label>
-              </div>
-              <div class="radio-option">
-                <input type="radio" id="plus-one-no" name="plus-one" value="No">
-                <label for="plus-one-no">No</label>
-              </div>
-            </div>
+          <div class="form-group" id="plus-one-display-group" style="display:none">
+            <label>Plus One</label>
+            <div style="padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#f7faf9;color:var(--ink);font-weight:500" id="plus-one-display-name"></div>
+            <input type="hidden" id="plus-one-name" name="plus-one-name">
           </div>
 
-          <div class="form-group" id="plus-one-details-group" style="display:none">
-            <label for="plus-one-name">Plus one's name <span style="color:#dc2626">*</span></label>
-            <input type="text" id="plus-one-name" name="plus-one-name" placeholder="Full name">
-            <label for="plus-one-email" style="margin-top:16px">Plus one's email address <span style="color:#dc2626">*</span></label>
+          <div class="form-group" id="plus-one-email-group" style="display:none">
+            <label for="plus-one-email">Plus one's email address <span style="color:#dc2626">*</span></label>
             <input type="email" id="plus-one-email" name="plus-one-email" placeholder="plusone.email@example.com">
-          </div>
-
-          <div class="form-group" id="dietary-group" style="display:none">
-            <label for="dietary">Dietary restrictions or allergies</label>
-            <textarea id="dietary" name="dietary" placeholder="Please let us know about any dietary restrictions, allergies, or special requests..."></textarea>
+            <p class="muted" style="font-size:13px;margin-top:4px">We'll use this to send updates to your plus one</p>
           </div>
 
           <div class="form-group">
@@ -713,6 +699,16 @@
       setTimeout(() => showModal(nameParam), 300);
     }
 
+    // Initialize plus one display if plus one name exists
+    if(plusOneName && plusOneDisplayGroup){
+      // If wedding RSVP is already "Yes", show plus one fields
+      if(weddingYes && weddingYes.checked){
+        plusOneDisplayGroup.style.display = 'block';
+        plusOneEmailGroup.style.display = 'block';
+        plusOneEmailInput.required = true;
+      }
+    }
+
     // Close modal handlers
     modalClose.addEventListener('click', hideModal);
     modal.addEventListener('click', (e) => {
@@ -728,53 +724,46 @@
       }
     });
 
+    // Get plus one name from URL parameter
+    const plusOneParam = getUrlParameter('plusone');
+    const plusOneName = plusOneParam ? decodeURIComponent(plusOneParam) : '';
+    const plusOneDisplayName = document.getElementById('plus-one-display-name');
+    const plusOneNameInput = document.getElementById('plus-one-name');
+    const plusOneDisplayGroup = document.getElementById('plus-one-display-group');
+    const plusOneEmailGroup = document.getElementById('plus-one-email-group');
+    const plusOneEmailInput = document.getElementById('plus-one-email');
+
+    // Set plus one name if present in URL
+    if(plusOneName){
+      plusOneNameInput.value = plusOneName;
+      plusOneDisplayName.textContent = plusOneName;
+    }
+
     // Show/hide fields based on wedding RSVP
     const weddingYes = document.getElementById('wedding-yes');
     const weddingNo = document.getElementById('wedding-no');
     const emailGroup = document.getElementById('email-group');
-    const plusOneGroup = document.getElementById('plus-one-group');
-    const plusOneDetailsGroup = document.getElementById('plus-one-details-group');
-    const dietaryGroup = document.getElementById('dietary-group');
-    const plusOneYes = document.getElementById('plus-one-yes');
-    const plusOneNo = document.getElementById('plus-one-no');
 
     [weddingYes, weddingNo].forEach(radio => {
       radio.addEventListener('change', () => {
         if(weddingYes.checked){
           emailGroup.style.display = 'block';
-          plusOneGroup.style.display = 'block';
-          dietaryGroup.style.display = 'block';
           document.getElementById('attendant-email').required = true;
-          // Only need required on one radio in the group
-          plusOneYes.required = true;
+          
+          // Show plus one fields if plus one name exists
+          if(plusOneName){
+            plusOneDisplayGroup.style.display = 'block';
+            plusOneEmailGroup.style.display = 'block';
+            plusOneEmailInput.required = true;
+          }
         } else {
           emailGroup.style.display = 'none';
-          plusOneGroup.style.display = 'none';
-          plusOneDetailsGroup.style.display = 'none';
-          dietaryGroup.style.display = 'none';
+          plusOneDisplayGroup.style.display = 'none';
+          plusOneEmailGroup.style.display = 'none';
           document.getElementById('attendant-email').required = false;
           document.getElementById('attendant-email').value = '';
-          plusOneYes.required = false;
-          // Reset plus one fields
-          plusOneYes.checked = false;
-          plusOneNo.checked = false;
-        }
-      });
-    });
-
-    // Show/hide plus one details based on plus one selection
-    [plusOneYes, plusOneNo].forEach(radio => {
-      radio.addEventListener('change', () => {
-        if(plusOneYes.checked){
-          plusOneDetailsGroup.style.display = 'block';
-          document.getElementById('plus-one-name').required = true;
-          document.getElementById('plus-one-email').required = true;
-        } else {
-          plusOneDetailsGroup.style.display = 'none';
-          document.getElementById('plus-one-name').required = false;
-          document.getElementById('plus-one-email').required = false;
-          document.getElementById('plus-one-name').value = '';
-          document.getElementById('plus-one-email').value = '';
+          plusOneEmailInput.required = false;
+          plusOneEmailInput.value = '';
         }
       });
     });
@@ -799,24 +788,20 @@
       };
       
       // Build data object with all fields, explicitly getting values from DOM
+      const plusOneNameValue = getFormValue('plus-one-name');
       const data = {
         name: decodeURIComponent(name),
         attendantEmail: getFormValue('attendant-email'),
         weddingRSVP: getFormValue('wedding-rsvp'),
-        plusOne: getFormValue('plus-one'),
-        plusOneName: getFormValue('plus-one-name'),
+        plusOne: plusOneNameValue ? 'Yes' : 'No',
+        plusOneName: plusOneNameValue,
         plusOneEmail: getFormValue('plus-one-email'),
-        dietary: getFormValue('dietary'),
         lunchRSVP: getFormValue('lunch-rsvp'),
         message: getFormValue('message'),
         timestamp: new Date().toISOString()
       };
       
       // Debug: log what we're sending
-      console.log('Form field values:');
-      console.log('  attendant-email element:', rsvpForm.querySelector('[name="attendant-email"]'));
-      console.log('  plus-one-name element:', rsvpForm.querySelector('[name="plus-one-name"]'));
-      console.log('  plus-one-email element:', rsvpForm.querySelector('[name="plus-one-email"]'));
       console.log('Sending data:', data);
 
       // Disable submit button
@@ -875,9 +860,12 @@
         formMessage.textContent = 'Thank you! Your RSVP has been submitted successfully.';
         rsvpForm.reset();
         emailGroup.style.display = 'none';
-        plusOneGroup.style.display = 'none';
-        plusOneDetailsGroup.style.display = 'none';
-        dietaryGroup.style.display = 'none';
+        plusOneDisplayGroup.style.display = 'none';
+        plusOneEmailGroup.style.display = 'none';
+        // Restore plus one name if it was from URL
+        if(plusOneName){
+          plusOneNameInput.value = plusOneName;
+        }
         
         // Hide modal after 3 seconds
         setTimeout(() => {
