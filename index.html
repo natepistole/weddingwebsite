@@ -121,6 +121,30 @@
     @media(min-width:800px){.hotels{grid-template-columns:repeat(2,1fr)}}
     .hotel h4{margin:0 0 4px;font-size:17px}
     .hotel .meta{font-size:14px;color:var(--muted)}
+    .hotel.highlighted{
+      background:rgba(139,21,56,.25);
+      border:2px solid var(--brand);
+      box-shadow:0 8px 24px rgba(139,21,56,.3);
+    }
+    .hotel-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 12px;
+      border-radius:999px;
+      background:var(--brand);
+      color:var(--brand-ink);
+      font-weight:700;
+      font-size:12px;
+      margin-bottom:10px;
+      letter-spacing:.3px;
+      box-shadow:0 2px 8px rgba(139,21,56,.4);
+    }
+    .hotel-badge.bride-groom{
+      background:var(--gold);
+      color:var(--bg);
+      box-shadow:0 2px 8px rgba(212,175,55,.4);
+    }
 
     /* --- FAQ --- */
     details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:var(--ink)}
@@ -748,8 +772,9 @@
         <h2>Recommended Hotels</h2>
         <p class="muted mb-l">A few guest-friendly options in Gloucester & Rockport. Distances are approximate to Hammond Castle Museum.</p>
         <div class="hotels">
-          <div class="card hotel">
+          <div class="card hotel highlighted">
             <div class="pad">
+              <div class="hotel-badge">🍾 Post-Wedding Drinks</div>
               <h4>Beauport Hotel Gloucester</h4>
               <div class="meta">≈ 2.2 miles • Waterfront boutique • Rooftop deck</div>
               <div class="btn-row">
@@ -768,8 +793,9 @@
               </div>
             </div>
           </div>
-          <div class="card hotel">
+          <div class="card hotel highlighted">
             <div class="pad">
+              <div class="hotel-badge bride-groom">💑 Bride & Groom Staying Here</div>
               <h4>Ocean House Hotel at Bass Rocks</h4>
               <div class="meta">≈ 5 miles • Classic oceanfront • Bikes & firepits</div>
               <div class="btn-row">
