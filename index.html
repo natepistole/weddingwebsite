@@ -115,6 +115,38 @@
     .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
     .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-weight:700;transition:all .2s}
     .btn:hover{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
+    /* Mobile image for book button */
+    .btn-book-mobile .btn-image{
+      display:none;
+      max-width:100%;
+      height:auto;
+      border-radius:8px;
+    }
+    .btn-book-mobile .btn-text{
+      display:inline;
+    }
+    @media(max-width:640px){
+      .btn-book-mobile{
+        padding:0;
+        border:none;
+        background:transparent;
+        display:block;
+        width:100%;
+      }
+      .btn-book-mobile:hover{
+        background:transparent;
+        border:none;
+        transform:none;
+      }
+      .btn-book-mobile .btn-text{
+        display:none;
+      }
+      .btn-book-mobile .btn-image{
+        display:block;
+        width:100%;
+        border-radius:12px;
+      }
+    }
 
     /* --- Hotel cards --- */
     .hotels{display:grid;gap:18px}
@@ -840,7 +872,10 @@
               <div class="meta">≈ 5 miles • Classic oceanfront • Bikes & firepits</div>
               <div class="btn-row">
                 <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Ocean+House+Hotel+at+Bass+Rocks">Open in Maps</a>
-                <a class="btn" target="_blank" rel="noopener" href="https://reservations.oceanhousegloucester.com/ibe/details.aspx?propertyid=17829&nights=2&checkin=10/09/2026&group=2480506&lang=en-us&adults=1&childAges=">Book Now (Limited Quantity)</a>
+                <a class="btn btn-book-mobile" target="_blank" rel="noopener" href="https://reservations.oceanhousegloucester.com/ibe/details.aspx?propertyid=17829&nights=2&checkin=10/09/2026&group=2480506&lang=en-us&adults=1&childAges=">
+                  <span class="btn-text">Book Now (Limited Quantity)</span>
+                  <img class="btn-image" src="https://github.com/natepistole/weddingwebsite/blob/main/ChatGPT%20Image%20Dec%2022,%202025,%2004_23_52%20PM.png?raw=true" alt="Book Now">
+                </a>
               </div>
             </div>
           </div>
