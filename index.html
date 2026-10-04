@@ -3,1505 +3,774 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Nate & Rebecca — Hammond Castle Wedding</title>
-  <meta name="description" content="Wedding details for Nate & Rebecca at Hammond Castle Museum in Gloucester, MA — schedule, venue, travel, hotels, FAQs, and RSVP." />
+  <title>Nate & Rebecca — Wedding Weekend Guide</title>
+  <meta name="description" content="Everything you need for Nate & Rebecca's wedding at Hammond Castle — shuttle times, schedule, dress code, and directions." />
+  <meta name="theme-color" content="#120b0d" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Nate & Rebecca" />
 
-  <!-- Open Graph / Facebook / WhatsApp / iMessage Link Preview -->
+  <!-- Link previews (iMessage / WhatsApp / etc.) -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Nate & Rebecca — Hammond Castle Wedding" />
-  <meta property="og:description" content="Wedding details for Nate & Rebecca at Hammond Castle Museum in Gloucester, MA — schedule, venue, travel, hotels, FAQs, and RSVP." />
+  <meta property="og:title" content="Nate & Rebecca — Wedding Weekend Guide" />
+  <meta property="og:description" content="Shuttle times, schedule, dress code, and directions for Friday, October 9 at Hammond Castle." />
   <meta property="og:image" content="https://github.com/natepistole/weddingwebsite/blob/main/ChatGPT%20Image%20Dec%2022,%202025,%2004_23_52%20PM.png?raw=true" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:url" content="" />
-  
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Nate & Rebecca — Hammond Castle Wedding" />
-  <meta name="twitter:description" content="Wedding details for Nate & Rebecca at Hammond Castle Museum in Gloucester, MA — schedule, venue, travel, hotels, FAQs, and RSVP." />
+  <meta name="twitter:title" content="Nate & Rebecca — Wedding Weekend Guide" />
+  <meta name="twitter:description" content="Shuttle times, schedule, dress code, and directions for Friday, October 9 at Hammond Castle." />
   <meta name="twitter:image" content="https://github.com/natepistole/weddingwebsite/blob/main/ChatGPT%20Image%20Dec%2022,%202025,%2004_23_52%20PM.png?raw=true" />
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#1a0f0f;             /* dark burgundy-tinted background */
-      --surface:#2a1f1f;         /* dark cards with burgundy tint */
-      --ink:#f5f0f0;             /* light text for dark background */
-      --muted:#b8a5a5;           /* muted light for secondary text */
-      --brand:#8B1538;           /* deep burgundy primary */
-      --brand-light:#A05252;     /* lighter burgundy for accents */
-      --brand-dark:#5a0a1f;      /* darker burgundy */
-      --brand-ink:#f5e0e0;       /* light text on burgundy */
-      --gold:#D4AF37;            /* romantic gold accent */
-      --rose:#C9A9A9;            /* rose accent */
-      --line:rgba(139,21,56,.15);
-      --radius:18px;
-      --shadow:0 10px 30px rgba(0, 0, 0, .4);
+      --bg:#120b0d;
+      --surface:#1c1316;
+      --surface-2:#261a1e;
+      --ink:#f6efe9;
+      --muted:#b3a3a2;
+      --line:rgba(255,255,255,.08);
+      --brand:#9b1c43;
+      --brand-ink:#fff4f6;
+      --accent:#e8a7b8;        /* rose — readable accent on dark */
+      --gold:#d9b45a;
+      --live:#7fd6a4;
+      --live-bg:rgba(127,214,164,.12);
+      --warn:#ff8a8a;
+      --warn-bg:rgba(255,107,107,.1);
+      --radius:20px;
+      --shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 12px 32px rgba(0,0,0,.35);
+      --tabbar-h:64px;
+      color-scheme:dark;
     }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f7f2ec;
+        --surface:#ffffff;
+        --surface-2:#f3ece6;
+        --ink:#22161a;
+        --muted:#6f5f61;
+        --line:rgba(34,22,26,.1);
+        --brand:#8b1538;
+        --brand-ink:#ffffff;
+        --accent:#8b1538;
+        --gold:#9a7520;
+        --live:#1d7a4a;
+        --live-bg:rgba(29,122,74,.1);
+        --warn:#b42318;
+        --warn-bg:rgba(180,35,24,.07);
+        --shadow:0 1px 2px rgba(34,22,26,.05), 0 8px 24px rgba(34,22,26,.06);
+        color-scheme:light;
+      }
+    }
+
     *{box-sizing:border-box}
-    html,body{margin:0}
+    [hidden]{display:none!important}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
     body{
-      font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      font-size:16px;
+      line-height:1.5;
       color:var(--ink);
       background:var(--bg);
-      line-height:1.6;
+      padding-bottom:calc(var(--tabbar-h) + env(safe-area-inset-bottom) + 24px);
+      -webkit-font-smoothing:antialiased;
     }
-    a{color:var(--brand);text-decoration:none}
-    a:hover{text-decoration:underline}
+    a{color:inherit}
+    h1,h2,h3,p{margin:0}
+    .num{font-variant-numeric:tabular-nums}
+    .sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .wrap{max-width:560px;margin-inline:auto;padding-inline:16px}
 
-    /* --- Layout --- */
-    .wrap{max-width:1100px;margin-inline:auto;padding:28px}
-    .section{padding:56px 0;border-top:1px solid var(--line)}
-    .section:first-of-type{border-top:0}
-    .grid{display:grid;gap:28px}
-    @media(min-width:900px){.grid.cols-2{grid-template-columns:1.1fr .9fr}}
-    @media(min-width:900px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}}
-
-    /* --- Topbar --- */
-    .topbar{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.2) blur(6px);background:rgba(26,15,15,.85);border-bottom:1px solid var(--line)}
-    .topbar-inner{max-width:1100px;margin:auto;display:flex;gap:18px;align-items:center;justify-content:space-between;padding:10px 20px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--ink)}
-    .brand .heart{font-family:'Playfair Display',serif;font-weight:700;letter-spacing:.5px;color:var(--brand)}
-    .nav{display:flex;gap:16px;flex-wrap:wrap}
-    .nav a{font-weight:600;color:var(--ink);opacity:.85}
-    .nav a:hover{opacity:1;color:var(--brand-light)}
-    .cta{display:inline-flex;align-items:center;gap:10px;background:var(--brand);color:var(--brand-ink);font-weight:800;border-radius:999px;padding:10px 16px;box-shadow:var(--shadow)}
-    .cta:hover{filter:saturate(1.1) brightness(1.05);transform:translateY(-1px)}
-
-    /* --- Hero with looping video background --- */
+    /* ---------- Hero ---------- */
     .hero{
-      position:relative;
-      isolation:isolate;
-      min-height:68vh;
-      display:grid;
-      place-items:center;
-      color:#fff;
-      overflow:hidden; /* crop video edges */
+      position:relative;isolation:isolate;overflow:hidden;
+      color:#fff;background:#1a0f12;
+      border-radius:0 0 28px 28px;
+      padding:calc(env(safe-area-inset-top) + 48px) 0 28px;
     }
-    .hero .hero-bg{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;               /* like background-size: cover */
-      z-index:0;                      /* behind overlay + text */
-      filter:saturate(1.05) contrast(1.05) brightness(.85);
-      /* Optional smoother playback hint on some browsers */
-      will-change:transform;
-    }
-    /* Gradient overlay removed for clear video visibility */
+    .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(1.05) brightness(.9)}
     .hero::after{
-      display:none;
+      content:"";position:absolute;inset:0;z-index:-1;
+      background:linear-gradient(180deg,rgba(18,11,13,.25) 0%,rgba(18,11,13,.45) 45%,rgba(18,11,13,.88) 100%);
     }
-    .hero .hero-inner{position:relative;z-index:2;text-align:center;padding:64px 28px;max-width:1100px;margin:auto}
-    .hero h1{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(36px,6vw,64px);letter-spacing:.5px;margin:0 0 10px;text-shadow:0 2px 20px rgba(0,0,0,.5)}
-    .hero .sub{opacity:.95;font-size:clamp(16px,2.2vw,20px);text-shadow:0 1px 10px rgba(0,0,0,.4)}
-    .pill{display:inline-flex;gap:8px;align-items:center;border-radius:999px;background:rgba(139,21,56,.3);backdrop-filter:blur(6px);padding:8px 14px;border:1px solid rgba(212,175,55,.3);font-weight:600;box-shadow:0 4px 15px rgba(0,0,0,.3)}
-    .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:22px}
-    .hero-ctas a{background:var(--brand);color:var(--brand-ink);box-shadow:0 4px 15px rgba(139,21,56,.4)}
-
-    /* Respect reduced motion preferences */
-    @media (prefers-reduced-motion: reduce){
-      .hero .hero-bg{ display:none; }
-      .hero{
-        /* Use a still image if available */
-        background: url("poster.jpg") center/cover no-repeat, #1a0f0f;
-      }
+    .hero .kicker{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+    .hero h1{font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:clamp(40px,11vw,60px);line-height:1.05;margin:10px 0 8px;letter-spacing:-.01em}
+    .hero h1 em{font-style:italic;font-weight:500;color:#f1c9d3}
+    .hero .meta{font-size:15px;opacity:.92}
+    .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:22px}
+    .cd-cell{
+      background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);
+      -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+      border-radius:14px;padding:10px 4px 8px;text-align:center;
     }
+    .cd-cell b{display:block;font-size:28px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
+    .cd-cell span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
+    .cd-label{margin-top:10px;font-size:13px;opacity:.8}
+    .hero-msg{margin-top:20px;font-size:17px;font-weight:600;display:none}
+    @media (prefers-reduced-motion: reduce){ .hero video{display:none} }
 
-    /* --- Cards --- */
-    .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
-    .card .pad{padding:22px}
-    .chip{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:rgba(139,21,56,.2);color:var(--brand-light);font-weight:700;font-size:13px;border:1px solid rgba(139,21,56,.4)}
-    h2{font-family:'Playfair Display',serif;font-size:clamp(28px,3.2vw,36px);margin:0 0 14px;color:var(--ink)}
-    h3{font-size:18px;margin:0 0 8px;color:var(--ink)}
+    /* ---------- Sections ---------- */
+    section{scroll-margin-top:16px}
+    .section{margin-top:36px}
+    .eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+    .section > .head h2{font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:28px;line-height:1.15;margin-top:4px}
+    .section > .head p{color:var(--muted);margin-top:6px;font-size:15px}
+    .head{margin-bottom:14px}
+    .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .pad{padding:18px}
     .muted{color:var(--muted)}
-    .lead{font-size:18px;color:var(--ink)}
+    .small{font-size:13px}
+    .tz-note{font-size:12px;color:var(--muted);margin-top:8px}
 
-    /* --- Lists & timeline --- */
-    .timeline{display:grid;gap:12px}
-    .tl-item{display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:start}
-    .time{font-weight:800;color:var(--brand-light)}
+    /* ---------- Now / Next ---------- */
+    .now-card{margin-top:-18px;position:relative;z-index:2;overflow:hidden}
+    .now-row{padding:16px 18px}
+    .now-row + .now-row{border-top:1px solid var(--line)}
+    .now-label{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    .now-row.is-now .now-label{color:var(--live)}
+    .live-dot{width:8px;height:8px;border-radius:50%;background:var(--live);box-shadow:0 0 0 0 var(--live);animation:pulse 1.8s infinite}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(127,214,164,.6)}70%{box-shadow:0 0 0 8px rgba(127,214,164,0)}100%{box-shadow:0 0 0 0 rgba(127,214,164,0)}}
+    .now-title{font-size:20px;font-weight:700;line-height:1.25;margin-top:6px}
+    .now-sub{color:var(--muted);font-size:15px;margin-top:2px}
+    .now-big{font-size:30px;font-weight:700;margin-top:10px;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+    .now-big small{font-size:15px;font-weight:500;color:var(--muted);margin-left:4px}
+    .bar{height:6px;border-radius:99px;background:var(--surface-2);margin-top:12px;overflow:hidden}
+    .bar > i{display:block;height:100%;width:0;background:var(--live);border-radius:inherit;transition:width 1s linear}
+    .now-link{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-weight:600;font-size:15px;color:var(--accent);text-decoration:none;min-height:32px}
+    .boarding{color:var(--gold)!important}
 
-    /* --- Venue block --- */
-    .map{aspect-ratio:16/9;width:100%;border:0;border-top:1px solid var(--line)}
-    .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-weight:700;transition:all .2s}
-    .btn:hover{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
-    /* Mobile styling for book button */
-    .btn-book-mobile .btn-text{
-      display:inline;
+    /* ---------- Buttons ---------- */
+    .btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:7px;
+      min-height:44px;padding:0 14px;border-radius:12px;
+      font:600 15px/1 Inter,system-ui,sans-serif;text-decoration:none;cursor:pointer;
+      background:var(--surface-2);color:var(--ink);border:1px solid var(--line);
+      -webkit-tap-highlight-color:transparent;transition:transform .12s, background .2s;
     }
-    @media(max-width:640px){
-      .btn-row{
-        flex-direction:column;
-      }
-      .btn-row .btn-book-mobile{
-        width:100%;
-        flex:1 1 100%;
-        min-width:100%;
-        text-align:center;
-        justify-content:center;
-        display:inline-flex;
-        margin-top:8px;
-      }
+    .btn:active{transform:scale(.97)}
+    .btn-primary{background:var(--brand);color:var(--brand-ink);border-color:transparent}
+    .btns .btn-map{flex:1 1 0;min-width:0;white-space:nowrap;font-size:14px;padding:0 10px;gap:6px}
+    .addr-copy{display:block;background:none;border:0;padding:2px 0;margin-top:2px;font:inherit;font-size:15px;color:var(--muted);text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent}
+    .addr-copy svg{display:inline-block;width:14px;height:14px;margin-left:6px;vertical-align:-2px;opacity:.8}
+    .addr-copy:active{color:var(--ink)}
+    .ios .btn-apple{order:-1}
+    .btn svg{width:18px;height:18px;flex:none}
+
+    /* ---------- Shuttle route ---------- */
+    .route-card + .route-card{margin-top:14px}
+    .route-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 4px}
+    .route-head h3{font-size:18px;font-weight:700}
+    .route-head .muted{font-size:14px}
+    .route{list-style:none;margin:0;padding:8px 18px 4px}
+    .stop{position:relative;display:grid;grid-template-columns:22px 1fr;gap:12px;padding-bottom:18px}
+    .stop:last-child{padding-bottom:14px}
+    .stop::before{ /* rail */
+      content:"";position:absolute;left:10px;top:22px;bottom:-2px;width:2px;background:var(--line);
     }
+    .stop:last-child::before{display:none}
+    .dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--muted);background:var(--surface);margin-top:2px;display:grid;place-items:center}
+    .dot svg{width:12px;height:12px;opacity:0}
+    .stop.is-next .dot{border-color:var(--accent);background:var(--accent)}
+    .stop.is-boarding .dot{border-color:var(--gold);background:var(--gold)}
+    .stop.is-done .dot{border-color:var(--muted);background:var(--muted)}
+    .stop.is-done .dot svg{opacity:1;color:var(--surface)}
+    .stop.is-done .stop-body{opacity:.55}
+    .stop-top{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+    .stop-time{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+    .stop-kind{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+    .stop h4{font-size:17px;font-weight:700;margin:4px 0 0}
+    .addr{color:var(--muted);font-size:15px;margin-top:2px}
+    .stop-note{font-size:14px;color:var(--muted);margin-top:4px}
 
-    /* --- Hotel cards --- */
-    .hotels{display:grid;gap:18px}
-    @media(min-width:800px){.hotels{grid-template-columns:repeat(2,1fr)}}
-    .hotel h4{margin:0 0 4px;font-size:17px}
-    .hotel .meta{font-size:14px;color:var(--muted)}
-    .hotel.highlighted{
-      background:rgba(139,21,56,.25);
-      border:2px solid var(--brand);
-      box-shadow:0 8px 24px rgba(139,21,56,.3);
-    }
-    .hotel-badge{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      padding:6px 12px;
-      border-radius:999px;
-      background:var(--brand);
-      color:var(--brand-ink);
-      font-weight:700;
-      font-size:12px;
-      margin-bottom:10px;
-      letter-spacing:.3px;
-      box-shadow:0 2px 8px rgba(139,21,56,.4);
-    }
-    .hotel-badge.bride-groom{
-      background:var(--gold);
-      color:var(--bg);
-      box-shadow:0 2px 8px rgba(212,175,55,.4);
-    }
+    .chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:99px;font-size:13px;font-weight:600;background:var(--surface-2);color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+    .chip:empty{display:none}
+    .chip.board{background:rgba(217,180,90,.16);color:var(--gold)}
+    .chip.live{background:var(--live-bg);color:var(--live)}
+    .chip.done{color:var(--muted)}
 
-    /* --- FAQ --- */
-    details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:var(--ink)}
-    summary{cursor:pointer;font-weight:700;color:var(--ink)}
-    details summary:hover{color:var(--brand-light)}
+    .callout{display:flex;gap:10px;padding:12px 14px;border-radius:14px;background:var(--surface-2);font-size:14px;margin:4px 18px 18px}
+    .callout svg{width:18px;height:18px;flex:none;margin-top:1px;color:var(--accent)}
 
-    /* --- Footer --- */
-    footer{padding:28px;text-align:center;color:var(--muted);background:var(--bg)}
+    /* ---------- Schedule ---------- */
+    .day + .day{margin-top:14px}
+    .day-head{display:flex;justify-content:space-between;align-items:baseline;padding:16px 18px 6px}
+    .day-head h3{font-size:18px;font-weight:700}
+    .events{list-style:none;margin:0;padding:4px 10px 10px}
+    .ev{display:grid;grid-template-columns:76px 1fr;gap:10px;padding:12px 8px;border-radius:14px;position:relative}
+    .ev + .ev::before{content:"";position:absolute;left:8px;right:8px;top:0;height:1px;background:var(--line)}
+    .ev-time{font-weight:700;font-size:15px;font-variant-numeric:tabular-nums;padding-top:1px}
+    .ev-title{font-weight:600;font-size:16px;line-height:1.3}
+    .ev-where{color:var(--muted);font-size:14px;margin-top:2px}
+    .ev .chip{margin-top:6px}
+    .ev a{color:var(--accent);font-weight:600;text-decoration:none}
+    .ev.is-past{opacity:.5}
+    .ev.is-live{background:var(--live-bg)}
+    .ev.is-live::before, .ev.is-live + .ev::before{display:none}
+    .ev.is-tba .ev-time{color:var(--muted);font-weight:600}
 
-    /* --- Utilities --- */
-    .right{justify-self:end}
-    .center{text-align:center}
-    .mb-s{margin-bottom:8px}
-    .mb-m{margin-bottom:16px}
-    .mb-l{margin-bottom:24px}
-    .mb-xl{margin-bottom:36px}
-    .sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px)}
+    /* ---------- Info ---------- */
+    .info-grid{display:grid;gap:14px}
+    .card h3{font-size:18px;font-weight:700}
+    .list{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:10px}
+    .list li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15px}
+    .list svg{width:20px;height:20px;color:var(--accent);margin-top:1px}
+    .alert{background:var(--warn-bg);color:var(--warn);border-radius:14px;padding:12px 14px;font-weight:700;font-size:15px;margin-top:12px}
+    .dress-headline{font-family:"Playfair Display",Georgia,serif;font-size:24px;font-weight:600;margin-top:4px}
 
-    /* --- RSVP Modal --- */
-    .modal-overlay{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.75);
-      backdrop-filter:blur(8px);
-      -webkit-backdrop-filter:blur(8px);
-      z-index:1000;
-      display:flex;
-      align-items:flex-end;
-      justify-content:center;
-      padding:0;
+    details{border-top:1px solid var(--line)}
+    details:first-of-type{border-top:0}
+    summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 18px;font-weight:600;font-size:16px;min-height:56px}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"";width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .2s;flex:none;margin-top:-4px}
+    details[open] summary::after{transform:rotate(-135deg);margin-top:4px}
+    details .ans{padding:0 18px 16px;color:var(--muted);font-size:15px}
+    details .ans a{color:var(--accent);font-weight:600}
+
+    footer{text-align:center;color:var(--muted);font-size:13px;margin-top:40px}
+    footer .names{font-family:"Playfair Display",Georgia,serif;font-size:20px;color:var(--ink);margin-bottom:4px}
+
+    /* ---------- Bottom tab bar ---------- */
+    .tabbar{
+      position:fixed;left:0;right:0;bottom:0;z-index:50;
       padding-bottom:env(safe-area-inset-bottom);
-      opacity:0;
-      visibility:hidden;
-      transition:opacity .25s cubic-bezier(0.4, 0, 0.2, 1), visibility .25s;
+      background:color-mix(in srgb, var(--bg) 82%, transparent);
+      -webkit-backdrop-filter:saturate(1.4) blur(16px);backdrop-filter:saturate(1.4) blur(16px);
+      border-top:1px solid var(--line);
     }
-    @media(min-width:640px){
-      .modal-overlay{
-        align-items:center;
-        padding:20px;
-        padding-bottom:20px;
-      }
-    }
-    .modal-overlay.active{
-      opacity:1;
-      visibility:visible;
-    }
-    .modal{
-      background:var(--surface);
-      border-radius:24px 24px 0 0;
-      box-shadow:0 -10px 40px rgba(3,18,18,.2);
-      max-width:600px;
-      width:100%;
-      max-height:92vh;
-      max-height:calc(92vh - env(safe-area-inset-bottom));
-      overflow-y:auto;
-      overflow-x:hidden;
-      transform:translateY(100%);
-      transition:transform .35s cubic-bezier(0.4, 0, 0.2, 1);
-      position:relative;
-      -webkit-overflow-scrolling:touch;
-    }
-    @media(min-width:640px){
-      .modal{
-        border-radius:var(--radius);
-        box-shadow:0 20px 60px rgba(3,18,18,.3);
-        transform:scale(.96) translateY(20px);
-        max-height:90vh;
-      }
-    }
-    .modal-overlay.active .modal{
-      transform:translateY(0);
-    }
-    @media(min-width:640px){
-      .modal-overlay.active .modal{
-        transform:scale(1) translateY(0);
-      }
-    }
-    .modal-header{
-      padding:56px 20px 18px;
-      border-bottom:1px solid var(--line);
-      margin-bottom:20px;
-      position:sticky;
-      top:0;
-      background:var(--surface);
-      z-index:10;
-    }
-    @media(min-width:640px){
-      .modal-header{
-        padding:32px 32px 0;
-        padding-top:32px;
-        padding-bottom:22px;
-        margin-bottom:28px;
-        position:relative;
-      }
-    }
-    .modal-header h2{
-      margin:0 0 6px;
-      font-size:clamp(24px, 5vw, 32px);
-      font-weight:700;
-    }
-    .modal-close{
-      position:absolute;
-      top:12px;
-      top:calc(12px + env(safe-area-inset-top));
-      right:12px;
-      background:var(--surface);
-      border:2px solid var(--line);
-      font-size:24px;
-      line-height:1;
-      cursor:pointer;
-      color:var(--ink);
-      width:44px;
-      height:44px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:12px;
-      transition:all .25s cubic-bezier(0.4, 0, 0.2, 1);
-      touch-action:manipulation;
-      -webkit-tap-highlight-color:transparent;
-      z-index:100;
-      font-weight:700;
-      box-shadow:0 2px 8px rgba(0,0,0,.2);
-    }
-    @media(min-width:640px){
-      .modal-close{
-        top:24px;
-        right:24px;
-        width:44px;
-        height:44px;
-        font-size:28px;
-      }
-    }
-    .modal-close:hover{
-      background:var(--brand);
-      color:var(--brand-ink);
-      border-color:var(--brand);
-      transform:scale(1.1);
-      box-shadow:0 4px 12px rgba(139,21,56,.4);
-    }
-    .modal-close:active{
-      transform:scale(.95);
-      box-shadow:0 1px 4px rgba(139,21,56,.3);
-    }
-    .modal-body{
-      padding:0 20px 32px;
-      padding-bottom:calc(32px + env(safe-area-inset-bottom));
-    }
-    @media(min-width:640px){
-      .modal-body{
-        padding:0 32px 40px;
-        padding-bottom:40px;
-      }
-    }
-    .form-group{
-      margin-bottom:28px;
-    }
-    .form-group label{
-      display:block;
-      font-weight:600;
-      margin-bottom:12px;
-      color:var(--ink);
-      font-size:16px;
-      line-height:1.5;
-    }
-    .form-group input,
-    .form-group select,
-    .form-group textarea{
-      width:100%;
-      padding:18px 20px;
-      border:2px solid var(--line);
-      border-radius:14px;
-      font-family:inherit;
-      font-size:16px;
-      background:var(--bg);
-      color:var(--ink);
-      transition:all .25s cubic-bezier(0.4, 0, 0.2, 1);
-      -webkit-appearance:none;
-      appearance:none;
-      touch-action:manipulation;
-      min-height:56px;
-      box-sizing:border-box;
-    }
-    .form-group input:hover,
-    .form-group select:hover,
-    .form-group textarea:hover{
-      border-color:var(--brand-light);
-      background:rgba(139,21,56,.05);
-    }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus{
-      outline:none;
-      border-color:var(--brand);
-      border-width:3px;
-      box-shadow:0 0 0 4px rgba(139,21,56,.15), 0 4px 12px rgba(139,21,56,.2);
-      transform:translateY(-2px);
-      background:var(--surface);
-    }
-    .form-group textarea{
-      resize:vertical;
-      min-height:100px;
-      line-height:1.6;
-    }
-    .radio-group{
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-    }
-    @media(min-width:480px){
-      .radio-group{
-        flex-direction:row;
-        gap:18px;
-      }
-    }
-    .radio-option{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      cursor:pointer;
-      padding:20px 20px;
-      border:2px solid var(--line);
-      border-radius:14px;
-      background:var(--bg);
-      transition:all .25s cubic-bezier(0.4, 0, 0.2, 1);
-      touch-action:manipulation;
-      -webkit-tap-highlight-color:transparent;
-      position:relative;
-      min-height:60px;
-      flex:1;
-    }
-    .radio-option:hover{
-      border-color:var(--brand-light);
-      background:rgba(139,21,56,.2);
-      transform:translateY(-2px);
-      box-shadow:0 4px 12px rgba(139,21,56,.2);
-    }
-    .radio-option:active{
-      transform:translateY(0);
-      box-shadow:0 2px 6px rgba(139,21,56,.15);
-    }
-    .radio-option input[type="radio"]:checked + label{
-      color:var(--brand-light);
-      font-weight:700;
-      font-size:16px;
-    }
-    .radio-option input[type="radio"]:checked{
-      accent-color:var(--brand);
-    }
-    /* Modern browser support for container styling */
-    @supports selector(:has(*)){
-      .radio-option:has(input[type="radio"]:checked){
-        border-color:var(--brand);
-        border-width:3px;
-        background:rgba(139,21,56,.35);
-        box-shadow:0 0 0 4px rgba(139,21,56,.15), 0 4px 16px rgba(139,21,56,.3);
-        transform:translateY(-1px);
-      }
-      .radio-option:has(input[type="radio"]:checked):hover{
-        transform:translateY(-3px);
-        box-shadow:0 0 0 4px rgba(139,21,56,.2), 0 6px 20px rgba(139,21,56,.4);
-      }
-    }
-    /* Fallback for browsers without :has() support */
-    .radio-option.radio-checked{
-      border-color:var(--brand);
-      border-width:3px;
-      background:rgba(139,21,56,.35);
-      box-shadow:0 0 0 4px rgba(139,21,56,.15), 0 4px 16px rgba(139,21,56,.3);
-      transform:translateY(-1px);
-    }
-    .radio-option.radio-checked:hover{
-      transform:translateY(-3px);
-      box-shadow:0 0 0 4px rgba(139,21,56,.2), 0 6px 20px rgba(139,21,56,.4);
-    }
-    .radio-option input[type="radio"]{
-      width:24px;
-      height:24px;
-      cursor:pointer;
-      margin:0;
-      accent-color:var(--brand);
-      flex-shrink:0;
-      transform:scale(1.1);
-    }
-    .radio-option label{
-      margin:0;
-      cursor:pointer;
-      font-weight:500;
-      font-size:16px;
-      flex:1;
-      user-select:none;
-      line-height:1.4;
-      padding:2px 0;
-    }
-    .wedding-info{
-      background:rgba(139,21,56,.15);
-      border:2px solid rgba(139,21,56,.3);
-      border-radius:14px;
-      padding:20px;
-      margin-bottom:28px;
-    }
-    @media(min-width:640px){
-      .wedding-info{
-        padding:24px;
-      }
-    }
-    .wedding-info h3{
-      margin:0 0 14px;
-      font-size:18px;
-      color:var(--brand-light);
-      font-weight:700;
-    }
-    .wedding-info p{
-      margin:6px 0;
-      font-size:15px;
-      color:var(--muted);
-      line-height:1.6;
-    }
-    .submit-btn{
-      width:100%;
-      padding:20px 28px;
-      background:var(--brand);
-      color:var(--brand-ink);
-      border:none;
-      border-radius:14px;
-      font-weight:800;
-      font-size:18px;
-      cursor:pointer;
-      transition:all .25s cubic-bezier(0.4, 0, 0.2, 1);
-      margin-top:12px;
-      touch-action:manipulation;
-      -webkit-tap-highlight-color:transparent;
-      box-shadow:0 4px 16px rgba(139,21,56,.4), 0 0 0 0 rgba(139,21,56,.2);
-      letter-spacing:.4px;
-      min-height:60px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-    .submit-btn:hover:not(:disabled){
-      filter:saturate(1.15) brightness(1.08);
-      transform:translateY(-3px);
-      box-shadow:0 8px 24px rgba(139,21,56,.5), 0 0 0 4px rgba(139,21,56,.15);
-    }
-    .submit-btn:active:not(:disabled){
-      transform:translateY(-1px);
-      box-shadow:0 4px 12px rgba(139,21,56,.4), 0 0 0 2px rgba(139,21,56,.2);
-    }
-    .submit-btn:disabled{
-      opacity:.6;
-      cursor:not-allowed;
-      transform:none;
-      box-shadow:none;
-    }
-    .form-message{
-      padding:16px 18px;
-      border-radius:14px;
-      margin-bottom:20px;
-      font-weight:600;
-      font-size:15px;
-      display:none;
-      line-height:1.5;
-    }
-    .form-message.success{
-      background:rgba(139,21,56,.2);
-      color:var(--brand-light);
-      border:2px solid rgba(139,21,56,.4);
-      display:block;
-    }
-    .form-message.error{
-      background:rgba(220,38,38,.15);
-      color:#ff6b6b;
-      border:2px solid rgba(220,38,38,.3);
-      display:block;
-    }
+    .tabbar nav{max-width:560px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);height:var(--tabbar-h)}
+    .tabbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-decoration:none;color:var(--muted);font-size:11px;font-weight:600;-webkit-tap-highlight-color:transparent}
+    .tabbar a svg{width:24px;height:24px}
+    .tabbar a.active{color:var(--accent)}
 
-    /* --- Hotel Booking Reminder Modal --- */
-    .hotel-reminder-modal{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.75);
-      backdrop-filter:blur(8px);
-      -webkit-backdrop-filter:blur(8px);
-      z-index:1001;
-      display:flex;
-      align-items:flex-end;
-      justify-content:center;
-      padding:0;
-      opacity:0;
-      visibility:hidden;
-      transition:opacity .25s cubic-bezier(0.4, 0, 0.2, 1), visibility .25s;
-    }
-    @media(min-width:640px){
-      .hotel-reminder-modal{
-        align-items:center;
-        padding:20px;
-      }
-    }
-    .hotel-reminder-modal.active{
-      opacity:1;
-      visibility:visible;
-    }
-    .hotel-reminder-modal .modal{
-      background:var(--surface);
-      border-radius:24px 24px 0 0;
-      box-shadow:0 -10px 40px rgba(3,18,18,.2);
-      max-width:500px;
-      width:100%;
-      transform:translateY(100%);
-      transition:transform .35s cubic-bezier(0.4, 0, 0.2, 1);
-      position:relative;
-      -webkit-overflow-scrolling:touch;
-    }
-    @media(min-width:640px){
-      .hotel-reminder-modal .modal{
-        border-radius:var(--radius);
-        box-shadow:0 20px 60px rgba(3,18,18,.3);
-        transform:scale(.96) translateY(20px);
-      }
-    }
-    .hotel-reminder-modal.active .modal{
-      transform:translateY(0);
-    }
-    @media(min-width:640px){
-      .hotel-reminder-modal.active .modal{
-        transform:scale(1) translateY(0);
-      }
-    }
-    .hotel-reminder-content{
-      padding:28px 20px;
-      text-align:center;
-    }
-    @media(min-width:640px){
-      .hotel-reminder-content{
-        padding:36px 32px;
-      }
-    }
-    .hotel-reminder-content h2{
-      margin:0 0 14px;
-      font-size:clamp(22px, 4.5vw, 28px);
-      color:var(--brand-light);
-      font-weight:700;
-      line-height:1.3;
-    }
-    .hotel-reminder-content p{
-      margin:0 0 28px;
-      color:var(--muted);
-      line-height:1.7;
-      font-size:15px;
-    }
-    .hotel-reminder-content .urgent-badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 16px;
-      border-radius:999px;
-      background:rgba(220,38,38,.2);
-      color:#ff6b6b;
-      font-weight:700;
-      font-size:14px;
-      border:2px solid rgba(220,38,38,.35);
-      margin-bottom:24px;
-      letter-spacing:.2px;
-    }
-    .hotel-reminder-actions{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      width:100%;
-    }
-    @media(min-width:480px){
-      .hotel-reminder-actions{
-        flex-direction:row;
-        justify-content:center;
-      }
-    }
-    .hotel-reminder-actions .btn-primary{
-      background:var(--brand);
-      color:var(--brand-ink);
-      border:none;
-      padding:16px 28px;
-      border-radius:14px;
-      font-weight:800;
-      font-size:16px;
-      cursor:pointer;
-      transition:all .2s ease;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      touch-action:manipulation;
-      -webkit-tap-highlight-color:transparent;
-      box-shadow:0 4px 12px rgba(139,21,56,.4);
-      letter-spacing:.3px;
-      flex:1;
-    }
-    @media(min-width:480px){
-      .hotel-reminder-actions .btn-primary{
-        flex:0 1 auto;
-      }
-    }
-    .hotel-reminder-actions .btn-primary:hover{
-      filter:saturate(1.1) brightness(1.05);
-      transform:translateY(-2px);
-      box-shadow:0 6px 16px rgba(139,21,56,.5);
-    }
-    .hotel-reminder-actions .btn-primary:active{
-      transform:translateY(0);
-      box-shadow:0 2px 8px rgba(139,21,56,.3);
-    }
-    .hotel-reminder-actions .btn-secondary{
-      background:var(--surface);
-      color:var(--ink);
-      border:2px solid var(--line);
-      padding:16px 28px;
-      border-radius:14px;
-      font-weight:700;
-      font-size:16px;
-      cursor:pointer;
-      transition:all .2s ease;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      touch-action:manipulation;
-      -webkit-tap-highlight-color:transparent;
-      flex:1;
-    }
-    @media(min-width:480px){
-      .hotel-reminder-actions .btn-secondary{
-        flex:0 1 auto;
-      }
-    }
-    .hotel-reminder-actions .btn-secondary:hover{
-      background:var(--bg);
-      border-color:var(--brand);
-      color:var(--brand-light);
-      transform:translateY(-1px);
-    }
-    .hotel-reminder-actions .btn-secondary:active{
-      transform:translateY(0);
+    .toast{position:fixed;left:50%;bottom:calc(var(--tabbar-h) + env(safe-area-inset-bottom) + 14px);transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:99px;font-weight:600;font-size:14px;transition:.25s;z-index:60}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+
+    @media (min-width:700px){
+      .hero{padding-top:72px;padding-bottom:40px}
     }
   </style>
 </head>
 <body>
-  <a class="sr-only" href="#content">Skip to content</a>
 
-  <!-- Sticky topbar -->
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand">
-        <span class="heart">Nate &amp; Rebecca</span>
+  <!-- Icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-bus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="3"/><path d="M4 11h16M8 21v-4M16 21v-4"/><circle cx="8" cy="14" r=".6" fill="currentColor"/><circle cx="16" cy="14" r=".6" fill="currentColor"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-12a7 7 0 1 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14v-5l-2-5H7l-2 5v5z"/><path d="M5 12h14"/><circle cx="8" cy="17" r="1.5"/><circle cx="16" cy="17" r="1.5"/></symbol>
+    <symbol id="i-stairs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h5v-5h5v-5h5V5h3"/></symbol>
+    <symbol id="i-shirt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3l4 3 4-3 5 4-3 4-2-1v11H8V10l-2 1-3-4z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M6 18L18 6"/></symbol>
+    <symbol id="i-wind" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10a3 3 0 1 0-3-3M3 12h15a3 3 0 1 1-3 3M3 16h7"/></symbol>
+  </svg>
+
+  <!-- ================= HERO + COUNTDOWN ================= -->
+  <header class="hero">
+    <video autoplay loop muted playsinline preload="metadata" aria-hidden="true">
+      <source src="hammondcastlehero.mp4" type="video/mp4">
+      <source src="https://raw.githubusercontent.com/natepistole/weddingwebsite/main/hammondcastlehero.mp4" type="video/mp4">
+    </video>
+    <div class="wrap">
+      <div class="kicker">Friday · October 9, 2026</div>
+      <h1>Nate <em>&amp;</em> Rebecca</h1>
+      <p class="meta">Hammond Castle · Gloucester, Massachusetts</p>
+
+      <div class="countdown" id="countdown" aria-live="off">
+        <div class="cd-cell"><b id="cd-d">–</b><span>Days</span></div>
+        <div class="cd-cell"><b id="cd-h">–</b><span>Hours</span></div>
+        <div class="cd-cell"><b id="cd-m">–</b><span>Min</span></div>
+        <div class="cd-cell"><b id="cd-s">–</b><span>Sec</span></div>
       </div>
-      <nav class="nav" aria-label="Primary">
-        <a href="#schedule">Schedule</a>
-        <a href="#venue">Venue</a>
-        <a href="#travel">Travel</a>
-        <a href="#stay">Hotels</a>
-        <a href="#faq">FAQs</a>
-      </nav>
-      <a href="#rsvp" class="cta">RSVP</a>
+      <p class="cd-label" id="cd-label">until the celebration begins</p>
+      <p class="hero-msg" id="hero-msg"></p>
     </div>
   </header>
 
-  <!-- Hero with looping background video -->
-  <section class="hero" role="banner" aria-label="Nate & Rebecca wedding hero">
-    <!-- Background video: place hammondcastlehero.mp4 in the repo root (same folder as this HTML) -->
-    <video class="hero-bg"
-           autoplay
-           loop
-           muted
-           playsinline
-           preload="metadata"
-           poster="poster.jpg"  <!-- optional: export a nice still frame as poster.jpg -->
-           crossorigin="anonymous">
-      <!-- Prefer the relative path for GitHub Pages -->
-      <source src="hammondcastlehero.mp4" type="video/mp4">
-      <!-- Optional fallback to raw GitHub URL (kept last) -->
-      <source src="https://raw.githubusercontent.com/natepistole/weddingwebsite/main/hammondcastlehero.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+  <main class="wrap">
 
-    <div class="hero-inner">
-      <div class="pill mb-m">We're getting married!</div>
-      <h1>Nate &amp; Rebecca</h1>
-      <p class="sub">Hammond Castle Museum • Gloucester, Massachusetts</p>
-      <p class="sub"><strong>Friday, October 9, 2026</strong></p>
-      <div class="hero-ctas">
-        <a class="cta" href="#rsvp">RSVP</a>
-        <a class="cta" href="#travel">Travel Info</a>
+    <!-- ================= NOW / NEXT ================= -->
+    <section id="now" class="card now-card" aria-label="What's happening now">
+      <div class="now-row is-now" id="now-current" hidden>
+        <div class="now-label"><span class="live-dot"></span> Happening now</div>
+        <p class="now-title" id="now-current-title"></p>
+        <p class="now-sub" id="now-current-sub"></p>
+        <p class="now-big" id="now-current-left"></p>
+        <div class="bar"><i id="now-current-bar"></i></div>
       </div>
-    </div>
-  </section>
-
-  <main id="content">
-    <!-- Schedule -->
-    <section id="schedule" class="section">
-      <div class="wrap grid cols-2">
-        <div>
-          <span class="chip">Weekend Schedule</span>
-          <h2>Celebrate with us</h2>
-          <p class="lead muted">We can't wait to share an unforgettable weekend in Gloucester with our favorite people.</p>
-          <div class="card mb-l" style="background:rgba(139,21,56,.15);border:1px solid rgba(139,21,56,.3);">
-            <div class="pad">
-              <p class="muted" style="margin:0;font-size:16px;"><strong>Schedule details will be finalized and shared closer to the wedding date.</strong> Please check back here for updates, or we'll reach out directly with the final timeline.</p>
-            </div>
-          </div>
-          <a class="btn" href="#rsvp">RSVP</a>
-        </div>
-        <div class="card">
-          <div class="pad">
-            <h3 class="mb-s">Key Details</h3>
-            <ul class="muted" style="margin:0;padding-left:18px">
-              <li><strong>Date:</strong> <span>Friday, October 9, 2026</span></li>
-              <li><strong>Venue:</strong> Hammond Castle Museum</li>
-              <li><strong>Address:</strong> 80 Hesperus Ave, Gloucester, MA 01930</li>
-              <li><strong>Nearest Airport:</strong> Boston Logan International (BOS)</li>
-              <li><strong>Distance BOS → Venue:</strong> ~27 miles (~45–50 minutes by car)</li>
-            </ul>
-          </div>
-        </div>
+      <div class="now-row" id="now-next">
+        <div class="now-label" id="now-next-label">Next up</div>
+        <p class="now-title" id="now-next-title">Loading…</p>
+        <p class="now-sub" id="now-next-sub"></p>
+        <p class="now-big" id="now-next-in"></p>
+        <a class="now-link" id="now-next-link" href="#schedule" hidden>Details &amp; directions <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
       </div>
     </section>
+    <p class="tz-note" id="tz-note"></p>
 
-    <!-- Venue -->
-    <section id="venue" class="section">
-      <div class="wrap grid cols-2">
-        <div>
-          <span class="chip">The Venue</span>
-          <h2>Hammond Castle Museum</h2>
-          <p class="muted">A stunning 1920s seaside castle and museum with sweeping Atlantic views, stone archways, and the dramatic Great Hall—perfect for a fairytale “I do.”</p>
-          <div class="btn-row">
-            <button class="btn" id="copy-address" aria-label="Copy address">Copy Address</button>
-            <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Hammond+Castle+Museum%2C+80+Hesperus+Ave%2C+Gloucester%2C+MA+01930" target="_blank" rel="noopener">Open in Google Maps</a>
-            <a class="btn" href="https://maps.apple.com/?q=Hammond+Castle+Museum+Gloucester" target="_blank" rel="noopener">Open in Apple Maps</a>
-          </div>
-          <p class="muted mb-s"><strong>Parking:</strong> On-site and free. There is plenty of parking available.</p>
-          <p class="muted"><strong>Accessibility:</strong> Historic property with many stairs; unfortunately not wheelchair accessible.</p>
-        </div>
-        <div class="card">
-          <iframe class="map" loading="lazy" allowfullscreen
-            src="https://www.google.com/maps?q=Hammond+Castle+Museum,80+Hesperus+Ave,Gloucester,+MA+01930&output=embed"></iframe>
-        </div>
+    <!-- ================= SHUTTLE ================= -->
+    <section id="shuttle" class="section">
+      <div class="head">
+        <div class="eyebrow">Friday shuttle</div>
+        <h2>Getting to the castle</h2>
+        <p>One shuttle loop, two pickup spots. Hop on at whichever is closer — and please be at the curb a few minutes early.</p>
       </div>
-    </section>
 
-    <!-- Travel -->
-    <section id="travel" class="section">
-      <div class="wrap grid cols-2">
-        <div>
-          <span class="chip">Travel</span>
-          <h2>Getting There</h2>
-          <p class="muted">Fly into <strong>Boston Logan International Airport (BOS)</strong>. The castle is roughly <strong>27 miles</strong> north on MA-128 to Gloucester (about <strong>45–50 minutes</strong> by car depending on traffic). Consider rideshare or rental cars for easiest access.</p>
-          <ul class="muted" style="padding-left:18px">
-            <li><strong>Driving:</strong> I-95 N → MA-128 N to Gloucester; follow signs for Route 127 and Hesperus Ave.</li>
-            <li><strong>Rail:</strong> MBTA Commuter Rail Rockport Line to <em>Gloucester</em>, then a short taxi/rideshare to the venue.</li>
-          </ul>
+      <!-- Outbound -->
+      <article class="card route-card">
+        <div class="route-head">
+          <h3>To Hammond Castle</h3>
+          <span class="muted">Fri, Oct 9</span>
         </div>
-        <div class="card">
-          <div class="pad">
-            <h3 class="mb-m">Local Tips</h3>
-            <ul class="muted" style="padding-left:18px;margin:0">
-              <li>Weekend coastal traffic can be heavy—pad your schedule.</li>
-              <li>There are stairs from the parking lot down to the castle entrance.</li>
-              <li>Plan your return trip if using rideshare later in the evening.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Hotels -->
-    <section id="stay" class="section">
-      <div class="wrap">
-        <span class="chip">Stay Nearby</span>
-        <h2>Recommended Hotels</h2>
-        <p class="muted mb-l">A few guest-friendly options in Gloucester & Rockport. Distances are approximate to Hammond Castle Museum.</p>
-        <div class="hotels">
-          <div class="card hotel highlighted">
-            <div class="pad">
-              <div class="hotel-badge">🍾 Post-Wedding Drinks</div>
-              <h4>Beauport Hotel Gloucester</h4>
-              <div class="meta">≈ 2.2 miles • Waterfront boutique • Rooftop deck</div>
-              <div class="btn-row">
-                <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Beauport+Hotel+Gloucester">Open in Maps</a>
-                <a class="btn" target="_blank" rel="noopener" href="https://www.beauporthotel.com/">Website</a>
+        <ol class="route">
+          <li class="stop" data-depart="2026-10-09T16:15">
+            <span class="dot"><svg><use href="#i-check"/></svg></span>
+            <div class="stop-body">
+              <div class="stop-top">
+                <span class="stop-time">4:15 PM</span>
+                <span class="stop-kind">Pickup 1</span>
+                <span class="chip" data-status></span>
               </div>
-            </div>
-          </div>
-          <div class="card hotel">
-            <div class="pad">
-              <h4>Atlantis Oceanfront Inn</h4>
-              <div class="meta">≈ 3.4 miles • Ocean views • Seasonal pool</div>
-              <div class="btn-row">
-                <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Atlantis+Oceanfront+Inn+Gloucester">Open in Maps</a>
-                <a class="btn" target="_blank" rel="noopener" href="https://www.atlantisoceanfrontinn.com/">Website</a>
-              </div>
-            </div>
-          </div>
-          <div class="card hotel highlighted">
-            <div class="pad">
-              <div class="hotel-badge bride-groom">💑 Bride & Groom Staying Here</div>
               <h4>Ocean House Hotel at Bass Rocks</h4>
-              <div class="meta">≈ 5 miles • Classic oceanfront • Bikes & firepits</div>
-              <div class="btn-row">
-                <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Ocean+House+Hotel+at+Bass+Rocks">Open in Maps</a>
-                <a class="btn btn-book-mobile" target="_blank" rel="noopener" href="https://reservations.oceanhousegloucester.com/ibe/details.aspx?propertyid=17829&nights=2&checkin=10/09/2026&group=2480506&lang=en-us&adults=1&childAges=">
-                  <span class="btn-text">Book Now (Limited Quantity)</span>
-                </a>
+              <button class="addr addr-copy" type="button" data-copy="107 Atlantic Rd, Gloucester, MA 01930">107 Atlantic Rd, Gloucester, MA 01930<svg><use href="#i-copy"/></svg></button>
+              <div class="btns">
+                <a class="btn btn-map btn-google" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Ocean+House+Hotel+at+Bass+Rocks%2C+107+Atlantic+Rd%2C+Gloucester%2C+MA+01930"><svg><use href="#i-pin"/></svg>Google Maps</a>
+                <a class="btn btn-map btn-apple" target="_blank" rel="noopener" href="https://maps.apple.com/?daddr=107+Atlantic+Rd,+Gloucester,+MA+01930&amp;q=Ocean+House+Hotel+at+Bass+Rocks"><svg><use href="#i-pin"/></svg>Apple Maps</a>
               </div>
             </div>
-          </div>
-          <div class="card hotel">
-            <div class="pad">
-              <h4>Castle Manor Inn</h4>
-              <div class="meta">≈ 2 miles • Historic inn • On-site restaurant</div>
-              <div class="btn-row">
-                <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Castle+Manor+Inn+Gloucester">Open in Maps</a>
-                <a class="btn" target="_blank" rel="noopener" href="https://castlemanorinn.com/">Website</a>
+          </li>
+
+          <li class="stop" data-depart="2026-10-09T16:45">
+            <span class="dot"><svg><use href="#i-check"/></svg></span>
+            <div class="stop-body">
+              <div class="stop-top">
+                <span class="stop-time">4:45 PM</span>
+                <span class="stop-kind">Pickup 2</span>
+                <span class="chip" data-status></span>
+              </div>
+              <h4>Beauport Hotel Gloucester</h4>
+              <button class="addr addr-copy" type="button" data-copy="55 Commercial St, Gloucester, MA 01930">55 Commercial St, Gloucester, MA 01930<svg><use href="#i-copy"/></svg></button>
+              <p class="stop-note">Bus arrives around 4:30 PM, departs 4:45 PM.</p>
+              <div class="btns">
+                <a class="btn btn-map btn-google" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Beauport+Hotel+Gloucester%2C+55+Commercial+St%2C+Gloucester%2C+MA+01930"><svg><use href="#i-pin"/></svg>Google Maps</a>
+                <a class="btn btn-map btn-apple" target="_blank" rel="noopener" href="https://maps.apple.com/?daddr=55+Commercial+St,+Gloucester,+MA+01930&amp;q=Beauport+Hotel+Gloucester"><svg><use href="#i-pin"/></svg>Apple Maps</a>
               </div>
             </div>
-          </div>
-          <div class="card hotel">
-            <div class="pad">
-              <h4>The Vista, Gloucester</h4>
-              <div class="meta">≈ 4.4 miles • Family-friendly • Balconies with views</div>
-              <div class="btn-row">
-                <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=The+Vista+Gloucester">Open in Maps</a>
-                <a class="btn" target="_blank" rel="noopener" href="https://www.vistahotel.com/">Website</a>
+          </li>
+
+          <li class="stop" data-arrive="2026-10-09T17:00">
+            <span class="dot"><svg><use href="#i-check"/></svg></span>
+            <div class="stop-body">
+              <div class="stop-top">
+                <span class="stop-time">5:00 PM</span>
+                <span class="stop-kind">Arrive</span>
+                <span class="chip" data-status></span>
               </div>
+              <h4>Hammond Castle</h4>
+              <p class="addr">80 Hesperus Ave, Gloucester, MA 01930</p>
+              <p class="stop-note">Estimated arrival — traffic permitting.</p>
             </div>
-          </div>
-          <div class="card hotel">
-            <div class="pad">
-              <h4>Airbnb</h4>
-              <div class="meta">Various locations • Private rentals • Full homes & apartments</div>
-              <div class="btn-row">
-                <a class="btn" target="_blank" rel="noopener" href="https://www.airbnb.com/s/Gloucester--MA/homes?adults=1&refinement_paths%5B%5D=%2Fhomes&place_id=ChIJMQBzhoIk44kR7cJvMKu31eo&location=Gloucester%2C+MA&checkin=2026-10-08&checkout=2026-10-11&date_picker_type=calendar">Search Airbnb</a>
-                <a class="btn" target="_blank" rel="noopener" href="https://www.airbnb.com/">Website</a>
-              </div>
-            </div>
-          </div>
+          </li>
+        </ol>
+      </article>
+
+      <!-- Return -->
+      <article class="card route-card">
+        <div class="route-head">
+          <h3>Back from the castle</h3>
+          <span class="muted">Fri, Oct 9</span>
         </div>
-        <p class="muted mb-s" style="margin-top:12px">Want more choices? Search "Gloucester MA hotels" or Rockport for charming B&amp;B's.</p>
-      </div>
+        <ol class="route">
+          <li class="stop" data-depart="2026-10-09T21:00">
+            <span class="dot"><svg><use href="#i-check"/></svg></span>
+            <div class="stop-body">
+              <div class="stop-top">
+                <span class="stop-time">9:00 PM</span>
+                <span class="stop-kind">Pickup</span>
+                <span class="chip" data-status></span>
+              </div>
+              <h4>Hammond Castle</h4>
+              <p class="addr">80 Hesperus Ave, Gloucester, MA 01930</p>
+            </div>
+          </li>
+          <li class="stop" data-arrive="2026-10-09T21:15">
+            <span class="dot"><svg><use href="#i-check"/></svg></span>
+            <div class="stop-body">
+              <div class="stop-top">
+                <span class="stop-time">9:15 PM</span>
+                <span class="stop-kind">Arrive</span>
+                <span class="chip" data-status></span>
+              </div>
+              <h4>Beauport Hotel Gloucester</h4>
+              <p class="addr">55 Commercial St, Gloucester, MA 01930</p>
+              <p class="stop-note">Post-wedding drinks are here.</p>
+            </div>
+          </li>
+        </ol>
+        <div class="callout">
+          <svg><use href="#i-info"/></svg>
+          <span>The return shuttle goes to <strong>Beauport Hotel only</strong>. If you're staying elsewhere (including Ocean House), plan a taxi or rideshare from there — late-night rides in Gloucester can take a while.</span>
+        </div>
+      </article>
     </section>
 
-    <!-- FAQs -->
-    <section id="faq" class="section">
-      <div class="wrap grid cols-2">
-        <div>
-          <span class="chip">Good to Know</span>
-          <h2>FAQs</h2>
-          <details class="mb-m">
-            <summary>What should I wear?</summary>
-            <div class="muted">Black-tie optional. <strong style="color:#ff6b6b;font-size:1.1em;">⚠️ IMPORTANT: NO BLACK DRESSES OR GOWNS ALLOWED. Please do not wear black gowns or dresses.</strong> The groom will for sure be wearing a suit, potentially a cape. Any non-bride individuals wearing white will be converted to non-attendant. Note the venue has stone floors, stairs, and a rich history of premise liability lawsuits.</div>
-          </details>
-          <details class="mb-m">
-            <summary>Is there parking?</summary>
-            <div class="muted">Yes, on-site and free. There is plenty of parking available. Shuttles may be provided for transport to and from the venue, check back here for updates.</div>
-          </details>
-          <details class="mb-m">
-            <summary>Are kids welcome?</summary>
-            <div class="muted">No.</div>
+    <!-- ================= SCHEDULE =================
+         To add/edit events: each <li class="ev"> needs data-start (Eastern time, YYYY-MM-DDTHH:MM).
+         Optional: data-end (when it finishes), data-live (text shown while it's happening),
+         data-instant (a moment, never shown as "happening now"), data-link (where "Details" goes),
+         data-open (no set end time — shown as "happening now" for a few hours, without a countdown).
+         Items without a data-start are shown as "time TBA". Keep items in chronological order. -->
+    <section id="schedule" class="section">
+      <div class="head">
+        <div class="eyebrow">The weekend</div>
+        <h2>Schedule</h2>
+        <p>Live — what's happening now is highlighted.</p>
+      </div>
+
+      <article class="card day">
+        <div class="day-head"><h3>Friday</h3><span class="muted">October 9</span></div>
+        <ol class="events">
+          <li class="ev" data-start="2026-10-09T16:15" data-end="2026-10-09T16:30" data-link="#shuttle"
+              data-live="Shuttle on its way to Beauport Hotel" data-where="Next stop: Beauport Hotel, ~4:30 PM">
+            <span class="ev-time">4:15 PM</span>
+            <div><p class="ev-title">Shuttle departs Ocean House</p><p class="ev-where">107 Atlantic Rd</p><span class="chip" data-status></span></div>
+          </li>
+          <li class="ev" data-start="2026-10-09T16:45" data-end="2026-10-09T17:00" data-link="#shuttle"
+              data-live="Shuttle on its way to the castle" data-where="Arriving Hammond Castle ~5:00 PM">
+            <span class="ev-time">4:45 PM</span>
+            <div><p class="ev-title">Shuttle departs Beauport Hotel</p><p class="ev-where">55 Commercial St</p><span class="chip" data-status></span></div>
+          </li>
+          <li class="ev" data-start="2026-10-09T17:00" data-instant>
+            <span class="ev-time">5:00 PM</span>
+            <div><p class="ev-title">Arrive at Hammond Castle</p><p class="ev-where">80 Hesperus Ave</p><span class="chip" data-status></span></div>
+          </li>
+          <li class="ev is-tba">
+            <span class="ev-time">TBA</span>
+            <div><p class="ev-title">Ceremony, cocktail hour &amp; dinner</p><p class="ev-where">Hammond Castle · full times coming soon</p></div>
+          </li>
+          <li class="ev" data-start="2026-10-09T21:00" data-end="2026-10-09T21:15" data-link="#shuttle"
+              data-live="Shuttle on its way to Beauport Hotel" data-where="Arriving ~9:15 PM">
+            <span class="ev-time">9:00 PM</span>
+            <div><p class="ev-title">Return shuttle departs</p><p class="ev-where">Hammond Castle → Beauport Hotel</p><span class="chip" data-status></span></div>
+          </li>
+          <li class="ev" data-start="2026-10-09T21:15" data-open>
+            <span class="ev-time">9:15 PM</span>
+            <div><p class="ev-title">Post-wedding drinks</p><p class="ev-where">Beauport Hotel, 55 Commercial St</p><span class="chip" data-status></span></div>
+          </li>
+        </ol>
+      </article>
+
+      <article class="card day">
+        <div class="day-head"><h3>Saturday</h3><span class="muted">October 10</span></div>
+        <ol class="events">
+          <li class="ev is-tba">
+            <span class="ev-time">TBA</span>
+            <div><p class="ev-title">Brunch</p><p class="ev-where">Details coming soon</p></div>
+          </li>
+        </ol>
+      </article>
+    </section>
+
+    <!-- ================= INFO ================= -->
+    <section id="info" class="section">
+      <div class="head">
+        <div class="eyebrow">Good to know</div>
+        <h2>The details</h2>
+      </div>
+
+      <div class="info-grid">
+        <!-- Dress code -->
+        <article class="card pad" id="dress">
+          <div class="eyebrow">Dress code</div>
+          <p class="dress-headline">Black-tie optional</p>
+          <p class="alert">Please no black dresses or gowns.</p>
+          <ul class="list">
+            <li><svg><use href="#i-x"/></svg><span>No white, either — that's the bride's. Non-bride individuals wearing white will be converted to non-attendants.</span></li>
+            <li><svg><use href="#i-stairs"/></svg><span>Stone floors and lots of stairs (including from the parking lot down to the entrance). Choose shoes accordingly.</span></li>
+            <li><svg><use href="#i-wind"/></svg><span>October evenings on the water get chilly — bring a layer.</span></li>
+            <li><svg><use href="#i-shirt"/></svg><span>The groom will for sure be wearing a suit. Potentially a cape.</span></li>
+          </ul>
+        </article>
+
+        <!-- Venue -->
+        <article class="card pad" id="venue">
+          <div class="eyebrow">Venue</div>
+          <h3 style="margin-top:4px">Hammond Castle Museum</h3>
+          <button class="addr addr-copy" type="button" data-copy="80 Hesperus Ave, Gloucester, MA 01930">80 Hesperus Ave, Gloucester, MA 01930<svg><use href="#i-copy"/></svg></button>
+          <div class="btns">
+            <a class="btn btn-map btn-google" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hammond+Castle+Museum%2C+80+Hesperus+Ave%2C+Gloucester%2C+MA+01930"><svg><use href="#i-pin"/></svg>Google Maps</a>
+            <a class="btn btn-map btn-apple" target="_blank" rel="noopener" href="https://maps.apple.com/?daddr=80+Hesperus+Ave,+Gloucester,+MA+01930&amp;q=Hammond+Castle+Museum"><svg><use href="#i-pin"/></svg>Apple Maps</a>
+          </div>
+          <ul class="list">
+            <li><svg><use href="#i-car"/></svg><span>Free on-site parking if you drive — but the shuttle is the easy option.</span></li>
+            <li><svg><use href="#i-stairs"/></svg><span>Historic property with many stairs; unfortunately not wheelchair accessible.</span></li>
+          </ul>
+        </article>
+
+        <!-- FAQ -->
+        <article class="card" id="faq">
+          <div class="pad" style="padding-bottom:4px"><div class="eyebrow">FAQ</div></div>
+          <details>
+            <summary>Which shuttle stop should I use?</summary>
+            <div class="ans">Whichever is closer to you. The shuttle picks up at <strong>Ocean House Hotel at 4:15 PM</strong>, then <strong>Beauport Hotel at 4:45 PM</strong>, and arrives at the castle around 5:00 PM. <a href="#shuttle">See shuttle stops</a></div>
           </details>
           <details>
-            <summary>Will there be transportation?</summary>
-            <div class="muted">Transportation details are forthcoming, check back here for updates.</div>
+            <summary>What if I miss the shuttle?</summary>
+            <div class="ans">Drive or take a rideshare straight to Hammond Castle, 80 Hesperus Ave — parking is free on site. <a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hammond+Castle+Museum%2C+80+Hesperus+Ave%2C+Gloucester%2C+MA+01930">Directions</a></div>
           </details>
-        </div>
+          <details>
+            <summary>How do I get home at the end of the night?</summary>
+            <div class="ans">The return shuttle leaves the castle at <strong>9:00 PM</strong> and drops off at <strong>Beauport Hotel</strong> (where post-wedding drinks are) around 9:15 PM. From there, take a taxi or rideshare to your hotel — book ahead if you can, since late-night rides in Gloucester are limited.</div>
+          </details>
+          <details>
+            <summary>Are kids welcome?</summary>
+            <div class="ans">No — this is an adults-only celebration.</div>
+          </details>
+          <details>
+            <summary>Where are Nate &amp; Rebecca staying?</summary>
+            <div class="ans">Ocean House Hotel at Bass Rocks, 107 Atlantic Rd — also the first shuttle pickup.</div>
+          </details>
+          <details>
+            <summary>Which airport is closest?</summary>
+            <div class="ans">Boston Logan (BOS), about 27 miles away — roughly 45–50 minutes by car, more in traffic. The MBTA Rockport commuter rail line also stops in Gloucester.</div>
+          </details>
+        </article>
       </div>
     </section>
+
+    <footer>
+      <div class="names">Nate &amp; Rebecca</div>
+      <div>October 9, 2026 · Gloucester, Massachusetts</div>
+    </footer>
   </main>
 
-  <footer>
-    <div>© <span id="year"></span> Nate & Rebecca</div>
-    <div class="muted" style="margin-top:6px">Made with love • Gloucester, Massachusetts</div>
-  </footer>
-
-  <!-- Hotel Booking Reminder Modal -->
-  <div class="hotel-reminder-modal" id="hotel-reminder-modal" role="dialog" aria-labelledby="hotel-reminder-title" aria-modal="true">
-    <div class="modal">
-      <button class="modal-close" id="hotel-reminder-close" aria-label="Close modal">&times;</button>
-      <div class="hotel-reminder-content">
-        <div class="urgent-badge">⚠️ Urgent</div>
-        <h2 id="hotel-reminder-title">Book Your Hotel Soon!</h2>
-        <p>Hotels in Gloucester are filling up fast for our wedding weekend. We recommend booking your accommodations as soon as possible to secure your preferred location and rates.</p>
-        <div class="hotel-reminder-actions">
-          <a href="#stay" class="btn-primary" id="view-hotels-btn">View Recommended Hotels</a>
-          <button class="btn-secondary" id="hotel-reminder-dismiss">I'll Book Later</button>
-        </div>
-      </div>
-    </div>
+  <!-- ================= BOTTOM TAB BAR ================= -->
+  <div class="tabbar">
+    <nav aria-label="Sections">
+      <a href="#now" data-tab="now"><svg><use href="#i-clock"/></svg>Now</a>
+      <a href="#shuttle" data-tab="shuttle"><svg><use href="#i-bus"/></svg>Shuttle</a>
+      <a href="#schedule" data-tab="schedule"><svg><use href="#i-cal"/></svg>Schedule</a>
+      <a href="#info" data-tab="info"><svg><use href="#i-info"/></svg>Info</a>
+    </nav>
   </div>
-
-  <!-- RSVP Modal -->
-  <div class="modal-overlay" id="rsvp-modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
-    <div class="modal">
-      <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
-      <div class="modal-header">
-        <h2 id="modal-title">RSVP</h2>
-        <p class="muted" id="guest-name"></p>
-      </div>
-      <div class="modal-body">
-        <div class="wedding-info">
-          <h3>Wedding Details</h3>
-          <p><strong>Date:</strong> Friday, October 9, 2026</p>
-          <p><strong>Venue:</strong> Hammond Castle Museum</p>
-          <p><strong>Address:</strong> 80 Hesperus Ave, Gloucester, MA 01930</p>
-        </div>
-
-        <form id="rsvp-form">
-          <div id="form-message" class="form-message"></div>
-
-          <div class="form-group">
-            <label>Will you be attending the wedding? <span style="color:#ff6b6b">*</span></label>
-            <div class="radio-group">
-              <div class="radio-option">
-                <input type="radio" id="wedding-yes" name="wedding-rsvp" value="Yes" required>
-                <label for="wedding-yes">Yes, I'll be there!</label>
-              </div>
-              <div class="radio-option">
-                <input type="radio" id="wedding-no" name="wedding-rsvp" value="No" required>
-                <label for="wedding-no">Sorry, can't make it</label>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group" id="email-group" style="display:none">
-            <label for="attendant-email">Your email address <span style="color:#ff6b6b">*</span></label>
-            <input type="email" id="attendant-email" name="attendant-email" placeholder="your.email@example.com">
-            <p class="muted" style="font-size:13px;margin-top:4px">We'll use this to send you updates about the wedding</p>
-          </div>
-
-          <div class="form-group" id="plus-one-group" style="display:none">
-            <label id="plus-one-question-label">Will <span id="plus-one-name-display"></span> be joining you? <span style="color:#ff6b6b">*</span></label>
-            <div class="radio-group">
-              <div class="radio-option">
-                <input type="radio" id="plus-one-yes" name="plus-one-rsvp" value="Yes" required>
-                <label for="plus-one-yes">Yes</label>
-              </div>
-              <div class="radio-option">
-                <input type="radio" id="plus-one-no" name="plus-one-rsvp" value="No" required>
-                <label for="plus-one-no">No</label>
-              </div>
-            </div>
-            <input type="hidden" id="plus-one-name" name="plus-one-name">
-          </div>
-
-          <div class="form-group">
-            <label>Will you be attending the lunch the day after (Saturday, October 10)? <span style="color:#ff6b6b">*</span></label>
-            <div class="radio-group">
-              <div class="radio-option">
-                <input type="radio" id="lunch-yes" name="lunch-rsvp" value="Yes" required>
-                <label for="lunch-yes">Yes</label>
-              </div>
-              <div class="radio-option">
-                <input type="radio" id="lunch-no" name="lunch-rsvp" value="No" required>
-                <label for="lunch-no">No</label>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="message">Message for the couple (optional)</label>
-            <textarea id="message" name="message" placeholder="We'd love to hear from you!"></textarea>
-          </div>
-
-          <button type="submit" class="submit-btn" id="submit-btn">Submit RSVP</button>
-        </form>
-      </div>
-    </div>
-  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
-    // Copy address helper
-    const copyBtn = document.getElementById('copy-address');
-    if(copyBtn){
-      copyBtn.addEventListener('click', async () => {
-        try{
-          await navigator.clipboard.writeText('Hammond Castle Museum, 80 Hesperus Ave, Gloucester, MA 01930');
-          copyBtn.textContent = 'Copied!';
-          setTimeout(()=> copyBtn.textContent = 'Copy Address', 1400);
-        }catch(e){
-          alert('Address: Hammond Castle Museum, 80 Hesperus Ave, Gloucester, MA 01930');
-        }
-      });
+  (function(){
+    /* ================= CONFIG =================
+       All times are Eastern (Gloucester). October 2026 is EDT (UTC-4).
+       WEDDING_START drives the big countdown at the top — set it to the ceremony time once final. */
+    var WEDDING_START = '2026-10-09T17:00';
+    var WEEKEND_END   = '2026-10-10T18:00';   // after this, the hero shows a thank-you
+    var BOARDING_MIN  = 15;                   // minutes before departure a stop shows "Boarding"
+    var TZ = 'America/New_York';
+
+    function ET(s){ return s ? new Date(s.length === 16 ? s + ':00-04:00' : s) : null; }
+
+    /* Testing: add ?t=2026-10-09T16:05 to the URL to preview the site at that (Eastern) time. */
+    var params = new URLSearchParams(location.search);
+    var offset = 0;
+    if (params.get('t')) { var sim = ET(params.get('t')); if (sim && !isNaN(sim)) offset = sim - Date.now(); }
+    function now(){ return new Date(Date.now() + offset); }
+
+    var timeFmt = new Intl.DateTimeFormat('en-US', { timeZone: TZ, hour: 'numeric', minute: '2-digit' });
+    var dayFmt  = new Intl.DateTimeFormat('en-US', { timeZone: TZ, weekday: 'short' });
+    function fmtTime(d){ return timeFmt.format(d); }
+    function pad(n){ return String(n).padStart(2, '0'); }
+    function dur(ms){
+      var s = Math.max(0, Math.floor(ms / 1000));
+      var d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60), sec = s % 60;
+      if (d) return d + 'd ' + h + 'h';
+      if (h) return h + 'h ' + pad(m) + 'm';
+      if (m) return m + 'm ' + pad(sec) + 's';
+      return sec + 's';
     }
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-    // Smooth-scroll for same-page links
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id=a.getAttribute('href');
-        if(id.length>1){
-          e.preventDefault();
-          // Special handling for RSVP link - open modal instead of scrolling
-          if(id === '#rsvp'){
-            const nameFromURL = getUrlParameter('name');
-            showModal(nameFromURL || '');
-          } else {
-            const target = document.querySelector(id);
-            if(target){
-              target.scrollIntoView({behavior:'smooth'});
-            }
-          }
-        }
-      })
+    function sameDay(a, b){ return new Intl.DateTimeFormat('en-US',{timeZone:TZ,dateStyle:'short'}).format(a) === new Intl.DateTimeFormat('en-US',{timeZone:TZ,dateStyle:'short'}).format(b); }
+    function whenLabel(d, t){ return sameDay(d, t) ? fmtTime(d) : dayFmt.format(d) + ' ' + fmtTime(d); }
+    function $(id){ return document.getElementById(id); }
+
+    // iOS: show Apple Maps first
+    var isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if (isIOS) document.documentElement.classList.add('ios');
+
+    // Time-zone note for out-of-town devices
+    var localTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (localTZ !== TZ) $('tz-note').textContent = 'All times are Eastern Time (Gloucester), and countdowns are live from your phone.';
+
+    /* ---------- Parse schedule from the HTML ---------- */
+    var evEls = Array.prototype.slice.call(document.querySelectorAll('.ev'));
+    var events = evEls.map(function(el){
+      var start = ET(el.dataset.start);
+      var end = ET(el.dataset.end);
+      var instant = el.hasAttribute('data-instant');
+      var open = el.hasAttribute('data-open');
+      if (start && !end && !instant) end = new Date(start.getTime() + (open ? 180 : 60) * 60000);
+      return {
+        el: el, start: start, end: end, instant: instant, open: open, tba: !start,
+        title: el.querySelector('.ev-title').textContent,
+        where: el.querySelector('.ev-where') ? el.querySelector('.ev-where').textContent : '',
+        live: el.dataset.live, liveWhere: el.dataset.where,
+        link: el.dataset.link || '#schedule',
+        chip: el.querySelector('[data-status]')
+      };
+    });
+    var stops = Array.prototype.slice.call(document.querySelectorAll('.stop')).map(function(el){
+      return { el: el, depart: ET(el.dataset.depart), arrive: ET(el.dataset.arrive), chip: el.querySelector('[data-status]') };
     });
 
-    // RSVP Modal functionality
-    const modal = document.getElementById('rsvp-modal');
-    const modalClose = document.getElementById('modal-close');
-    const rsvpForm = document.getElementById('rsvp-form');
-    const formMessage = document.getElementById('form-message');
-    const guestNameEl = document.getElementById('guest-name');
-    const submitBtn = document.getElementById('submit-btn');
-
-    // Hotel Booking Reminder Modal functionality
-    const hotelReminderModal = document.getElementById('hotel-reminder-modal');
-    const hotelReminderClose = document.getElementById('hotel-reminder-close');
-    const hotelReminderDismiss = document.getElementById('hotel-reminder-dismiss');
-    const viewHotelsBtn = document.getElementById('view-hotels-btn');
-
-    // Show hotel reminder modal
-    function showHotelReminder() {
-      hotelReminderModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
+    function setChip(chip, text, cls){
+      if (!chip) return;
+      chip.textContent = text;
+      chip.className = 'chip' + (cls ? ' ' + cls : '');
     }
 
-    // Hide hotel reminder modal
-    function hideHotelReminder() {
-      hotelReminderModal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
+    /* ---------- Tick ---------- */
+    function tick(){
+      var t = now(), tm = t.getTime();
 
-    // Close hotel reminder handlers
-    if(hotelReminderClose){
-      hotelReminderClose.addEventListener('click', hideHotelReminder);
-    }
-    if(hotelReminderDismiss){
-      hotelReminderDismiss.addEventListener('click', hideHotelReminder);
-    }
-    if(hotelReminderModal){
-      hotelReminderModal.addEventListener('click', (e) => {
-        if(e.target === hotelReminderModal){
-          hideHotelReminder();
-        }
-      });
-    }
-    // Escape key to close hotel reminder
-    document.addEventListener('keydown', (e) => {
-      if(e.key === 'Escape' && hotelReminderModal.classList.contains('active')){
-        hideHotelReminder();
-      }
-    });
-    // View hotels button - close modal and scroll to hotels section
-    if(viewHotelsBtn){
-      viewHotelsBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        hideHotelReminder();
-        setTimeout(() => {
-          document.querySelector('#stay').scrollIntoView({behavior:'smooth'});
-        }, 300);
-      });
-    }
-
-    // Get URL parameter
-    function getUrlParameter(name) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(name);
-    }
-
-    // Show modal
-    function showModal(name) {
-      if(name){
-        guestNameEl.textContent = `Hi ${decodeURIComponent(name)}!`;
+      // Hero countdown
+      var wStart = ET(WEDDING_START), wEnd = ET(WEEKEND_END);
+      var left = wStart - t;
+      if (left > 0) {
+        var s = Math.floor(left / 1000);
+        $('cd-d').textContent = Math.floor(s / 86400);
+        $('cd-h').textContent = pad(Math.floor(s % 86400 / 3600));
+        $('cd-m').textContent = pad(Math.floor(s % 3600 / 60));
+        $('cd-s').textContent = pad(s % 60);
       } else {
-        guestNameEl.textContent = '';
-      }
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-      // Autofill form from URL parameters when modal opens
-      setTimeout(() => autofillFormFromURL(), 100);
-    }
-
-    // Hide modal
-    function hideModal() {
-      modal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    // Get all elements first
-    const weddingYes = document.getElementById('wedding-yes');
-    const weddingNo = document.getElementById('wedding-no');
-    const emailGroup = document.getElementById('email-group');
-    const attendantEmailInput = document.getElementById('attendant-email');
-    const plusOneNameDisplay = document.getElementById('plus-one-name-display');
-    const plusOneNameInput = document.getElementById('plus-one-name');
-    const plusOneGroup = document.getElementById('plus-one-group');
-
-    // Get plus one name from URL parameter
-    const plusOneParam = getUrlParameter('plusone');
-    const plusOneName = plusOneParam ? decodeURIComponent(plusOneParam) : '';
-
-    // Set plus one name if present in URL
-    if(plusOneName && plusOneNameInput && plusOneNameDisplay){
-      plusOneNameInput.value = plusOneName;
-      plusOneNameDisplay.textContent = plusOneName;
-    }
-
-    // Function to autofill form from URL parameters
-    function autofillFormFromURL() {
-      // Autofill email
-      const emailParam = getUrlParameter('email');
-      if(emailParam && attendantEmailInput){
-        attendantEmailInput.value = decodeURIComponent(emailParam);
+        $('countdown').style.display = 'none';
+        $('cd-label').style.display = 'none';
+        var msg = $('hero-msg');
+        msg.style.display = 'block';
+        msg.textContent = t < wEnd ? "It's happening — we're so glad you're here." : 'Thank you for celebrating with us.';
       }
 
-      // Autofill wedding RSVP
-      const weddingParam = getUrlParameter('wedding');
-      if(weddingParam){
-        const weddingValue = decodeURIComponent(weddingParam).toLowerCase();
-        if(weddingValue === 'yes' && weddingYes){
-          weddingYes.checked = true;
-          // Trigger change event to show conditional fields
-          weddingYes.dispatchEvent(new Event('change'));
-        } else if(weddingValue === 'no' && weddingNo){
-          weddingNo.checked = true;
-          weddingNo.dispatchEvent(new Event('change'));
-        }
-      }
-
-      // Autofill lunch RSVP
-      const lunchParam = getUrlParameter('lunch');
-      if(lunchParam){
-        const lunchValue = decodeURIComponent(lunchParam).toLowerCase();
-        const lunchYes = document.getElementById('lunch-yes');
-        const lunchNo = document.getElementById('lunch-no');
-        if(lunchValue === 'yes' && lunchYes){
-          lunchYes.checked = true;
-        } else if(lunchValue === 'no' && lunchNo){
-          lunchNo.checked = true;
-        }
-      }
-
-      // Autofill plus-one RSVP (only if plus-one name exists)
-      const plusOneRSVPParam = getUrlParameter('plusonersvp');
-      if(plusOneRSVPParam && plusOneName){
-        const plusOneRSVPValue = decodeURIComponent(plusOneRSVPParam).toLowerCase();
-        const plusOneYes = document.getElementById('plus-one-yes');
-        const plusOneNo = document.getElementById('plus-one-no');
-        if(plusOneRSVPValue === 'yes' && plusOneYes){
-          plusOneYes.checked = true;
-        } else if(plusOneRSVPValue === 'no' && plusOneNo){
-          plusOneNo.checked = true;
-        }
-      }
-
-      // Autofill message
-      const messageParam = getUrlParameter('message');
-      if(messageParam){
-        const messageInput = document.getElementById('message');
-        if(messageInput){
-          messageInput.value = decodeURIComponent(messageParam);
-        }
-      }
-
-      // Update radio button styling
-      updateRadioContainers();
-    }
-
-    // Function to handle wedding RSVP change
-    function handleWeddingRSVPChange() {
-      console.log('Wedding RSVP changed, weddingYes.checked:', weddingYes ? weddingYes.checked : 'weddingYes not found');
-      
-      if(weddingYes && weddingYes.checked){
-        console.log('Showing email group and plus one if applicable');
-        // Always show email field when attending
-        if(emailGroup){
-          emailGroup.style.display = 'block';
-          console.log('Email group displayed');
+      // Schedule items
+      var current = null, next = null, lastStartedIdx = -1;
+      events.forEach(function(e, i){
+        e.el.classList.remove('is-past', 'is-live', 'is-next');
+        if (e.tba) return;
+        if (tm >= e.start.getTime()) lastStartedIdx = i;
+        if (e.end && tm >= e.start && tm < e.end) {
+          e.el.classList.add('is-live');
+          setChip(e.chip, e.open ? 'Happening now' : 'Now · ' + dur(e.end - t) + ' left', 'live');
+          if (!current) current = e;
+        } else if (tm >= (e.end || e.start)) {
+          e.el.classList.add('is-past');
+          setChip(e.chip, '', '');
         } else {
-          console.log('Email group not found');
+          if (!next) { next = e; e.el.classList.add('is-next'); }
+          setChip(e.chip, e === next ? 'in ' + dur(e.start - t) : '', '');
         }
-        if(attendantEmailInput){
-          attendantEmailInput.setAttribute('required', 'required');
-        }
-        
-        // Show plus one question if plus one name exists
-        if(plusOneName && plusOneGroup){
-          plusOneGroup.style.display = 'block';
-          console.log('Plus one group displayed for:', plusOneName);
+      });
+      // If nothing timed is left, point at the next "TBA" item (e.g. Saturday brunch)
+      var nextTBA = null;
+      if (!next && t < wEnd) { for (var j = lastStartedIdx + 1; j < events.length; j++) { if (events[j].tba) { nextTBA = events[j]; break; } } }
+
+      // Shuttle stops
+      var nextStopMarked = false;
+      stops.forEach(function(st){
+        st.el.classList.remove('is-next', 'is-boarding', 'is-done');
+        var when = st.depart || st.arrive;
+        var diff = when - t;
+        if (diff <= 0) {
+          st.el.classList.add('is-done');
+          setChip(st.chip, st.depart ? 'Departed' : 'Arrived', 'done');
+        } else if (st.depart && diff <= BOARDING_MIN * 60000) {
+          st.el.classList.add('is-boarding');
+          setChip(st.chip, 'Boarding · leaves in ' + dur(diff), 'board');
+          nextStopMarked = true;
         } else {
-          console.log('Plus one group not shown - plusOneName:', plusOneName, 'plusOneGroup exists:', !!plusOneGroup);
+          if (st.depart && !nextStopMarked) { st.el.classList.add('is-next'); nextStopMarked = true; }
+          setChip(st.chip, (st.depart ? 'Leaves in ' : 'Arrives in ') + dur(diff), '');
+        }
+      });
+
+      // Now card — current
+      var curRow = $('now-current');
+      if (current) {
+        curRow.hidden = false;
+        $('now-current-title').textContent = current.live || current.title;
+        $('now-current-sub').textContent = current.liveWhere || current.where;
+        var bar = $('now-current-bar');
+        if (current.open) {
+          $('now-current-left').innerHTML = '<small style="margin:0">Started at ' + fmtTime(current.start) + '</small>';
+          bar.parentNode.hidden = true;
+        } else {
+          $('now-current-left').innerHTML = dur(current.end - t) + '<small>left · until ' + fmtTime(current.end) + '</small>';
+          bar.parentNode.hidden = false;
+          bar.style.width = Math.min(100, Math.max(0, (t - current.start) / (current.end - current.start) * 100)) + '%';
         }
       } else {
-        console.log('Hiding conditional fields');
-        // Hide all conditional fields when not attending
-        if(emailGroup){
-          emailGroup.style.display = 'none';
-        }
-        if(plusOneGroup){
-          plusOneGroup.style.display = 'none';
-        }
-        if(attendantEmailInput){
-          attendantEmailInput.required = false;
-          attendantEmailInput.value = '';
-          // Remove required attribute when hidden to prevent validation errors
-          attendantEmailInput.removeAttribute('required');
-        }
-        // Reset plus one RSVP
-        const plusOneYes = document.getElementById('plus-one-yes');
-        const plusOneNo = document.getElementById('plus-one-no');
-        if(plusOneYes) plusOneYes.checked = false;
-        if(plusOneNo) plusOneNo.checked = false;
+        curRow.hidden = true;
+      }
+
+      // Now card — next
+      var label = $('now-next-label'), link = $('now-next-link');
+      label.classList.remove('boarding');
+      if (next) {
+        var ms = next.start - t;
+        var boarding = next.link === '#shuttle' && ms <= BOARDING_MIN * 60000;
+        label.textContent = boarding ? 'Boarding now' : 'Next up';
+        if (boarding) label.classList.add('boarding');
+        $('now-next-title').textContent = next.title;
+        $('now-next-sub').textContent = whenLabel(next.start, t) + (next.where ? ' · ' + next.where : '');
+        $('now-next-in').innerHTML = (boarding ? 'Leaves in ' : 'in ') + dur(ms);
+        link.hidden = false;
+        link.setAttribute('href', next.link);
+        link.firstChild.nodeValue = next.link === '#shuttle' ? 'Stop details & directions ' : 'See schedule ';
+      } else if (nextTBA) {
+        label.textContent = 'Coming up';
+        $('now-next-title').textContent = nextTBA.title;
+        $('now-next-sub').textContent = nextTBA.where;
+        $('now-next-in').textContent = '';
+        link.hidden = false; link.setAttribute('href', '#schedule'); link.firstChild.nodeValue = 'See schedule ';
+      } else {
+        label.textContent = "That's a wrap";
+        $('now-next-title').textContent = 'Thank you for celebrating with us!';
+        $('now-next-sub').textContent = 'Safe travels home.';
+        $('now-next-in').textContent = '';
+        link.hidden = true;
       }
     }
+    tick();
+    setInterval(tick, 1000);
 
-    // Check for name parameter on load
-    const nameParam = getUrlParameter('name');
-    if(nameParam){
-      // Small delay to ensure page is loaded
-      setTimeout(() => {
-        showModal(nameParam);
-        // Autofill form fields from URL parameters
-        autofillFormFromURL();
-      }, 300);
-    }
-
-    // Close modal handlers
-    modalClose.addEventListener('click', hideModal);
-    modal.addEventListener('click', (e) => {
-      if(e.target === modal){
-        hideModal();
-      }
-    });
-
-    // Escape key to close
-    document.addEventListener('keydown', (e) => {
-      if(e.key === 'Escape' && modal.classList.contains('active')){
-        hideModal();
-      }
-    });
-
-    // Add event listeners (both change and click for better compatibility)
-    if(weddingYes){
-      console.log('Adding event listener to wedding-yes');
-      weddingYes.addEventListener('change', handleWeddingRSVPChange);
-      weddingYes.addEventListener('click', handleWeddingRSVPChange);
-    } else {
-      console.log('wedding-yes element not found');
-    }
-    if(weddingNo){
-      console.log('Adding event listener to wedding-no');
-      weddingNo.addEventListener('change', handleWeddingRSVPChange);
-      weddingNo.addEventListener('click', handleWeddingRSVPChange);
-    } else {
-      console.log('wedding-no element not found');
-    }
-    
-    // Radio button container styling fallback (for browsers without :has() support)
-    function updateRadioContainers() {
-      document.querySelectorAll('.radio-option').forEach(option => {
-        const radio = option.querySelector('input[type="radio"]');
-        if(radio && radio.checked){
-          option.classList.add('radio-checked');
-        } else {
-          option.classList.remove('radio-checked');
-        }
+    /* ---------- Copy address ---------- */
+    var toast = $('toast'), toastTimer;
+    function showToast(msg){ toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(function(){ toast.classList.remove('show'); }, 1600); }
+    document.querySelectorAll('[data-copy]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var text = btn.getAttribute('data-copy');
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function(){ showToast('Address copied'); }, function(){ showToast(text); });
+        } else { showToast(text); }
       });
+    });
+
+    /* ---------- Active tab while scrolling ---------- */
+    var tabs = document.querySelectorAll('.tabbar a');
+    var sections = ['now', 'shuttle', 'schedule', 'info'].map(function(id){ return document.getElementById(id); });
+    function setActive(){
+      var y = window.scrollY + window.innerHeight * 0.35, active = 'now';
+      sections.forEach(function(sec){ if (sec.getBoundingClientRect().top + window.scrollY <= y) active = sec.id; });
+      if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 4) active = 'info';
+      tabs.forEach(function(a){ a.classList.toggle('active', a.dataset.tab === active); });
     }
-    // Update on page load and when radios change
-    document.querySelectorAll('.radio-option input[type="radio"]').forEach(radio => {
-      radio.addEventListener('change', updateRadioContainers);
-      radio.addEventListener('click', updateRadioContainers);
-    });
-    updateRadioContainers();
-    
-    // Make entire radio option card clickable
-    document.querySelectorAll('.radio-option').forEach(option => {
-      const radio = option.querySelector('input[type="radio"]');
-      if(radio){
-        option.addEventListener('click', (e) => {
-          // Don't trigger if clicking directly on the radio or label (they handle it themselves)
-          if(e.target === radio || e.target.tagName === 'LABEL'){
-            return;
-          }
-          // Click the radio button
-          radio.click();
-        });
-      }
-    });
-    
-    // Debug: log element existence
-    console.log('Elements check:', {
-      weddingYes: !!weddingYes,
-      weddingNo: !!weddingNo,
-      emailGroup: !!emailGroup,
-      attendantEmailInput: !!attendantEmailInput,
-      plusOneGroup: !!plusOneGroup,
-      plusOneName: plusOneName
-    });
-
-    // Form submission
-    rsvpForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const name = getUrlParameter('name') || 'Guest';
-      
-      // Get form values directly from form elements (not FormData) to ensure we capture hidden fields
-      const getFormValue = (fieldName) => {
-        // For radio buttons, get the checked one
-        const radioButtons = rsvpForm.querySelectorAll(`[name="${fieldName}"]`);
-        if (radioButtons.length > 0 && radioButtons[0].type === 'radio') {
-          const checked = rsvpForm.querySelector(`[name="${fieldName}"]:checked`);
-          return checked ? checked.value : '';
-        }
-        // For other inputs, get the value directly
-        const element = rsvpForm.querySelector(`[name="${fieldName}"]`);
-        return element ? (element.value || '') : '';
-      };
-      
-      // Build data object with all fields, explicitly getting values from DOM
-      const plusOneNameValue = getFormValue('plus-one-name');
-      const plusOneRSVPValue = getFormValue('plus-one-rsvp');
-      // If there's a plus one name, use their RSVP answer; otherwise "No"
-      const plusOneValue = plusOneNameValue ? (plusOneRSVPValue || 'No') : 'No';
-      const data = {
-        name: decodeURIComponent(name),
-        attendantEmail: getFormValue('attendant-email'),
-        weddingRSVP: getFormValue('wedding-rsvp'),
-        plusOne: plusOneValue,
-        plusOneName: plusOneNameValue,
-        plusOneEmail: '', // No longer collecting plus one email
-        lunchRSVP: getFormValue('lunch-rsvp'),
-        message: getFormValue('message'),
-        timestamp: new Date().toISOString()
-      };
-      
-      // Debug: log what we're sending
-      console.log('Sending data:', data);
-
-      // Disable submit button
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Submitting...';
-      formMessage.className = 'form-message';
-      formMessage.textContent = '';
-
-      try {
-        // Replace with your Google Apps Script Web App URL
-        const scriptUrl = 'https://script.google.com/macros/s/AKfycbxwQP6-0xbwP5Y2TlZAV_4ygpBZ4wTBx9XbG4TnS4b-2PU10o98Gn8_pidhGCHGW42X/exec';
-        
-        // Create form data for submission
-        const formData = new URLSearchParams();
-        Object.keys(data).forEach(key => {
-          const value = data[key];
-          // Always send the value, converting to string and ensuring it's not null/undefined
-          const stringValue = (value !== null && value !== undefined) ? String(value) : '';
-          formData.append(key, stringValue);
-        });
-        
-        // Debug: log what we're sending
-        console.log('Form data string:', formData.toString());
-        console.log('Form data entries:', Array.from(formData.entries()));
-        
-        // Submit using fetch with form data
-        const response = await fetch(scriptUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: formData.toString()
-        });
-        
-        // Try to parse response (may not work due to CORS, but we'll try)
-        let result;
-        try {
-          const responseText = await response.text();
-          console.log('Response status:', response.status);
-          console.log('Response text:', responseText);
-          try {
-            result = JSON.parse(responseText);
-            console.log('Parsed response:', result);
-          } catch (parseError) {
-            console.log('Could not parse response as JSON, treating as success');
-            result = { success: true };
-          }
-        } catch (e) {
-          console.error('Error reading response:', e);
-          // If we can't parse JSON, assume success (Google Apps Script may not return CORS headers)
-          result = { success: true };
-        }
-        
-        // Show success message
-        formMessage.className = 'form-message success';
-        formMessage.textContent = 'Thank you! Your RSVP has been submitted successfully.';
-        rsvpForm.reset();
-        emailGroup.style.display = 'none';
-        plusOneGroup.style.display = 'none';
-        // Restore plus one name if it was from URL
-        if(plusOneName){
-          plusOneNameInput.value = plusOneName;
-        }
-        
-        // Hide RSVP modal after 3 seconds, then show hotel reminder
-        setTimeout(() => {
-          hideModal();
-          formMessage.className = 'form-message';
-          // Show hotel booking reminder after a brief delay
-          setTimeout(() => {
-            showHotelReminder();
-          }, 500);
-        }, 3000);
-
-      } catch (error) {
-        console.error('Error submitting RSVP:', error);
-        formMessage.className = 'form-message error';
-        formMessage.textContent = 'There was an error submitting your RSVP. Please try again or contact us directly.';
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Submit RSVP';
-      }
-    });
+    window.addEventListener('scroll', setActive, { passive: true });
+    setActive();
+  })();
   </script>
 </body>
 </html>
