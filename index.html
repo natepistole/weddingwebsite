@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Nate & Rebecca — Wedding Weekend Guide</title>
   <meta name="description" content="Everything you need for Nate & Rebecca's wedding at Hammond Castle — shuttle times, schedule, dress code, and directions." />
-  <meta name="theme-color" content="#120b0d" />
+  <meta name="theme-color" content="#4f0c20" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Nate & Rebecca" />
@@ -24,47 +24,50 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
+    /* ================= Theme ================= */
     :root{
-      --bg:#120b0d;
-      --surface:#1c1316;
-      --surface-2:#261a1e;
-      --ink:#f6efe9;
-      --muted:#b3a3a2;
-      --line:rgba(255,255,255,.08);
-      --brand:#9b1c43;
-      --brand-ink:#fff4f6;
-      --accent:#e8a7b8;        /* rose — readable accent on dark */
-      --gold:#d9b45a;
-      --live:#7fd6a4;
-      --live-bg:rgba(127,214,164,.12);
-      --warn:#ff8a8a;
-      --warn-bg:rgba(255,107,107,.1);
-      --radius:20px;
-      --shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 12px 32px rgba(0,0,0,.35);
-      --tabbar-h:64px;
-      color-scheme:dark;
+      --bg:#fbf7f4;
+      --surface:#ffffff;
+      --surface-2:#f7efeb;
+      --ink:#2a1418;
+      --muted:#7a6467;
+      --line:rgba(91,18,38,.09);
+      --brand:#7d1631;          /* maroon — fills & buttons */
+      --brand-deep:#4f0c20;
+      --brand-ink:#ffffff;
+      --accent:#7d1631;         /* maroon — text accents */
+      --soft:#f6e3e8;           /* blush tint */
+      --gold:#b0832a;
+      --live:#1c7a4b;
+      --live-bg:#e5f3eb;
+      --warn:#a3122f;
+      --radius:24px;
+      --shadow:0 1px 2px rgba(79,12,32,.04), 0 10px 30px rgba(79,12,32,.07);
+      --serif:"Fraunces",Georgia,"Times New Roman",serif;
+      --sans:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      color-scheme:light;
     }
-    @media (prefers-color-scheme: light){
+    @media (prefers-color-scheme: dark){
       :root{
-        --bg:#f7f2ec;
-        --surface:#ffffff;
-        --surface-2:#f3ece6;
-        --ink:#22161a;
-        --muted:#6f5f61;
-        --line:rgba(34,22,26,.1);
-        --brand:#8b1538;
+        --bg:#150c0f;
+        --surface:#1f1418;
+        --surface-2:#2a1c21;
+        --ink:#f8efeb;
+        --muted:#bba6a8;
+        --line:rgba(255,255,255,.08);
+        --brand:#9b1c43;
         --brand-ink:#ffffff;
-        --accent:#8b1538;
-        --gold:#9a7520;
-        --live:#1d7a4a;
-        --live-bg:rgba(29,122,74,.1);
-        --warn:#b42318;
-        --warn-bg:rgba(180,35,24,.07);
-        --shadow:0 1px 2px rgba(34,22,26,.05), 0 8px 24px rgba(34,22,26,.06);
-        color-scheme:light;
+        --accent:#f2aebf;
+        --soft:rgba(242,174,191,.12);
+        --gold:#e2bd66;
+        --live:#86dbab;
+        --live-bg:rgba(134,219,171,.12);
+        --warn:#ff9aa9;
+        --shadow:0 1px 0 rgba(255,255,255,.03) inset, 0 12px 32px rgba(0,0,0,.35);
+        color-scheme:dark;
       }
     }
 
@@ -72,208 +75,234 @@
     [hidden]{display:none!important}
     html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
     body{
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-      font-size:16px;
-      line-height:1.5;
-      color:var(--ink);
-      background:var(--bg);
-      padding-bottom:calc(var(--tabbar-h) + env(safe-area-inset-bottom) + 24px);
+      margin:0;font-family:var(--sans);font-size:16px;line-height:1.5;
+      color:var(--ink);background:var(--bg);
+      padding-bottom:calc(110px + env(safe-area-inset-bottom));
       -webkit-font-smoothing:antialiased;
     }
     a{color:inherit}
-    h1,h2,h3,p{margin:0}
-    .num{font-variant-numeric:tabular-nums}
-    .sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    h1,h2,h3,h4,p{margin:0}
+    svg{flex:none}
     .wrap{max-width:560px;margin-inline:auto;padding-inline:16px}
+    .sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-    /* ---------- Hero ---------- */
+    /* ================= Hero ================= */
     .hero{
-      position:relative;isolation:isolate;overflow:hidden;
-      color:#fff;background:#1a0f12;
-      border-radius:0 0 28px 28px;
-      padding:calc(env(safe-area-inset-top) + 48px) 0 28px;
+      position:relative;isolation:isolate;overflow:hidden;color:#fff;
+      background:radial-gradient(120% 80% at 20% 0%,#8d1d3c 0%,#4f0c20 55%,#2a0712 100%);
+      border-radius:0 0 36px 36px;
+      padding:calc(env(safe-area-inset-top) + 44px) 0 64px;
     }
-    .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(1.05) brightness(.9)}
-    .hero::after{
-      content:"";position:absolute;inset:0;z-index:-1;
-      background:linear-gradient(180deg,rgba(18,11,13,.25) 0%,rgba(18,11,13,.45) 45%,rgba(18,11,13,.88) 100%);
-    }
-    .hero .kicker{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
-    .hero h1{font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:clamp(40px,11vw,60px);line-height:1.05;margin:10px 0 8px;letter-spacing:-.01em}
-    .hero h1 em{font-style:italic;font-weight:500;color:#f1c9d3}
-    .hero .meta{font-size:15px;opacity:.92}
-    .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:22px}
-    .cd-cell{
-      background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);
-      -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
-      border-radius:14px;padding:10px 4px 8px;text-align:center;
-    }
-    .cd-cell b{display:block;font-size:28px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
-    .cd-cell span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
-    .cd-label{margin-top:10px;font-size:13px;opacity:.8}
-    .hero-msg{margin-top:20px;font-size:17px;font-weight:600;display:none}
-    @media (prefers-reduced-motion: reduce){ .hero video{display:none} }
+    .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+    .hero::after{content:"";position:absolute;inset:0;z-index:-1;
+      background:linear-gradient(180deg,rgba(60,8,24,.35) 0%,rgba(60,8,24,.55) 45%,rgba(42,7,18,.94) 100%)}
+    .hero-kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.02em;
+      padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.18);
+      -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+    .hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(44px,12.5vw,64px);line-height:1;letter-spacing:-.02em;margin:18px 0 10px}
+    .hero h1 em{font-style:italic;color:#f6c4d1}
+    .hero .meta{font-size:15px;opacity:.9;display:flex;align-items:center;gap:6px}
+    .hero .meta svg{width:16px;height:16px;opacity:.85}
+    .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:24px}
+    .cd-cell{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);
+      -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-radius:18px;padding:12px 4px 10px;text-align:center}
+    .cd-cell b{display:block;font-size:30px;font-weight:700;line-height:1.05;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+    .cd-cell span{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
+    .cd-label{margin-top:12px;font-size:14px;opacity:.85}
+    .hero-msg{margin-top:22px;font-family:var(--serif);font-size:24px;font-style:italic;line-height:1.25}
+    @media (prefers-reduced-motion: reduce){ .hero video{display:none} html{scroll-behavior:auto} }
 
-    /* ---------- Sections ---------- */
+    /* ================= Now card ================= */
+    .now-card{
+      position:relative;z-index:2;margin-top:-40px;overflow:hidden;color:#fff;
+      background:linear-gradient(145deg,#8a1a3a 0%,#5e0f27 60%,#480a1d 100%);
+      border-radius:var(--radius);box-shadow:0 16px 40px rgba(79,12,32,.28);
+    }
+    .now-card::before{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.06)}
+    .now-row{position:relative;padding:18px 20px}
+    .now-row + .now-row{border-top:1px solid rgba(255,255,255,.12)}
+    .now-label{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+    .is-now .now-label{color:#a6efc4}
+    .now-label.boarding{color:#f6d488}
+    .live-dot{width:8px;height:8px;border-radius:50%;background:#a6efc4;animation:pulse 1.8s infinite}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(166,239,196,.6)}70%{box-shadow:0 0 0 9px rgba(166,239,196,0)}100%{box-shadow:0 0 0 0 rgba(166,239,196,0)}}
+    .now-title{font-family:var(--serif);font-size:24px;font-weight:500;line-height:1.2;margin-top:8px;letter-spacing:-.01em}
+    .now-sub{font-size:15px;color:rgba(255,255,255,.78);margin-top:4px}
+    .now-big{font-size:32px;font-weight:800;margin-top:12px;font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1.1}
+    .now-big small{font-size:14px;font-weight:500;color:rgba(255,255,255,.7);margin-left:6px;letter-spacing:0}
+    .bar{height:6px;border-radius:99px;background:rgba(255,255,255,.18);margin-top:12px;overflow:hidden}
+    .bar > i{display:block;height:100%;width:0;background:#fff;border-radius:inherit;transition:width 1s linear}
+    .now-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;padding:10px 14px;border-radius:99px;
+      background:rgba(255,255,255,.14);color:#fff;font-weight:700;font-size:14px;text-decoration:none}
+    .now-link svg{width:16px;height:16px}
+    .tz-note{font-size:12px;color:var(--muted);margin:10px 4px 0;text-align:center}
+
+    /* ================= Quick tiles ================= */
+    .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+    .tile{display:flex;flex-direction:column;gap:10px;padding:16px;border-radius:20px;background:var(--surface);border:1px solid var(--line);
+      box-shadow:var(--shadow);text-decoration:none;-webkit-tap-highlight-color:transparent;transition:transform .12s}
+    .tile:active{transform:scale(.97)}
+    .tile-icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--soft);color:var(--accent)}
+    .tile-icon svg{width:22px;height:22px}
+    .tile b{font-size:15px;font-weight:700;display:block}
+    .tile div > span{font-size:13px;color:var(--muted);display:block;margin-top:1px}
+
+    /* ================= Sections ================= */
     section{scroll-margin-top:16px}
-    .section{margin-top:36px}
-    .eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
-    .section > .head h2{font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:28px;line-height:1.15;margin-top:4px}
-    .section > .head p{color:var(--muted);margin-top:6px;font-size:15px}
-    .head{margin-bottom:14px}
+    .section{margin-top:44px}
+    .head{margin-bottom:16px;padding-inline:4px}
+    .eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+    .eyebrow svg{width:15px;height:15px}
+    .head h2{font-family:var(--serif);font-weight:500;font-size:32px;line-height:1.1;letter-spacing:-.02em;margin-top:6px}
+    .head p{color:var(--muted);margin-top:8px;font-size:15px}
     .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
-    .pad{padding:18px}
-    .muted{color:var(--muted)}
-    .small{font-size:13px}
-    .tz-note{font-size:12px;color:var(--muted);margin-top:8px}
+    .pad{padding:20px}
 
-    /* ---------- Now / Next ---------- */
-    .now-card{margin-top:-18px;position:relative;z-index:2;overflow:hidden}
-    .now-row{padding:16px 18px}
-    .now-row + .now-row{border-top:1px solid var(--line)}
-    .now-label{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-    .now-row.is-now .now-label{color:var(--live)}
-    .live-dot{width:8px;height:8px;border-radius:50%;background:var(--live);box-shadow:0 0 0 0 var(--live);animation:pulse 1.8s infinite}
-    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(127,214,164,.6)}70%{box-shadow:0 0 0 8px rgba(127,214,164,0)}100%{box-shadow:0 0 0 0 rgba(127,214,164,0)}}
-    .now-title{font-size:20px;font-weight:700;line-height:1.25;margin-top:6px}
-    .now-sub{color:var(--muted);font-size:15px;margin-top:2px}
-    .now-big{font-size:30px;font-weight:700;margin-top:10px;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
-    .now-big small{font-size:15px;font-weight:500;color:var(--muted);margin-left:4px}
-    .bar{height:6px;border-radius:99px;background:var(--surface-2);margin-top:12px;overflow:hidden}
-    .bar > i{display:block;height:100%;width:0;background:var(--live);border-radius:inherit;transition:width 1s linear}
-    .now-link{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-weight:600;font-size:15px;color:var(--accent);text-decoration:none;min-height:32px}
-    .boarding{color:var(--gold)!important}
-
-    /* ---------- Buttons ---------- */
-    .btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:7px;
-      min-height:44px;padding:0 14px;border-radius:12px;
-      font:600 15px/1 Inter,system-ui,sans-serif;text-decoration:none;cursor:pointer;
-      background:var(--surface-2);color:var(--ink);border:1px solid var(--line);
-      -webkit-tap-highlight-color:transparent;transition:transform .12s, background .2s;
-    }
+    /* ================= Buttons & chips ================= */
+    .btns{display:flex;gap:8px;margin-top:12px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:46px;padding:0 12px;border-radius:14px;
+      font:700 14px/1 var(--sans);text-decoration:none;cursor:pointer;white-space:nowrap;
+      background:var(--soft);color:var(--accent);border:0;-webkit-tap-highlight-color:transparent;transition:transform .12s}
     .btn:active{transform:scale(.97)}
-    .btn-primary{background:var(--brand);color:var(--brand-ink);border-color:transparent}
-    .btns .btn-map{flex:1 1 0;min-width:0;white-space:nowrap;font-size:14px;padding:0 10px;gap:6px}
-    .addr-copy{display:block;background:none;border:0;padding:2px 0;margin-top:2px;font:inherit;font-size:15px;color:var(--muted);text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent}
-    .addr-copy svg{display:inline-block;width:14px;height:14px;margin-left:6px;vertical-align:-2px;opacity:.8}
-    .addr-copy:active{color:var(--ink)}
+    .btn svg{width:18px;height:18px}
+    .btns .btn{flex:1 1 0;min-width:0}
     .ios .btn-apple{order:-1}
-    .btn svg{width:18px;height:18px;flex:none}
+    .addr-copy{display:block;background:none;border:0;padding:2px 0;margin-top:3px;font:inherit;font-size:15px;color:var(--muted);text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent}
+    .addr-copy svg{display:inline-block;width:14px;height:14px;margin-left:6px;vertical-align:-2px;opacity:.7}
+    .chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:99px;font-size:12.5px;font-weight:700;
+      background:var(--surface-2);color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+    .chip:empty{display:none}
+    .chip.board{background:rgba(226,189,102,.2);color:var(--gold)}
+    .chip.live{background:var(--live-bg);color:var(--live)}
+    .chip.done{color:var(--muted);background:transparent;padding-left:0}
 
-    /* ---------- Shuttle route ---------- */
+    /* ================= Shuttle ================= */
     .route-card + .route-card{margin-top:14px}
-    .route-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 4px}
-    .route-head h3{font-size:18px;font-weight:700}
-    .route-head .muted{font-size:14px}
-    .route{list-style:none;margin:0;padding:8px 18px 4px}
-    .stop{position:relative;display:grid;grid-template-columns:22px 1fr;gap:12px;padding-bottom:18px}
-    .stop:last-child{padding-bottom:14px}
-    .stop::before{ /* rail */
-      content:"";position:absolute;left:10px;top:22px;bottom:-2px;width:2px;background:var(--line);
-    }
+    .route-head{display:flex;align-items:center;gap:12px;padding:18px 20px 6px}
+    .route-head .tile-icon{width:38px;height:38px}
+    .route-head h3{font-size:17px;font-weight:800}
+    .route-head p{font-size:13px;color:var(--muted)}
+    .route{list-style:none;margin:0;padding:10px 20px 4px}
+    .stop{position:relative;display:grid;grid-template-columns:22px 1fr;gap:14px;padding-bottom:22px}
+    .stop:last-child{padding-bottom:16px}
+    .stop::before{content:"";position:absolute;left:10px;top:24px;bottom:0;width:2px;border-radius:2px;background:var(--line)}
     .stop:last-child::before{display:none}
-    .dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--muted);background:var(--surface);margin-top:2px;display:grid;place-items:center}
+    .dot{width:22px;height:22px;border-radius:50%;border:2.5px solid var(--muted);background:var(--surface);margin-top:3px;display:grid;place-items:center;opacity:.6}
     .dot svg{width:12px;height:12px;opacity:0}
-    .stop.is-next .dot{border-color:var(--accent);background:var(--accent)}
-    .stop.is-boarding .dot{border-color:var(--gold);background:var(--gold)}
+    .stop.is-next .dot{border-color:var(--brand);background:var(--brand);opacity:1;box-shadow:0 0 0 5px var(--soft)}
+    .stop.is-boarding .dot{border-color:var(--gold);background:var(--gold);opacity:1;box-shadow:0 0 0 5px rgba(226,189,102,.2)}
     .stop.is-done .dot{border-color:var(--muted);background:var(--muted)}
     .stop.is-done .dot svg{opacity:1;color:var(--surface)}
-    .stop.is-done .stop-body{opacity:.55}
+    .stop.is-done .stop-body{opacity:.5}
     .stop-top{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
-    .stop-time{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
-    .stop-kind{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
-    .stop h4{font-size:17px;font-weight:700;margin:4px 0 0}
-    .addr{color:var(--muted);font-size:15px;margin-top:2px}
+    .stop-time{font-size:22px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+    .stop-kind{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+    .stop h4{font-size:17px;font-weight:700;margin-top:6px}
     .stop-note{font-size:14px;color:var(--muted);margin-top:4px}
+    .callout{display:flex;gap:10px;padding:14px 16px;border-radius:16px;background:var(--soft);font-size:14px;margin:4px 20px 20px;line-height:1.45}
+    .callout svg{width:18px;height:18px;margin-top:1px;color:var(--accent)}
 
-    .chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:99px;font-size:13px;font-weight:600;background:var(--surface-2);color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
-    .chip:empty{display:none}
-    .chip.board{background:rgba(217,180,90,.16);color:var(--gold)}
-    .chip.live{background:var(--live-bg);color:var(--live)}
-    .chip.done{color:var(--muted)}
-
-    .callout{display:flex;gap:10px;padding:12px 14px;border-radius:14px;background:var(--surface-2);font-size:14px;margin:4px 18px 18px}
-    .callout svg{width:18px;height:18px;flex:none;margin-top:1px;color:var(--accent)}
-
-    /* ---------- Schedule ---------- */
+    /* ================= Schedule ================= */
     .day + .day{margin-top:14px}
-    .day-head{display:flex;justify-content:space-between;align-items:baseline;padding:16px 18px 6px}
-    .day-head h3{font-size:18px;font-weight:700}
-    .events{list-style:none;margin:0;padding:4px 10px 10px}
-    .ev{display:grid;grid-template-columns:76px 1fr;gap:10px;padding:12px 8px;border-radius:14px;position:relative}
-    .ev + .ev::before{content:"";position:absolute;left:8px;right:8px;top:0;height:1px;background:var(--line)}
-    .ev-time{font-weight:700;font-size:15px;font-variant-numeric:tabular-nums;padding-top:1px}
-    .ev-title{font-weight:600;font-size:16px;line-height:1.3}
+    .day-head{display:flex;justify-content:space-between;align-items:baseline;padding:20px 20px 4px}
+    .day-head h3{font-family:var(--serif);font-weight:500;font-size:22px}
+    .day-head span{font-size:14px;color:var(--muted)}
+    .events{list-style:none;margin:0;padding:10px 12px 12px}
+    .ev{position:relative;display:grid;grid-template-columns:40px 1fr;gap:12px;padding:10px 8px 14px;border-radius:18px}
+    .ev::before{content:"";position:absolute;left:27px;top:52px;bottom:-8px;width:2px;border-radius:2px;background:var(--line)}
+    .ev:last-child::before{display:none}
+    .ev-icon{width:40px;height:40px;border-radius:14px;display:grid;place-items:center;background:var(--soft);color:var(--accent);position:relative;z-index:1}
+    .ev-icon svg{width:20px;height:20px}
+    .ev-top{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;min-height:22px}
+    .ev-time{font-size:13px;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums;letter-spacing:.01em}
+    .ev-title{font-weight:700;font-size:16.5px;line-height:1.3;margin-top:2px}
     .ev-where{color:var(--muted);font-size:14px;margin-top:2px}
-    .ev .chip{margin-top:6px}
-    .ev a{color:var(--accent);font-weight:600;text-decoration:none}
-    .ev.is-past{opacity:.5}
+    .ev.is-past{opacity:.45}
     .ev.is-live{background:var(--live-bg)}
-    .ev.is-live::before, .ev.is-live + .ev::before{display:none}
-    .ev.is-tba .ev-time{color:var(--muted);font-weight:600}
+    .ev.is-live .ev-icon{background:var(--live);color:var(--surface)}
+    .ev.is-live .ev-time{color:var(--live)}
+    .ev.is-tba .ev-time{color:var(--muted)}
 
-    /* ---------- Info ---------- */
+    /* ================= Info ================= */
     .info-grid{display:grid;gap:14px}
-    .card h3{font-size:18px;font-weight:700}
-    .list{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:10px}
-    .list li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15px}
-    .list svg{width:20px;height:20px;color:var(--accent);margin-top:1px}
-    .alert{background:var(--warn-bg);color:var(--warn);border-radius:14px;padding:12px 14px;font-weight:700;font-size:15px;margin-top:12px}
-    .dress-headline{font-family:"Playfair Display",Georgia,serif;font-size:24px;font-weight:600;margin-top:4px}
+    .card h3{font-size:19px;font-weight:800;letter-spacing:-.01em}
+    .dress-headline{font-family:var(--serif);font-size:30px;font-weight:500;line-height:1.1;margin-top:8px;letter-spacing:-.02em}
+    .swatches{display:flex;gap:12px;margin-top:16px;padding:14px;border-radius:18px;background:var(--surface-2);align-items:center}
+    .swatch{position:relative;width:44px;height:44px;border-radius:50%;flex:none;overflow:hidden}
+    .swatch::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:3px;background:var(--warn);transform:rotate(-45deg)}
+    .sw-black{background:#111;box-shadow:0 0 0 2px var(--surface)}
+    .sw-white{background:#fff;box-shadow:inset 0 0 0 1px rgba(0,0,0,.15),0 0 0 2px var(--surface)}
+    .swatches p{font-size:14px;line-height:1.4}
+    .swatches strong{color:var(--warn)}
+    .list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px}
+    .list li{display:grid;grid-template-columns:34px 1fr;gap:12px;font-size:15px;align-items:start}
+    .list .li-icon{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:var(--soft);color:var(--accent)}
+    .list .li-icon svg{width:18px;height:18px}
+    .list li > span:last-child{padding-top:6px}
+    .venue-spots{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+    .spot{padding:12px 14px;border-radius:16px;background:var(--surface-2)}
+    .spot small{display:block;font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+    .spot b{display:block;font-size:15px;margin-top:2px}
 
     details{border-top:1px solid var(--line)}
-    details:first-of-type{border-top:0}
-    summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 18px;font-weight:600;font-size:16px;min-height:56px}
+    summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 20px;font-weight:700;font-size:15.5px;min-height:58px;-webkit-tap-highlight-color:transparent}
     summary::-webkit-details-marker{display:none}
-    summary::after{content:"";width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .2s;flex:none;margin-top:-4px}
-    details[open] summary::after{transform:rotate(-135deg);margin-top:4px}
-    details .ans{padding:0 18px 16px;color:var(--muted);font-size:15px}
-    details .ans a{color:var(--accent);font-weight:600}
+    summary::after{content:"+";flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--soft);color:var(--accent);font-size:18px;font-weight:600;transition:transform .2s}
+    details[open] summary::after{transform:rotate(45deg)}
+    details .ans{padding:0 20px 18px;color:var(--muted);font-size:15px}
+    details .ans a{color:var(--accent);font-weight:700}
 
-    footer{text-align:center;color:var(--muted);font-size:13px;margin-top:40px}
-    footer .names{font-family:"Playfair Display",Georgia,serif;font-size:20px;color:var(--ink);margin-bottom:4px}
+    footer{text-align:center;color:var(--muted);font-size:13px;margin-top:48px}
+    footer .names{font-family:var(--serif);font-size:24px;font-style:italic;color:var(--accent);margin-bottom:4px}
 
-    /* ---------- Bottom tab bar ---------- */
-    .tabbar{
-      position:fixed;left:0;right:0;bottom:0;z-index:50;
-      padding-bottom:env(safe-area-inset-bottom);
-      background:color-mix(in srgb, var(--bg) 82%, transparent);
-      -webkit-backdrop-filter:saturate(1.4) blur(16px);backdrop-filter:saturate(1.4) blur(16px);
-      border-top:1px solid var(--line);
-    }
-    .tabbar nav{max-width:560px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);height:var(--tabbar-h)}
-    .tabbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-decoration:none;color:var(--muted);font-size:11px;font-weight:600;-webkit-tap-highlight-color:transparent}
-    .tabbar a svg{width:24px;height:24px}
-    .tabbar a.active{color:var(--accent)}
+    /* ================= Floating tab bar ================= */
+    .tabbar{position:fixed;left:0;right:0;bottom:calc(10px + env(safe-area-inset-bottom));z-index:50;padding-inline:12px;pointer-events:none}
+    .tabbar nav{pointer-events:auto;max-width:440px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:6px;
+      border-radius:24px;border:1px solid var(--line);
+      background:color-mix(in srgb, var(--surface) 82%, transparent);
+      -webkit-backdrop-filter:saturate(1.5) blur(18px);backdrop-filter:saturate(1.5) blur(18px);
+      box-shadow:0 10px 30px rgba(42,7,18,.18)}
+    .tabbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;height:52px;border-radius:18px;
+      text-decoration:none;color:var(--muted);font-size:11px;font-weight:700;-webkit-tap-highlight-color:transparent;transition:background .2s,color .2s}
+    .tabbar a svg{width:22px;height:22px}
+    .tabbar a.active{color:var(--accent);background:var(--soft)}
 
-    .toast{position:fixed;left:50%;bottom:calc(var(--tabbar-h) + env(safe-area-inset-bottom) + 14px);transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:99px;font-weight:600;font-size:14px;transition:.25s;z-index:60}
+    .toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translate(-50%,16px);opacity:0;pointer-events:none;
+      background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:99px;font-weight:700;font-size:14px;transition:.25s;z-index:60}
     .toast.show{opacity:1;transform:translate(-50%,0)}
 
-    @media (min-width:700px){
-      .hero{padding-top:72px;padding-bottom:40px}
-    }
+    @media (min-width:700px){ .hero{padding-top:72px;padding-bottom:84px} }
   </style>
 </head>
 <body>
 
   <!-- Icon sprite -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
-    <symbol id="i-bus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="3"/><path d="M4 11h16M8 21v-4M16 21v-4"/><circle cx="8" cy="14" r=".6" fill="currentColor"/><circle cx="16" cy="14" r=".6" fill="currentColor"/></symbol>
-    <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
-    <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></symbol>
-    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-12a7 7 0 1 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></symbol>
-    <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></symbol>
-    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></symbol>
-    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-    <symbol id="i-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14v-5l-2-5H7l-2 5v5z"/><path d="M5 12h14"/><circle cx="8" cy="17" r="1.5"/><circle cx="16" cy="17" r="1.5"/></symbol>
-    <symbol id="i-stairs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h5v-5h5v-5h5V5h3"/></symbol>
-    <symbol id="i-shirt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3l4 3 4-3 5 4-3 4-2-1v11H8V10l-2 1-3-4z"/></symbol>
-    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M6 18L18 6"/></symbol>
-    <symbol id="i-wind" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10a3 3 0 1 0-3-3M3 12h15a3 3 0 1 1-3 3M3 16h7"/></symbol>
+    <defs>
+      <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+      <symbol id="i-bus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="3"/><path d="M4 11h16M8 21v-4M16 21v-4"/><circle cx="8" cy="14" r=".6" fill="currentColor"/><circle cx="16" cy="14" r=".6" fill="currentColor"/></symbol>
+      <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-12a7 7 0 1 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></symbol>
+      <symbol id="i-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8-8 18-2-8z"/></symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="i-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14v-5l-2-5H7l-2 5v5z"/><path d="M5 12h14"/><circle cx="8" cy="17" r="1.5"/><circle cx="16" cy="17" r="1.5"/></symbol>
+      <symbol id="i-stairs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h5v-5h5v-5h5V5h3"/></symbol>
+      <symbol id="i-shirt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3l4 3 4-3 5 4-3 4-2-1v11H8V10l-2 1-3-4z"/></symbol>
+      <symbol id="i-wind" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10a3 3 0 1 0-3-3M3 12h15a3 3 0 1 1-3 3M3 16h7"/></symbol>
+      <symbol id="i-castle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V8h2V5h2v3h2V5h4v3h2V5h2v3h2v13z"/><path d="M10 21v-4a2 2 0 0 1 4 0v4"/></symbol>
+      <symbol id="i-rings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="14.5" r="5.5"/><circle cx="15" cy="14.5" r="5.5"/><path d="M7.5 6.5L9 4l1.5 2.5"/></symbol>
+      <symbol id="i-glass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14l-7 8z"/><path d="M12 12v8M8 20h8M8.5 8h7"/></symbol>
+      <symbol id="i-dinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v6a2 2 0 0 0 4 0V3M7 11v10"/><path d="M17 21V3c-2.2 1.2-3 4-3 7 0 1.7 1.3 3 3 3"/></symbol>
+      <symbol id="i-cake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21h16v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2z"/><path d="M4 16c1.5 1 3 1 4 0s2.5-1 4 0 2.5 1 4 0 2.5-1 4 0"/><path d="M12 11V8"/><path d="M12 5.5c.8-.8.8-1.7 0-2.5-.8.8-.8 1.7 0 2.5z"/></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+      <symbol id="i-coffee" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h13v5a6 6 0 0 1-6 6h-1a6 6 0 0 1-6-6z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17M8 3v3M12 3v3"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7a4.3 4.3 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20z"/></symbol>
+      <symbol id="i-bowl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="10" cy="9" r=".9" fill="currentColor"/><circle cx="14" cy="8.5" r=".9" fill="currentColor"/><circle cx="12.5" cy="12" r=".9" fill="currentColor"/></symbol>
+      <symbol id="i-door" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V9a7 7 0 0 1 14 0v12z"/><path d="M3 21h18M12 4v17"/></symbol>
+    </defs>
   </svg>
 
   <!-- ================= HERO + COUNTDOWN ================= -->
@@ -283,25 +312,25 @@
       <source src="https://raw.githubusercontent.com/natepistole/weddingwebsite/main/hammondcastlehero.mp4" type="video/mp4">
     </video>
     <div class="wrap">
-      <div class="kicker">Friday · October 9, 2026</div>
+      <span class="hero-kicker"><svg width="14" height="14" style="color:#f6c4d1"><use href="#i-heart"/></svg>Friday, October 9, 2026</span>
       <h1>Nate <em>&amp;</em> Rebecca</h1>
-      <p class="meta">Hammond Castle · Gloucester, Massachusetts</p>
+      <p class="meta"><svg><use href="#i-pin"/></svg>Hammond Castle · Gloucester, MA</p>
 
-      <div class="countdown" id="countdown" aria-live="off">
+      <div class="countdown" id="countdown">
         <div class="cd-cell"><b id="cd-d">–</b><span>Days</span></div>
         <div class="cd-cell"><b id="cd-h">–</b><span>Hours</span></div>
         <div class="cd-cell"><b id="cd-m">–</b><span>Min</span></div>
         <div class="cd-cell"><b id="cd-s">–</b><span>Sec</span></div>
       </div>
-      <p class="cd-label" id="cd-label">until the celebration begins</p>
-      <p class="hero-msg" id="hero-msg"></p>
+      <p class="cd-label" id="cd-label">until we say “I do” · ceremony at 5:10 PM</p>
+      <p class="hero-msg" id="hero-msg" hidden></p>
     </div>
   </header>
 
   <main class="wrap">
 
     <!-- ================= NOW / NEXT ================= -->
-    <section id="now" class="card now-card" aria-label="What's happening now">
+    <section id="now" class="now-card" aria-label="What's happening now">
       <div class="now-row is-now" id="now-current" hidden>
         <div class="now-label"><span class="live-dot"></span> Happening now</div>
         <p class="now-title" id="now-current-title"></p>
@@ -314,24 +343,32 @@
         <p class="now-title" id="now-next-title">Loading…</p>
         <p class="now-sub" id="now-next-sub"></p>
         <p class="now-big" id="now-next-in"></p>
-        <a class="now-link" id="now-next-link" href="#schedule" hidden>Details &amp; directions <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
+        <a class="now-link" id="now-next-link" href="#schedule" hidden>Details <svg><use href="#i-arrow"/></svg></a>
       </div>
     </section>
     <p class="tz-note" id="tz-note"></p>
 
+    <!-- ================= QUICK TILES ================= -->
+    <nav class="tiles" aria-label="Quick links">
+      <a class="tile" href="#shuttle"><span class="tile-icon"><svg><use href="#i-bus"/></svg></span><div><b>Shuttle</b><span id="tile-shuttle">Pickups at 4:15 &amp; 4:45</span></div></a>
+      <a class="tile" href="#schedule"><span class="tile-icon"><svg><use href="#i-cal"/></svg></span><div><b>Schedule</b><span>Fri ceremony · Sat brunch</span></div></a>
+      <a class="tile" href="#dress"><span class="tile-icon"><svg><use href="#i-shirt"/></svg></span><div><b>Dress code</b><span>Black-tie optional</span></div></a>
+      <a class="tile" href="#venue"><span class="tile-icon"><svg><use href="#i-nav"/></svg></span><div><b>Directions</b><span>Hammond Castle</span></div></a>
+    </nav>
+
     <!-- ================= SHUTTLE ================= -->
     <section id="shuttle" class="section">
       <div class="head">
-        <div class="eyebrow">Friday shuttle</div>
+        <div class="eyebrow"><svg><use href="#i-bus"/></svg>Friday shuttle</div>
         <h2>Getting to the castle</h2>
-        <p>One shuttle loop, two pickup spots. Hop on at whichever is closer — and please be at the curb a few minutes early.</p>
+        <p>One shuttle, two pickup spots — hop on at whichever is closer. The ceremony starts at 5:10, so please be at the curb a few minutes early.</p>
       </div>
 
       <!-- Outbound -->
       <article class="card route-card">
         <div class="route-head">
-          <h3>To Hammond Castle</h3>
-          <span class="muted">Fri, Oct 9</span>
+          <span class="tile-icon"><svg><use href="#i-castle"/></svg></span>
+          <div><h3>To Hammond Castle</h3><p>Friday, October 9</p></div>
         </div>
         <ol class="route">
           <li class="stop" data-depart="2026-10-09T16:15">
@@ -343,10 +380,10 @@
                 <span class="chip" data-status></span>
               </div>
               <h4>Ocean House Hotel at Bass Rocks</h4>
-              <button class="addr addr-copy" type="button" data-copy="107 Atlantic Rd, Gloucester, MA 01930">107 Atlantic Rd, Gloucester, MA 01930<svg><use href="#i-copy"/></svg></button>
+              <button class="addr-copy" type="button" data-copy="107 Atlantic Rd, Gloucester, MA 01930">107 Atlantic Rd, Gloucester, MA 01930<svg><use href="#i-copy"/></svg></button>
               <div class="btns">
-                <a class="btn btn-map btn-google" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Ocean+House+Hotel+at+Bass+Rocks%2C+107+Atlantic+Rd%2C+Gloucester%2C+MA+01930"><svg><use href="#i-pin"/></svg>Google Maps</a>
-                <a class="btn btn-map btn-apple" target="_blank" rel="noopener" href="https://maps.apple.com/?daddr=107+Atlantic+Rd,+Gloucester,+MA+01930&amp;q=Ocean+House+Hotel+at+Bass+Rocks"><svg><use href="#i-pin"/></svg>Apple Maps</a>
+                <a class="btn btn-google" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Ocean+House+Hotel+at+Bass+Rocks%2C+107+Atlantic+Rd%2C+Gloucester%2C+MA+01930"><svg><use href="#i-pin"/></svg>Google Maps</a>
+                <a class="btn btn-apple" target="_blank" rel="noopener" href="https://maps.apple.com/?daddr=107+Atlantic+Rd,+Gloucester,+MA+01930&amp;q=Ocean+House+Hotel+at+Bass+Rocks"><svg><use href="#i-pin"/></svg>Apple Maps</a>
               </div>
             </div>
           </li>
@@ -360,11 +397,11 @@
                 <span class="chip" data-status></span>
               </div>
               <h4>Beauport Hotel Gloucester</h4>
-              <button class="addr addr-copy" type="button" data-copy="55 Commercial St, Gloucester, MA 01930">55 Commercial St, Gloucester, MA 01930<svg><use href="#i-copy"/></svg></button>
-              <p class="stop-note">Bus arrives around 4:30 PM, departs 4:45 PM.</p>
+              <button class="addr-copy" type="button" data-copy="55 Commercial St, Gloucester, MA 01930">55 Commercial St, Gloucester, MA 01930<svg><use href="#i-copy"/></svg></button>
+              <p class="stop-note">Bus arrives around 4:30, leaves at 4:45.</p>
               <div class="btns">
-                <a class="btn btn-map btn-google" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Beauport+Hotel+Gloucester%2C+55+Commercial+St%2C+Gloucester%2C+MA+01930"><svg><use href="#i-pin"/></svg>Google Maps</a>
-                <a class="btn btn-map btn-apple" target="_blank" rel="noopener" href="https://maps.apple.com/?daddr=55+Commercial+St,+Gloucester,+MA+01930&amp;q=Beauport+Hotel+Gloucester"><svg><use href="#i-pin"/></svg>Apple Maps</a>
+                <a class="btn btn-google" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Beauport+Hotel+Gloucester%2C+55+Commercial+St%2C+Gloucester%2C+MA+01930"><svg><use href="#i-pin"/></svg>Google Maps</a>
+                <a class="btn btn-apple" target="_blank" rel="noopener" href="https://maps.apple.com/?daddr=55+Commercial+St,+Gloucester,+MA+01930&amp;q=Beauport+Hotel+Gloucester"><svg><use href="#i-pin"/></svg>Apple Maps</a>
               </div>
             </div>
           </li>
@@ -378,8 +415,7 @@
                 <span class="chip" data-status></span>
               </div>
               <h4>Hammond Castle</h4>
-              <p class="addr">80 Hesperus Ave, Gloucester, MA 01930</p>
-              <p class="stop-note">Estimated arrival — traffic permitting.</p>
+              <p class="stop-note">Estimated, traffic permitting. Head over the drawbridge to the Great Hall.</p>
             </div>
           </li>
         </ol>
@@ -388,8 +424,8 @@
       <!-- Return -->
       <article class="card route-card">
         <div class="route-head">
-          <h3>Back from the castle</h3>
-          <span class="muted">Fri, Oct 9</span>
+          <span class="tile-icon"><svg><use href="#i-moon"/></svg></span>
+          <div><h3>Back from the castle</h3><p>Friday, October 9</p></div>
         </div>
         <ol class="route">
           <li class="stop" data-depart="2026-10-09T21:00">
@@ -401,7 +437,7 @@
                 <span class="chip" data-status></span>
               </div>
               <h4>Hammond Castle</h4>
-              <p class="addr">80 Hesperus Ave, Gloucester, MA 01930</p>
+              <p class="stop-note">80 Hesperus Ave — right as the evening wraps.</p>
             </div>
           </li>
           <li class="stop" data-arrive="2026-10-09T21:15">
@@ -413,70 +449,101 @@
                 <span class="chip" data-status></span>
               </div>
               <h4>Beauport Hotel Gloucester</h4>
-              <p class="addr">55 Commercial St, Gloucester, MA 01930</p>
-              <p class="stop-note">Post-wedding drinks are here.</p>
+              <p class="stop-note">55 Commercial St — post-wedding drinks are here.</p>
             </div>
           </li>
         </ol>
         <div class="callout">
           <svg><use href="#i-info"/></svg>
-          <span>The return shuttle goes to <strong>Beauport Hotel only</strong>. If you're staying elsewhere (including Ocean House), plan a taxi or rideshare from there — late-night rides in Gloucester can take a while.</span>
+          <span>The return shuttle goes to <strong>Beauport Hotel only</strong>. Staying somewhere else (including Ocean House)? Plan a taxi or rideshare from there — late-night rides in Gloucester can take a while.</span>
         </div>
       </article>
     </section>
 
     <!-- ================= SCHEDULE =================
          To add/edit events: each <li class="ev"> needs data-start (Eastern time, YYYY-MM-DDTHH:MM).
-         Optional: data-end (when it finishes), data-live (text shown while it's happening),
-         data-instant (a moment, never shown as "happening now"), data-link (where "Details" goes),
-         data-open (no set end time — shown as "happening now" for a few hours, without a countdown).
-         Items without a data-start are shown as "time TBA". Keep items in chronological order. -->
+         Optional: data-end (when it finishes), data-live (title shown while it's happening),
+         data-where (subtitle shown while it's happening), data-instant (a moment, never "happening now"),
+         data-open (no set end — shown as "happening now" for a few hours without a countdown),
+         data-link (where the "Details" button goes), data-cta (that button's label). No data-start = "TBA". Keep items in time order. -->
     <section id="schedule" class="section">
       <div class="head">
-        <div class="eyebrow">The weekend</div>
+        <div class="eyebrow"><svg><use href="#i-cal"/></svg>The weekend</div>
         <h2>Schedule</h2>
-        <p>Live — what's happening now is highlighted.</p>
+        <p>Updates live — whatever's happening now is highlighted in green.</p>
       </div>
 
       <article class="card day">
-        <div class="day-head"><h3>Friday</h3><span class="muted">October 9</span></div>
+        <div class="day-head"><h3>Friday</h3><span>October 9</span></div>
         <ol class="events">
           <li class="ev" data-start="2026-10-09T16:15" data-end="2026-10-09T16:30" data-link="#shuttle"
-              data-live="Shuttle on its way to Beauport Hotel" data-where="Next stop: Beauport Hotel, ~4:30 PM">
-            <span class="ev-time">4:15 PM</span>
-            <div><p class="ev-title">Shuttle departs Ocean House</p><p class="ev-where">107 Atlantic Rd</p><span class="chip" data-status></span></div>
+              data-live="Shuttle on its way to Beauport Hotel" data-where="Next pickup: Beauport Hotel, leaving 4:45 PM">
+            <span class="ev-icon"><svg><use href="#i-bus"/></svg></span>
+            <div><div class="ev-top"><span class="ev-time">4:15 PM</span><span class="chip" data-status></span></div>
+              <p class="ev-title">Shuttle leaves Ocean House</p><p class="ev-where">107 Atlantic Rd</p></div>
           </li>
           <li class="ev" data-start="2026-10-09T16:45" data-end="2026-10-09T17:00" data-link="#shuttle"
-              data-live="Shuttle on its way to the castle" data-where="Arriving Hammond Castle ~5:00 PM">
-            <span class="ev-time">4:45 PM</span>
-            <div><p class="ev-title">Shuttle departs Beauport Hotel</p><p class="ev-where">55 Commercial St</p><span class="chip" data-status></span></div>
+              data-live="Shuttle on its way to the castle" data-where="Arriving at Hammond Castle around 5:00 PM">
+            <span class="ev-icon"><svg><use href="#i-bus"/></svg></span>
+            <div><div class="ev-top"><span class="ev-time">4:45 PM</span><span class="chip" data-status></span></div>
+              <p class="ev-title">Shuttle leaves Beauport Hotel</p><p class="ev-where">55 Commercial St</p></div>
           </li>
-          <li class="ev" data-start="2026-10-09T17:00" data-instant>
-            <span class="ev-time">5:00 PM</span>
-            <div><p class="ev-title">Arrive at Hammond Castle</p><p class="ev-where">80 Hesperus Ave</p><span class="chip" data-status></span></div>
+          <li class="ev" data-start="2026-10-09T16:50" data-end="2026-10-09T17:10"
+              data-live="Doors are open — find a seat" data-where="Over the drawbridge to the Great Hall · ceremony at 5:10">
+            <span class="ev-icon"><svg><use href="#i-door"/></svg></span>
+            <div><div class="ev-top"><span class="ev-time">4:50 PM</span><span class="chip" data-status></span></div>
+              <p class="ev-title">Guests arrive &amp; take their seats</p><p class="ev-where">Over the drawbridge to the Great Hall</p></div>
           </li>
-          <li class="ev is-tba">
-            <span class="ev-time">TBA</span>
-            <div><p class="ev-title">Ceremony, cocktail hour &amp; dinner</p><p class="ev-where">Hammond Castle · full times coming soon</p></div>
+          <li class="ev" data-start="2026-10-09T17:10" data-end="2026-10-09T17:30"
+              data-live="The ceremony" data-where="The Great Hall · cocktails follow at 5:30">
+            <span class="ev-icon"><svg><use href="#i-rings"/></svg></span>
+            <div><div class="ev-top"><span class="ev-time">5:10 PM</span><span class="chip" data-status></span></div>
+              <p class="ev-title">Ceremony</p><p class="ev-where">The Great Hall</p></div>
+          </li>
+          <li class="ev" data-start="2026-10-09T17:30" data-end="2026-10-09T19:30"
+              data-live="Cocktail hour" data-where="Pool area · dinner at 7:30 PM">
+            <span class="ev-icon"><svg><use href="#i-glass"/></svg></span>
+            <div><div class="ev-top"><span class="ev-time">5:30 PM</span><span class="chip" data-status></span></div>
+              <p class="ev-title">Cocktail hour</p><p class="ev-where">Pool area · two hours of drinks &amp; bites</p></div>
+          </li>
+          <li class="ev" data-start="2026-10-09T19:30" data-end="2026-10-09T20:00"
+              data-live="Dinner is served" data-where="Dessert at 8:00 PM">
+            <span class="ev-icon"><svg><use href="#i-dinner"/></svg></span>
+            <div><div class="ev-top"><span class="ev-time">7:30 PM</span><span class="chip" data-status></span></div>
+              <p class="ev-title">Dinner</p><p class="ev-where">Hammond Castle</p></div>
+          </li>
+          <li class="ev" data-start="2026-10-09T20:00" data-end="2026-10-09T21:00"
+              data-live="Dessert on the piano" data-where="The evening wraps at 9:00 PM · shuttle leaves at 9:00">
+            <span class="ev-icon"><svg><use href="#i-cake"/></svg></span>
+            <div><div class="ev-top"><span class="ev-time">8:00 PM</span><span class="chip" data-status></span></div>
+              <p class="ev-title">Dessert</p><p class="ev-where">Served on the piano</p></div>
           </li>
           <li class="ev" data-start="2026-10-09T21:00" data-end="2026-10-09T21:15" data-link="#shuttle"
-              data-live="Shuttle on its way to Beauport Hotel" data-where="Arriving ~9:15 PM">
-            <span class="ev-time">9:00 PM</span>
-            <div><p class="ev-title">Return shuttle departs</p><p class="ev-where">Hammond Castle → Beauport Hotel</p><span class="chip" data-status></span></div>
+              data-live="Shuttle on its way to Beauport Hotel" data-where="Arriving around 9:15 PM">
+            <span class="ev-icon"><svg><use href="#i-bus"/></svg></span>
+            <div><div class="ev-top"><span class="ev-time">9:00 PM</span><span class="chip" data-status></span></div>
+              <p class="ev-title">Evening ends · return shuttle</p><p class="ev-where">Hammond Castle → Beauport Hotel</p></div>
           </li>
-          <li class="ev" data-start="2026-10-09T21:15" data-open>
-            <span class="ev-time">9:15 PM</span>
-            <div><p class="ev-title">Post-wedding drinks</p><p class="ev-where">Beauport Hotel, 55 Commercial St</p><span class="chip" data-status></span></div>
+          <li class="ev" data-start="2026-10-09T21:15" data-open data-link="#beauport" data-cta="Directions to Beauport ">
+            <span class="ev-icon"><svg><use href="#i-moon"/></svg></span>
+            <div><div class="ev-top"><span class="ev-time">9:15 PM</span><span class="chip" data-status></span></div>
+              <p class="ev-title">Post-wedding drinks</p><p class="ev-where">Beauport Hotel · right where the shuttle drops off</p></div>
           </li>
         </ol>
       </article>
 
       <article class="card day">
-        <div class="day-head"><h3>Saturday</h3><span class="muted">October 10</span></div>
+        <div class="day-head"><h3>Saturday</h3><span>October 10</span></div>
         <ol class="events">
+          <li class="ev" data-start="2026-10-10T10:00" data-open data-link="#beauport" data-cta="Directions to Beauport ">
+            <span class="ev-icon"><svg><use href="#i-coffee"/></svg></span>
+            <div><div class="ev-top"><span class="ev-time">10:00 AM</span><span class="chip" data-status></span></div>
+              <p class="ev-title">Brunch</p><p class="ev-where">Beauport Hotel, 55 Commercial St</p></div>
+          </li>
           <li class="ev is-tba">
-            <span class="ev-time">TBA</span>
-            <div><p class="ev-title">Brunch</p><p class="ev-where">Details coming soon</p></div>
+            <span class="ev-icon"><svg><use href="#i-bowl"/></svg></span>
+            <div><div class="ev-top"><span class="ev-time">After brunch</span></div>
+              <p class="ev-title">Hang out — no plans, all welcome</p><p class="ev-where">Most likely around the Beauport, maybe a trip to a local bowling alley. Totally optional and very up in the air.</p></div>
           </li>
         </ol>
       </article>
@@ -485,53 +552,83 @@
     <!-- ================= INFO ================= -->
     <section id="info" class="section">
       <div class="head">
-        <div class="eyebrow">Good to know</div>
+        <div class="eyebrow"><svg><use href="#i-info"/></svg>Good to know</div>
         <h2>The details</h2>
       </div>
 
       <div class="info-grid">
         <!-- Dress code -->
         <article class="card pad" id="dress">
-          <div class="eyebrow">Dress code</div>
+          <div class="eyebrow"><svg><use href="#i-shirt"/></svg>Dress code</div>
           <p class="dress-headline">Black-tie optional</p>
-          <p class="alert">Please no black dresses or gowns.</p>
+          <div class="swatches">
+            <span class="swatch sw-black" aria-hidden="true"></span>
+            <span class="swatch sw-white" aria-hidden="true"></span>
+            <p><strong>Please skip black dresses and gowns — and white.</strong> White is the bride's. Non-bride individuals wearing white will be converted to non-attendants.</p>
+          </div>
           <ul class="list">
-            <li><svg><use href="#i-x"/></svg><span>No white, either — that's the bride's. Non-bride individuals wearing white will be converted to non-attendants.</span></li>
-            <li><svg><use href="#i-stairs"/></svg><span>Stone floors and lots of stairs (including from the parking lot down to the entrance). Choose shoes accordingly.</span></li>
-            <li><svg><use href="#i-wind"/></svg><span>October evenings on the water get chilly — bring a layer.</span></li>
-            <li><svg><use href="#i-shirt"/></svg><span>The groom will for sure be wearing a suit. Potentially a cape.</span></li>
+            <li><span class="li-icon"><svg><use href="#i-stairs"/></svg></span><span>Stone floors and lots of stairs, including from the parking lot down to the entrance. Choose shoes accordingly.</span></li>
+            <li><span class="li-icon"><svg><use href="#i-wind"/></svg></span><span>Cocktail hour is out by the pool and October evenings on the water get chilly — bring a layer.</span></li>
+            <li><span class="li-icon"><svg><use href="#i-shirt"/></svg></span><span>The groom will for sure be wearing a suit. Potentially a cape.</span></li>
           </ul>
         </article>
 
         <!-- Venue -->
         <article class="card pad" id="venue">
-          <div class="eyebrow">Venue</div>
-          <h3 style="margin-top:4px">Hammond Castle Museum</h3>
-          <button class="addr addr-copy" type="button" data-copy="80 Hesperus Ave, Gloucester, MA 01930">80 Hesperus Ave, Gloucester, MA 01930<svg><use href="#i-copy"/></svg></button>
+          <div class="eyebrow"><svg><use href="#i-castle"/></svg>Venue</div>
+          <h3 style="margin-top:8px">Hammond Castle Museum</h3>
+          <button class="addr-copy" type="button" data-copy="Hammond Castle Museum, 80 Hesperus Ave, Gloucester, MA 01930">80 Hesperus Ave, Gloucester, MA 01930<svg><use href="#i-copy"/></svg></button>
           <div class="btns">
-            <a class="btn btn-map btn-google" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hammond+Castle+Museum%2C+80+Hesperus+Ave%2C+Gloucester%2C+MA+01930"><svg><use href="#i-pin"/></svg>Google Maps</a>
-            <a class="btn btn-map btn-apple" target="_blank" rel="noopener" href="https://maps.apple.com/?daddr=80+Hesperus+Ave,+Gloucester,+MA+01930&amp;q=Hammond+Castle+Museum"><svg><use href="#i-pin"/></svg>Apple Maps</a>
+            <a class="btn btn-google" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hammond+Castle+Museum%2C+80+Hesperus+Ave%2C+Gloucester%2C+MA+01930"><svg><use href="#i-pin"/></svg>Google Maps</a>
+            <a class="btn btn-apple" target="_blank" rel="noopener" href="https://maps.apple.com/?daddr=80+Hesperus+Ave,+Gloucester,+MA+01930&amp;q=Hammond+Castle+Museum"><svg><use href="#i-pin"/></svg>Apple Maps</a>
+          </div>
+          <div class="venue-spots">
+            <div class="spot"><small>Ceremony</small><b>Great Hall</b></div>
+            <div class="spot"><small>Cocktails</small><b>Pool area</b></div>
           </div>
           <ul class="list">
-            <li><svg><use href="#i-car"/></svg><span>Free on-site parking if you drive — but the shuttle is the easy option.</span></li>
-            <li><svg><use href="#i-stairs"/></svg><span>Historic property with many stairs; unfortunately not wheelchair accessible.</span></li>
+            <li><span class="li-icon"><svg><use href="#i-car"/></svg></span><span>Free on-site parking if you drive — but the shuttle is the easy option.</span></li>
+            <li><span class="li-icon"><svg><use href="#i-stairs"/></svg></span><span>Historic property with many stairs; unfortunately not wheelchair accessible.</span></li>
+          </ul>
+        </article>
+
+        <!-- Beauport -->
+        <article class="card pad" id="beauport">
+          <div class="eyebrow"><svg><use href="#i-glass"/></svg>Home base</div>
+          <h3 style="margin-top:8px">Beauport Hotel Gloucester</h3>
+          <button class="addr-copy" type="button" data-copy="Beauport Hotel Gloucester, 55 Commercial St, Gloucester, MA 01930">55 Commercial St, Gloucester, MA 01930<svg><use href="#i-copy"/></svg></button>
+          <div class="btns">
+            <a class="btn btn-google" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Beauport+Hotel+Gloucester%2C+55+Commercial+St%2C+Gloucester%2C+MA+01930"><svg><use href="#i-pin"/></svg>Google Maps</a>
+            <a class="btn btn-apple" target="_blank" rel="noopener" href="https://maps.apple.com/?daddr=55+Commercial+St,+Gloucester,+MA+01930&amp;q=Beauport+Hotel+Gloucester"><svg><use href="#i-pin"/></svg>Apple Maps</a>
+          </div>
+          <div class="venue-spots">
+            <div class="spot"><small>Fri · 9:15 PM</small><b>Post-wedding drinks</b></div>
+            <div class="spot"><small>Sat · 10:00 AM</small><b>Brunch</b></div>
+          </div>
+          <ul class="list">
+            <li><span class="li-icon"><svg><use href="#i-bus"/></svg></span><span>The return shuttle drops everyone here after the wedding — drinks start as soon as you step off.</span></li>
+            <li><span class="li-icon"><svg><use href="#i-bowl"/></svg></span><span>After brunch we'll likely be hanging around here, and maybe bowling. Nothing formal — come find us.</span></li>
           </ul>
         </article>
 
         <!-- FAQ -->
         <article class="card" id="faq">
-          <div class="pad" style="padding-bottom:4px"><div class="eyebrow">FAQ</div></div>
+          <div class="pad" style="padding-bottom:6px"><div class="eyebrow"><svg><use href="#i-info"/></svg>Questions</div></div>
           <details>
             <summary>Which shuttle stop should I use?</summary>
-            <div class="ans">Whichever is closer to you. The shuttle picks up at <strong>Ocean House Hotel at 4:15 PM</strong>, then <strong>Beauport Hotel at 4:45 PM</strong>, and arrives at the castle around 5:00 PM. <a href="#shuttle">See shuttle stops</a></div>
+            <div class="ans">Whichever is closer. The shuttle picks up at <strong>Ocean House at 4:15 PM</strong>, then <strong>Beauport Hotel at 4:45 PM</strong>, and gets to the castle around 5:00 — just before the 5:10 ceremony. <a href="#shuttle">See the stops</a></div>
           </details>
           <details>
             <summary>What if I miss the shuttle?</summary>
-            <div class="ans">Drive or take a rideshare straight to Hammond Castle, 80 Hesperus Ave — parking is free on site. <a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hammond+Castle+Museum%2C+80+Hesperus+Ave%2C+Gloucester%2C+MA+01930">Directions</a></div>
+            <div class="ans">Drive or grab a rideshare straight to Hammond Castle, 80 Hesperus Ave — parking is free on site. Aim to arrive by 5:00 so you're seated for the 5:10 ceremony. <a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hammond+Castle+Museum%2C+80+Hesperus+Ave%2C+Gloucester%2C+MA+01930">Directions</a></div>
           </details>
           <details>
             <summary>How do I get home at the end of the night?</summary>
-            <div class="ans">The return shuttle leaves the castle at <strong>9:00 PM</strong> and drops off at <strong>Beauport Hotel</strong> (where post-wedding drinks are) around 9:15 PM. From there, take a taxi or rideshare to your hotel — book ahead if you can, since late-night rides in Gloucester are limited.</div>
+            <div class="ans">The evening wraps at <strong>9:00 PM</strong> and the return shuttle leaves the castle right then, dropping off at <strong>Beauport Hotel</strong> (where post-wedding drinks are) around 9:15. From there, take a taxi or rideshare to your hotel — book ahead if you can.</div>
+          </details>
+          <details>
+            <summary>What's happening Saturday?</summary>
+            <div class="ans"><strong>Brunch at 10:00 AM at the Beauport Hotel</strong>, 55 Commercial St. After that there are no formal plans — we'll probably be hanging out around the Beauport and maybe heading to a local bowling alley. Join us for as much or as little as you like. <a href="#beauport">Directions</a></div>
           </details>
           <details>
             <summary>Are kids welcome?</summary>
@@ -555,7 +652,7 @@
     </footer>
   </main>
 
-  <!-- ================= BOTTOM TAB BAR ================= -->
+  <!-- ================= FLOATING TAB BAR ================= -->
   <div class="tabbar">
     <nav aria-label="Sections">
       <a href="#now" data-tab="now"><svg><use href="#i-clock"/></svg>Now</a>
@@ -569,11 +666,11 @@
   <script>
   (function(){
     /* ================= CONFIG =================
-       All times are Eastern (Gloucester). October 2026 is EDT (UTC-4).
-       WEDDING_START drives the big countdown at the top — set it to the ceremony time once final. */
-    var WEDDING_START = '2026-10-09T17:00';
-    var WEEKEND_END   = '2026-10-10T18:00';   // after this, the hero shows a thank-you
-    var BOARDING_MIN  = 15;                   // minutes before departure a stop shows "Boarding"
+       All times are Eastern (Gloucester). October 2026 is EDT (UTC-4). */
+    var CEREMONY_START = '2026-10-09T17:10';  // big countdown at the top
+    var CEREMONY_END   = '2026-10-09T17:30';
+    var WEEKEND_END    = '2026-10-10T18:00';  // after this the site shows a thank-you
+    var BOARDING_MIN   = 15;                  // minutes before departure a stop shows "Boarding"
     var TZ = 'America/New_York';
 
     function ET(s){ return s ? new Date(s.length === 16 ? s + ':00-04:00' : s) : null; }
@@ -586,6 +683,7 @@
 
     var timeFmt = new Intl.DateTimeFormat('en-US', { timeZone: TZ, hour: 'numeric', minute: '2-digit' });
     var dayFmt  = new Intl.DateTimeFormat('en-US', { timeZone: TZ, weekday: 'short' });
+    var dateKey = new Intl.DateTimeFormat('en-US', { timeZone: TZ, dateStyle: 'short' });
     function fmtTime(d){ return timeFmt.format(d); }
     function pad(n){ return String(n).padStart(2, '0'); }
     function dur(ms){
@@ -596,25 +694,20 @@
       if (m) return m + 'm ' + pad(sec) + 's';
       return sec + 's';
     }
-    function sameDay(a, b){ return new Intl.DateTimeFormat('en-US',{timeZone:TZ,dateStyle:'short'}).format(a) === new Intl.DateTimeFormat('en-US',{timeZone:TZ,dateStyle:'short'}).format(b); }
-    function whenLabel(d, t){ return sameDay(d, t) ? fmtTime(d) : dayFmt.format(d) + ' ' + fmtTime(d); }
+    function whenLabel(d, t){ return dateKey.format(d) === dateKey.format(t) ? fmtTime(d) : dayFmt.format(d) + ' ' + fmtTime(d); }
     function $(id){ return document.getElementById(id); }
 
-    // iOS: show Apple Maps first
     var isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     if (isIOS) document.documentElement.classList.add('ios');
 
-    // Time-zone note for out-of-town devices
-    var localTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    if (localTZ !== TZ) $('tz-note').textContent = 'All times are Eastern Time (Gloucester), and countdowns are live from your phone.';
+    if (Intl.DateTimeFormat().resolvedOptions().timeZone !== TZ) {
+      $('tz-note').textContent = 'All times are Eastern Time (Gloucester).';
+    }
 
-    /* ---------- Parse schedule from the HTML ---------- */
-    var evEls = Array.prototype.slice.call(document.querySelectorAll('.ev'));
-    var events = evEls.map(function(el){
-      var start = ET(el.dataset.start);
-      var end = ET(el.dataset.end);
-      var instant = el.hasAttribute('data-instant');
-      var open = el.hasAttribute('data-open');
+    /* ---------- Read schedule + shuttle stops from the HTML ---------- */
+    var events = Array.prototype.map.call(document.querySelectorAll('.ev'), function(el){
+      var start = ET(el.dataset.start), end = ET(el.dataset.end);
+      var instant = el.hasAttribute('data-instant'), open = el.hasAttribute('data-open');
       if (start && !end && !instant) end = new Date(start.getTime() + (open ? 180 : 60) * 60000);
       return {
         el: el, start: start, end: end, instant: instant, open: open, tba: !start,
@@ -625,7 +718,7 @@
         chip: el.querySelector('[data-status]')
       };
     });
-    var stops = Array.prototype.slice.call(document.querySelectorAll('.stop')).map(function(el){
+    var stops = Array.prototype.map.call(document.querySelectorAll('.stop'), function(el){
       return { el: el, depart: ET(el.dataset.depart), arrive: ET(el.dataset.arrive), chip: el.querySelector('[data-status]') };
     });
 
@@ -635,28 +728,28 @@
       chip.className = 'chip' + (cls ? ' ' + cls : '');
     }
 
-    /* ---------- Tick ---------- */
     function tick(){
       var t = now(), tm = t.getTime();
+      var cStart = ET(CEREMONY_START), cEnd = ET(CEREMONY_END), wEnd = ET(WEEKEND_END);
 
-      // Hero countdown
-      var wStart = ET(WEDDING_START), wEnd = ET(WEEKEND_END);
-      var left = wStart - t;
-      if (left > 0) {
-        var s = Math.floor(left / 1000);
+      /* Hero countdown */
+      if (t < cStart) {
+        var s = Math.floor((cStart - t) / 1000);
         $('cd-d').textContent = Math.floor(s / 86400);
         $('cd-h').textContent = pad(Math.floor(s % 86400 / 3600));
         $('cd-m').textContent = pad(Math.floor(s % 3600 / 60));
         $('cd-s').textContent = pad(s % 60);
       } else {
-        $('countdown').style.display = 'none';
-        $('cd-label').style.display = 'none';
+        $('countdown').hidden = true;
+        $('cd-label').hidden = true;
         var msg = $('hero-msg');
-        msg.style.display = 'block';
-        msg.textContent = t < wEnd ? "It's happening — we're so glad you're here." : 'Thank you for celebrating with us.';
+        msg.hidden = false;
+        msg.textContent = t < cEnd ? 'The ceremony is underway.'
+                        : t < wEnd ? 'Just married! Thank you for being here.'
+                        : 'Thank you for celebrating with us.';
       }
 
-      // Schedule items
+      /* Schedule */
       var current = null, next = null, lastStartedIdx = -1;
       events.forEach(function(e, i){
         e.el.classList.remove('is-past', 'is-live', 'is-next');
@@ -665,42 +758,44 @@
         if (e.end && tm >= e.start && tm < e.end) {
           e.el.classList.add('is-live');
           setChip(e.chip, e.open ? 'Happening now' : 'Now · ' + dur(e.end - t) + ' left', 'live');
-          if (!current) current = e;
+          current = e;   // latest-starting live event wins (e.g. ceremony over "doors open")
         } else if (tm >= (e.end || e.start)) {
           e.el.classList.add('is-past');
           setChip(e.chip, '', '');
         } else {
-          if (!next) { next = e; e.el.classList.add('is-next'); }
-          setChip(e.chip, e === next ? 'in ' + dur(e.start - t) : '', '');
+          var isNext = !next;
+          if (isNext) { next = e; e.el.classList.add('is-next'); }
+          setChip(e.chip, isNext ? 'in ' + dur(e.start - t) : '', '');
         }
       });
-      // If nothing timed is left, point at the next "TBA" item (e.g. Saturday brunch)
       var nextTBA = null;
-      if (!next && t < wEnd) { for (var j = lastStartedIdx + 1; j < events.length; j++) { if (events[j].tba) { nextTBA = events[j]; break; } } }
+      if (!next && t < wEnd) {
+        for (var j = lastStartedIdx + 1; j < events.length; j++) { if (events[j].tba) { nextTBA = events[j]; break; } }
+      }
 
-      // Shuttle stops
-      var nextStopMarked = false;
+      /* Shuttle stops */
+      var marked = false, nextDepart = null;
       stops.forEach(function(st){
         st.el.classList.remove('is-next', 'is-boarding', 'is-done');
-        var when = st.depart || st.arrive;
-        var diff = when - t;
+        var when = st.depart || st.arrive, diff = when - t;
         if (diff <= 0) {
           st.el.classList.add('is-done');
           setChip(st.chip, st.depart ? 'Departed' : 'Arrived', 'done');
         } else if (st.depart && diff <= BOARDING_MIN * 60000) {
           st.el.classList.add('is-boarding');
           setChip(st.chip, 'Boarding · leaves in ' + dur(diff), 'board');
-          nextStopMarked = true;
+          marked = true; if (!nextDepart) nextDepart = st.depart;
         } else {
-          if (st.depart && !nextStopMarked) { st.el.classList.add('is-next'); nextStopMarked = true; }
+          if (st.depart && !marked) { st.el.classList.add('is-next'); marked = true; }
+          if (st.depart && !nextDepart) nextDepart = st.depart;
           setChip(st.chip, (st.depart ? 'Leaves in ' : 'Arrives in ') + dur(diff), '');
         }
       });
+      $('tile-shuttle').textContent = nextDepart ? 'Next: ' + whenLabel(nextDepart, t) : 'All done for tonight';
 
-      // Now card — current
-      var curRow = $('now-current');
+      /* Now card — current */
       if (current) {
-        curRow.hidden = false;
+        $('now-current').hidden = false;
         $('now-current-title').textContent = current.live || current.title;
         $('now-current-sub').textContent = current.liveWhere || current.where;
         var bar = $('now-current-bar');
@@ -713,29 +808,29 @@
           bar.style.width = Math.min(100, Math.max(0, (t - current.start) / (current.end - current.start) * 100)) + '%';
         }
       } else {
-        curRow.hidden = true;
+        $('now-current').hidden = true;
       }
 
-      // Now card — next
+      /* Now card — next */
       var label = $('now-next-label'), link = $('now-next-link');
       label.classList.remove('boarding');
       if (next) {
         var ms = next.start - t;
         var boarding = next.link === '#shuttle' && ms <= BOARDING_MIN * 60000;
-        label.textContent = boarding ? 'Boarding now' : 'Next up';
+        label.textContent = boarding ? 'Shuttle boarding now' : 'Next up';
         if (boarding) label.classList.add('boarding');
         $('now-next-title').textContent = next.title;
         $('now-next-sub').textContent = whenLabel(next.start, t) + (next.where ? ' · ' + next.where : '');
-        $('now-next-in').innerHTML = (boarding ? 'Leaves in ' : 'in ') + dur(ms);
+        $('now-next-in').textContent = (boarding ? 'Leaves in ' : 'In ') + dur(ms);
         link.hidden = false;
         link.setAttribute('href', next.link);
-        link.firstChild.nodeValue = next.link === '#shuttle' ? 'Stop details & directions ' : 'See schedule ';
+        link.firstChild.nodeValue = next.el.dataset.cta || (next.link === '#shuttle' ? 'Stop details & directions ' : 'See the schedule ');
       } else if (nextTBA) {
-        label.textContent = 'Coming up';
+        label.textContent = 'Also today';
         $('now-next-title').textContent = nextTBA.title;
         $('now-next-sub').textContent = nextTBA.where;
         $('now-next-in').textContent = '';
-        link.hidden = false; link.setAttribute('href', '#schedule'); link.firstChild.nodeValue = 'See schedule ';
+        link.hidden = false; link.setAttribute('href', '#schedule'); link.firstChild.nodeValue = 'See the schedule ';
       } else {
         label.textContent = "That's a wrap";
         $('now-next-title').textContent = 'Thank you for celebrating with us!';
@@ -743,6 +838,7 @@
         $('now-next-in').textContent = '';
         link.hidden = true;
       }
+      $('now-next').hidden = false;
     }
     tick();
     setInterval(tick, 1000);
@@ -759,7 +855,7 @@
       });
     });
 
-    /* ---------- Active tab while scrolling ---------- */
+    /* ---------- Highlight the active tab while scrolling ---------- */
     var tabs = document.querySelectorAll('.tabbar a');
     var sections = ['now', 'shuttle', 'schedule', 'info'].map(function(id){ return document.getElementById(id); });
     function setActive(){
