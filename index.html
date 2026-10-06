@@ -203,6 +203,13 @@
     .callout{display:flex;gap:10px;padding:14px 16px;border-radius:16px;background:var(--soft);font-size:14px;margin:4px 20px 20px;line-height:1.45}
     .callout svg{width:18px;height:18px;margin-top:1px;color:var(--accent)}
 
+    .pickups{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+    .pickup{display:block;padding:16px;border-radius:20px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);text-decoration:none;-webkit-tap-highlight-color:transparent}
+    .pickup small{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--soft);padding:4px 8px;border-radius:99px}
+    .pickup b{display:block;font-size:26px;font-weight:800;letter-spacing:-.02em;margin-top:10px;font-variant-numeric:tabular-nums}
+    .pickup span{display:block;font-size:15px;font-weight:600;color:var(--muted);margin-top:2px}
+    .stop{scroll-margin-top:16px}
+
     /* ================= Schedule ================= */
     .day + .day{margin-top:14px}
     .day-head{display:flex;justify-content:space-between;align-items:baseline;padding:20px 20px 4px}
@@ -351,7 +358,7 @@
 
     <!-- ================= QUICK TILES ================= -->
     <nav class="tiles" aria-label="Quick links">
-      <a class="tile" href="#shuttle"><span class="tile-icon"><svg><use href="#i-bus"/></svg></span><div><b>Shuttle</b><span id="tile-shuttle">Pickups at 4:15 &amp; 4:45</span></div></a>
+      <a class="tile" href="#shuttle"><span class="tile-icon"><svg><use href="#i-bus"/></svg></span><div><b>Shuttle</b><span id="tile-shuttle">2 pickups: 4:15 &amp; 4:45</span></div></a>
       <a class="tile" href="#schedule"><span class="tile-icon"><svg><use href="#i-cal"/></svg></span><div><b>Schedule</b><span>Fri ceremony · Sat brunch</span></div></a>
       <a class="tile" href="#dress"><span class="tile-icon"><svg><use href="#i-shirt"/></svg></span><div><b>Dress code</b><span>Black-tie optional</span></div></a>
       <a class="tile" href="#venue"><span class="tile-icon"><svg><use href="#i-nav"/></svg></span><div><b>Directions</b><span>Hammond Castle</span></div></a>
@@ -362,7 +369,20 @@
       <div class="head">
         <div class="eyebrow"><svg><use href="#i-bus"/></svg>Friday shuttle</div>
         <h2>Getting to the castle</h2>
-        <p>The shuttle makes two pickups. Use whichever stop is closer to you. The ceremony starts at 5:10, so please be outside a few minutes before your pickup time.</p>
+        <p>There are <strong>2 pickup spots</strong>. Get on at whichever one is closer to you. The ceremony starts at 5:10, so please be outside a few minutes before your pickup time.</p>
+      </div>
+
+      <div class="pickups">
+        <a class="pickup" href="#stop-oceanhouse">
+          <small>Pickup 1</small>
+          <b>4:15 PM</b>
+          <span>Ocean House Hotel</span>
+        </a>
+        <a class="pickup" href="#stop-beauport">
+          <small>Pickup 2</small>
+          <b>4:45 PM</b>
+          <span>Beauport Hotel</span>
+        </a>
       </div>
 
       <!-- Outbound -->
@@ -372,7 +392,7 @@
           <div><h3>To Hammond Castle</h3><p>Friday, October 9</p></div>
         </div>
         <ol class="route">
-          <li class="stop" data-depart="2026-10-09T16:15">
+          <li class="stop" id="stop-oceanhouse" data-depart="2026-10-09T16:15">
             <span class="dot"><svg><use href="#i-check"/></svg></span>
             <div class="stop-body">
               <div class="stop-top">
@@ -389,7 +409,7 @@
             </div>
           </li>
 
-          <li class="stop" data-depart="2026-10-09T16:45">
+          <li class="stop" id="stop-beauport" data-depart="2026-10-09T16:45">
             <span class="dot"><svg><use href="#i-check"/></svg></span>
             <div class="stop-body">
               <div class="stop-top">
@@ -446,17 +466,29 @@
             <div class="stop-body">
               <div class="stop-top">
                 <span class="stop-time">9:15 PM</span>
-                <span class="stop-kind">Arrive</span>
+                <span class="stop-kind">Drop-off 1</span>
                 <span class="chip" data-status></span>
               </div>
               <h4>Beauport Hotel Gloucester</h4>
               <p class="stop-note">55 Commercial St. Post-wedding drinks are here.</p>
             </div>
           </li>
+          <li class="stop" data-arrive="2026-10-09T21:30">
+            <span class="dot"><svg><use href="#i-check"/></svg></span>
+            <div class="stop-body">
+              <div class="stop-top">
+                <span class="stop-time">9:30 PM</span>
+                <span class="stop-kind">Drop-off 2</span>
+                <span class="chip" data-status></span>
+              </div>
+              <h4>Ocean House Hotel at Bass Rocks</h4>
+              <p class="stop-note">107 Atlantic Rd. Estimated time.</p>
+            </div>
+          </li>
         </ol>
         <div class="callout">
           <svg><use href="#i-info"/></svg>
-          <span>The return shuttle goes to <strong>Beauport Hotel only</strong>. Staying somewhere else (including Ocean House)? Plan on a taxi or rideshare from there. Late-night rides in Gloucester can take a while.</span>
+          <span>The return shuttle stops at <strong>Beauport Hotel</strong> first, then continues to <strong>Ocean House</strong>. If you're staying at Ocean House, stay on the bus after the Beauport stop.</span>
         </div>
       </article>
     </section>
@@ -520,15 +552,20 @@
               <p class="ev-title">Dessert</p><p class="ev-where">Served on the piano</p></div>
           </li>
           <li class="ev" data-start="2026-10-09T21:00" data-end="2026-10-09T21:15" data-link="#shuttle"
-              data-live="Shuttle on its way to Beauport Hotel" data-where="Arriving around 9:15 PM">
+              data-live="Shuttle on its way to Beauport Hotel" data-where="Beauport around 9:15 PM, then Ocean House around 9:30 PM">
             <span class="ev-icon"><svg><use href="#i-bus"/></svg></span>
             <div><div class="ev-top"><span class="ev-time">9:00 PM</span><span class="chip" data-status></span></div>
-              <p class="ev-title">Evening ends · return shuttle</p><p class="ev-where">Hammond Castle → Beauport Hotel</p></div>
+              <p class="ev-title">Evening ends · return shuttle</p><p class="ev-where">Hammond Castle → Beauport Hotel → Ocean House</p></div>
           </li>
           <li class="ev" data-start="2026-10-09T21:15" data-open data-link="#beauport" data-cta="Directions to Beauport ">
             <span class="ev-icon"><svg><use href="#i-moon"/></svg></span>
             <div><div class="ev-top"><span class="ev-time">9:15 PM</span><span class="chip" data-status></span></div>
               <p class="ev-title">Post-wedding drinks</p><p class="ev-where">Beauport Hotel, where the shuttle drops off</p></div>
+          </li>
+          <li class="ev" data-start="2026-10-09T21:30" data-instant data-link="#shuttle">
+            <span class="ev-icon"><svg><use href="#i-bus"/></svg></span>
+            <div><div class="ev-top"><span class="ev-time">9:30 PM</span><span class="chip" data-status></span></div>
+              <p class="ev-title">Shuttle drops off at Ocean House</p><p class="ev-where">107 Atlantic Rd · estimated time</p></div>
           </li>
         </ol>
       </article>
@@ -607,7 +644,7 @@
             <div class="spot"><small>Sat · 10:00 AM</small><b>Brunch · kids welcome</b></div>
           </div>
           <ul class="list">
-            <li><span class="li-icon"><svg><use href="#i-bus"/></svg></span><span>The return shuttle drops everyone off here after the wedding, and drinks are here too.</span></li>
+            <li><span class="li-icon"><svg><use href="#i-bus"/></svg></span><span>The return shuttle stops here first, around 9:15, then continues to Ocean House. Post-wedding drinks are here.</span></li>
             <li><span class="li-icon"><svg><use href="#i-bowl"/></svg></span><span>After brunch we'll probably be around the hotel and may go bowling. No set plans, and anyone is welcome to join.</span></li>
           </ul>
         </article>
@@ -617,7 +654,7 @@
           <div class="pad" style="padding-bottom:6px"><div class="eyebrow"><svg><use href="#i-info"/></svg>Questions</div></div>
           <details>
             <summary>Which shuttle stop should I use?</summary>
-            <div class="ans">Whichever is closer. The shuttle picks up at <strong>Ocean House at 4:15 PM</strong>, then <strong>Beauport Hotel at 4:45 PM</strong>, and gets to the castle around 5:00, before the 5:10 ceremony. <a href="#shuttle">See the stops</a></div>
+            <div class="ans">There are 2 pickups, so use whichever is closer: <strong>Ocean House Hotel at 4:15 PM</strong> or <strong>Beauport Hotel at 4:45 PM</strong>. It's the same bus, and it gets to the castle around 5:00, before the 5:10 ceremony. <a href="#shuttle">See the stops</a></div>
           </details>
           <details>
             <summary>What if I miss the shuttle?</summary>
@@ -625,7 +662,7 @@
           </details>
           <details>
             <summary>How do I get home at the end of the night?</summary>
-            <div class="ans">The evening ends at <strong>9:00 PM</strong>, when the return shuttle leaves the castle, dropping off at <strong>Beauport Hotel</strong> (where post-wedding drinks are) around 9:15. From there, take a taxi or rideshare to your hotel. Book ahead if you can.</div>
+            <div class="ans">The evening ends at <strong>9:00 PM</strong>, when the return shuttle leaves the castle. It drops off at <strong>Beauport Hotel</strong> (where post-wedding drinks are) around 9:15, then at <strong>Ocean House Hotel</strong> around 9:30. If you're staying somewhere else, take a taxi or rideshare from either stop, and book ahead if you can.</div>
           </details>
           <details>
             <summary>What's happening Saturday?</summary>
@@ -792,7 +829,9 @@
           setChip(st.chip, (st.depart ? 'Leaves in ' : 'Arrives in ') + dur(diff), '');
         }
       });
-      $('tile-shuttle').textContent = nextDepart ? 'Next: ' + whenLabel(nextDepart, t) : 'All done for tonight';
+      $('tile-shuttle').textContent = !nextDepart ? 'All done for tonight'
+        : nextDepart <= ET('2026-10-09T16:45') ? '2 pickups: 4:15 & 4:45'
+        : 'Return: ' + whenLabel(nextDepart, t);
 
       /* Now card: current */
       if (current) {
@@ -817,7 +856,7 @@
       label.classList.remove('boarding');
       if (next) {
         var ms = next.start - t;
-        var boarding = next.link === '#shuttle' && ms <= BOARDING_MIN * 60000;
+        var boarding = next.link === '#shuttle' && !next.instant && ms <= BOARDING_MIN * 60000;
         label.textContent = boarding ? 'Shuttle boarding now' : 'Next up';
         if (boarding) label.classList.add('boarding');
         $('now-next-title').textContent = next.title;
